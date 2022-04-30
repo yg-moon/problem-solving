@@ -19,5 +19,5 @@ class Solution:
         # Set the next linked list with recursion
         if list1:
             list1.next = self.mergeTwoLists(list1.next, list2)
-        
+
         return list1

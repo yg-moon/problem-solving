@@ -38,3 +38,9 @@ class Solution:
 # sample_input2 = ListNode(1,ListNode(2,ListNode(3,ListNode(4)))) # [1,2,3,4]
 # print(Solution().isPalindrome(sample_input1)) # True
 # print(Solution().isPalindrome(sample_input2)) # False
+
+### Time Complexity
+# 순서대로 한번 쭉 훑으므로 O(n).
+
+### Note
+# 

@@ -25,10 +25,10 @@ class Solution:
             l2 = l2.next
 
         # Calculate answer
-        num1 = int(''.join(str(x) for x in list1[::-1]))
-        num2 = int(''.join(str(x) for x in list2[::-1]))
+        num1 = int("".join(str(x) for x in list1[::-1]))
+        num2 = int("".join(str(x) for x in list2[::-1]))
         sum = num1 + num2
-        result_list = ([int(x) for x in str(sum)][::-1])
+        result_list = [int(x) for x in str(sum)][::-1]
 
         # Convert Python list to linked list
         root = head = ListNode(None)
@@ -37,5 +37,5 @@ class Solution:
             if i != len(result_list) - 1:
                 head.next = ListNode(None)
                 head = head.next
-        
+
         return root

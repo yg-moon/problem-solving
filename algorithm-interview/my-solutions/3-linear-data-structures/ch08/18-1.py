@@ -13,7 +13,7 @@ class Solution:
         # Edge case: when n = 0
         if head is None:
             return None
-        
+
         odd = head
         even = head.next
         even_head = head.next
@@ -24,8 +24,8 @@ class Solution:
             odd = odd.next
             even.next = even.next.next
             even = even.next
-        
+
         # Add even's head to odd's tail
         odd.next = even_head
-        
+
         return head

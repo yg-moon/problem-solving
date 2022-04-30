@@ -11,14 +11,12 @@ class ListNode:
 class Solution:
     def reverseList(self, head: Optional[ListNode]) -> Optional[ListNode]:
         prev = None
-        
+
+        # while문 내부를 다중할당으로 쓰면 헷갈리길래 줄을 분리했다.
         while head:
-            next = head.next # 1.next 저장
-            head.next = prev # 2.prev 왼쪽에 하나 더 달기
-            prev = head # 3.prev 정보 최신화
-            head = next # 4.다음 칸으로 이동
-        
+            next = head.next  # 1.next 저장
+            head.next = prev  # 2.prev 왼쪽에 하나 더 달기
+            prev = head  # 3.prev 정보 최신화
+            head = next  # 4.다음 칸으로 이동
+
         return prev
-
-
-# while문 내부를 다중할당으로 쓰면 헷갈리길래 줄을 분리했다.
