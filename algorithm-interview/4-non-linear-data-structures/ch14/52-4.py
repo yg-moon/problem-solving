@@ -10,7 +10,7 @@ class Solution:
     def rangeSumBST(self, root: TreeNode, L: int, R: int) -> int:
         stack, sum = [root], 0
         # 큐 연산을 이용해 반복 구조 BFS로 필요한 노드 탐색
-        위에 설명과 마찬가지
+        # 위에 설명과 마찬가지
         while stack:
             node = stack.pop(0)
             if node:
