@@ -14,3 +14,7 @@ class Solution:
             elif not stack or table[char] != stack.pop():
                 return False
         return len(stack) == 0
+
+
+### Time Complexity
+# O(n). s를 한번만 훑으니까.
