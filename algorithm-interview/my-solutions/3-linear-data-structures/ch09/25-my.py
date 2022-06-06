@@ -41,16 +41,10 @@ class MyCircularQueue:
             return self.q[self.rear - 1]
 
     def isEmpty(self) -> bool:
-        if self.curr_size == 0:
-            return True
-        else:
-            return False
+        return self.curr_size == 0
 
     def isFull(self) -> bool:
-        if self.curr_size == self.max_len:
-            return True
-        else:
-            return False
+        return self.curr_size == self.max_len
 
 
 # Your MyCircularQueue object will be instantiated and called as such:
