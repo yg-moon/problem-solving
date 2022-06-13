@@ -16,7 +16,7 @@ class Solution:
             for task, _ in counter.most_common(n + 1):
                 sub_count += 1
                 result += 1
-                counter.subtract(task)
+                counter[task] -= 1
                 # 개수가 0인 아이템을 목록에서 제거
                 if counter[task] == 0:
                     del counter[task]
