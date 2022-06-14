@@ -4,3 +4,4 @@ test2.py
 **/test2.py
 .vscode
 .mypy_cache
+do-not-upload
