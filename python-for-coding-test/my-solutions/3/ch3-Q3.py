@@ -1,4 +1,4 @@
-# Good
+# 책 풀이와 동일
 n, m = map(int, input().split())
 data = [list(map(int, input().split())) for _ in range(n)]
 
