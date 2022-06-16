@@ -36,7 +36,7 @@ while True:
     if not moved:
         na = a - dx[d]
         nb = b - dy[d]
-        # 뒤가 바다로 막혀있거나, 이미 가본 경우 게임종료
+        # 뒤로 방문할 수 없는 경우 게임종료
         if game_map[na][nb] != 0:
             break
         # 뒤로 가기
