@@ -19,13 +19,13 @@ def partition(A, lo, hi):
     return hi
 
 
-def quick_sort(A, lo, hi):
+def quickSort(A, lo, hi):
     if lo < hi:
         p = partition(A, lo, hi)
-        quick_sort(A, lo, p-1)
-        quick_sort(A, p+1, hi)
+        quickSort(A, lo, p-1)
+        quickSort(A, p+1, hi)
 
 
-array = [10, 7, 8, 9, 1, 5]
-quick_sort(array, 0, len(array) - 1)
-print(f"Sorted array: {array}")
+A = [38, 27, 43, 3, 9, 82, 10]
+quickSort(A, 0, len(A) - 1)
+print(A)

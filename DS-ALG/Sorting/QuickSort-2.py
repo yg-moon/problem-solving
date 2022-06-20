@@ -1,6 +1,6 @@
 # Lomuto parition scheme
 # 요약: 작은 걸 찾아 계속 왼쪽으로 보내다가, 마지막에 pivot을 중간에 놓는 방식
-def quicksort(A, lo, hi):
+def quickSort(A, lo, hi):
     def partition(lo, hi):
         # pivot은 맨 마지막 원소
         pivot = A[hi]
@@ -17,10 +17,10 @@ def quicksort(A, lo, hi):
 
     if lo < hi:
         pivot = partition(lo, hi)
-        quicksort(A, lo, pivot - 1)
-        quicksort(A, pivot + 1, hi)
+        quickSort(A, lo, pivot - 1)
+        quickSort(A, pivot + 1, hi)
 
 
 A = [38, 27, 43, 3, 9, 82, 10]
-quicksort(A, 0, len(A) - 1)
+quickSort(A, 0, len(A) - 1)
 print(A)
