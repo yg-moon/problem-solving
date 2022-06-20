@@ -1,14 +1,19 @@
-# from 파이썬 알고리즘 인터뷰
+# Lomuto parition scheme
+# 요약: 작은 걸 찾아 계속 왼쪽으로 보내다가, 마지막에 pivot을 중간에 놓는 방식
 def quicksort(A, lo, hi):
     def partition(lo, hi):
+        # pivot은 맨 마지막 원소
         pivot = A[hi]
-        left = lo
-        for right in range(lo, hi):
-            if A[right] < pivot:
-                A[left], A[right] = A[right], A[left]
-                left += 1
-        A[left], A[hi] = A[hi], A[left]
-        return left
+        i = lo
+        for j in range(lo, hi):
+            # 현재 원소가 pivot보다 작으면 swap(i, j) & i++
+            if A[j] < pivot:
+                A[i], A[j] = A[j], A[i]
+                i += 1
+        # 루프가 끝나면 swap(i, hi)
+        A[i], A[hi] = A[hi], A[i]
+        # i를 리턴
+        return i
 
     if lo < hi:
         pivot = partition(lo, hi)
