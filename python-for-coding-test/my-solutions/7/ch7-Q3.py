@@ -9,10 +9,11 @@ def binarySearch(left, right):
     while left <= right:
         mid = (left + right) // 2
         d = ducks[mid:]
+        sum_d = sum(d)
 
-        if sum(d) - ducks[mid] * len(d) > m:
+        if sum_d - ducks[mid] * len(d) > m:
             left = mid + 1
-        elif sum(d) - ducks[mid] * len(d) < m:
+        elif sum_d - ducks[mid] * len(d) < m:
             right = mid - 1
         else:
             return (True, mid)
@@ -27,7 +28,8 @@ if not found:
     if idx == -1:
         max_height = 0
     d = ducks[idx + 1 :]
-    while sum(d) - (max_height + 1) * len(d) >= m:
+    sum_d = sum(d)
+    while sum_d - (max_height + 1) * len(d) >= m:
         max_height += 1
     print(max_height)
 # 이진탐색으로 찾았으면 그대로 출력
