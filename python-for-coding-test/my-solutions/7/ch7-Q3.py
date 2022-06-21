@@ -9,10 +9,10 @@ def binarySearch(left, right):
     while left <= right:
         mid = (left + right) // 2
         d = ducks[mid:]
-        
-        if sum(d) - ducks[mid]*len(d) > m:
+
+        if sum(d) - ducks[mid] * len(d) > m:
             left = mid + 1
-        elif sum(d) - ducks[mid]*len(d) < m:
+        elif sum(d) - ducks[mid] * len(d) < m:
             right = mid - 1
         else:
             return (True, mid)
@@ -26,8 +26,8 @@ if not found:
     # 정답이 떡의 최소 길이보다 작을 때 예외처리
     if idx == -1:
         max_height = 0
-    d = ducks[idx+1:]
-    while sum(d) - (max_height+1)*len(d) >= m:
+    d = ducks[idx + 1 :]
+    while sum(d) - (max_height + 1) * len(d) >= m:
         max_height += 1
     print(max_height)
 # 이진탐색으로 찾았으면 그대로 출력
