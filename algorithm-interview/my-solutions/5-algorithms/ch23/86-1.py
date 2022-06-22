@@ -8,7 +8,5 @@ class Solution:
             # 직전 누적값이 0 이상일 때만 더하고, 아니면 원래 값 쓰기.
             if nums[i - 1] > 0:
                 nums[i] += nums[i - 1]
-            else:
-                nums[i] += 0
         # nums[i]에 ‘i 까지 진행했을 때 연속서브배열 합의 최대치’가 들어간다.
         return max(nums)
