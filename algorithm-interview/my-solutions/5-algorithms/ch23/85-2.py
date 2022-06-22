@@ -12,7 +12,7 @@ class Solution:
         if self.dp[N]:
             return self.dp[N]
 
-        # 핵심2: 반복문 없음! (이 문제만)
+        # 핵심2: 재귀
         self.dp[N] = self.fib(N - 1) + self.fib(N - 2)
 
         return self.dp[N]
