@@ -1,6 +1,6 @@
 # 이코테 버전
-# dist를 무한으로 채우고 시작한다.
-# relaxation도 진행한다.
+# - dist를 무한으로 채우고 시작한다.
+# - 거리를 비교해서 짧을 때만 relaxation 한다.
 
 import collections
 import heapq
