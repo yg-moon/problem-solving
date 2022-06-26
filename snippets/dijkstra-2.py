@@ -30,6 +30,6 @@ class Solution:
                     heapq.heappush(Q, (alt, v))
 
         # 도달할 수 없는 노드 존재여부 확인
-        if len(dist) == N:
-            return max(dist.values())
-        return -1
+        if len(dist) != N:
+            return -1
+        return max(dist.values())
