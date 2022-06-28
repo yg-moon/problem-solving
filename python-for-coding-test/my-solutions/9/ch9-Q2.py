@@ -17,7 +17,6 @@ x, k = map(int, input().split())
 def dijkstra(graph, src, dst):
     dist = collections.defaultdict(int)
     Q = [(0, src)]
-
     while Q:
         time, node = heapq.heappop(Q)
         if node not in dist:
@@ -28,7 +27,6 @@ def dijkstra(graph, src, dst):
 
     if len(dist) != n:
         return -1
-
     return dist[dst]
 
 
