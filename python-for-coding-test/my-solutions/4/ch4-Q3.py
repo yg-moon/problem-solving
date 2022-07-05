@@ -1,7 +1,6 @@
 n, m = map(int, input().split())
 a, b, d = map(int, input().split())
 game_map = [list(map(int, input().split())) for _ in range(n)]
-# print(game_map)
 
 dx = [-1, 0, 1, 0]  # 북, 동, 남, 서
 dy = [0, 1, 0, -1]
@@ -18,11 +17,6 @@ while True:
     moved = False
     for _ in range(4):
         d = turn_left(d)
-        # print("a", a)
-        # print("b", b)
-        # print("a:", a + dx[d])
-        # print("b:", b + dy[d])
-        # print()
         na = a + dx[d]
         nb = b + dy[d]
         if game_map[na][nb] == 0:
