@@ -8,6 +8,11 @@ for _ in range(K):
     x, y = map(int, input().split())
     apple.append((x, y))
 
+EMPTY = 0
+SNAKE = 1
+WALL = 2
+APPLE = 3
+
 # 방향전환 정보: dict를 이용하여 탐색시간 단축
 change_dir = defaultdict(str)
 L = int(input())
@@ -21,10 +26,10 @@ graph = [[0] * P for _ in range(P)]
 for i in range(P):
     for j in range(P):
         if i == 0 or i == P - 1 or j == 0 or j == P - 1:
-            graph[i][j] = 2  # 벽: 2
-graph[1][1] = 1  # 뱀: 1
+            graph[i][j] = WALL
+graph[1][1] = SNAKE
 for x, y in apple:
-    graph[x][y] = 3  # 사과: 3
+    graph[x][y] = APPLE
 
 # 방향: right, down, left, up
 dx = [0, 1, 0, -1]
@@ -44,16 +49,16 @@ while True:
     next = graph[nx][ny]
 
     # 벽이나 자기 몸에 부딪히면 게임 종료
-    if next == 2 or next == 1:
+    if next == WALL or next == SNAKE:
         break
 
     # 일단 머리를 다음 칸에 위치
-    graph[nx][ny] = 1
+    graph[nx][ny] = SNAKE
 
     # 다음 칸이 비어있는 경우 꼬리 이동 (이전 꼬리 삭제)
-    if next == 0:
+    if next == EMPTY:
         tail_x, tail_y = tail.popleft()
-        graph[tail_x][tail_y] = 0
+        graph[tail_x][tail_y] = EMPTY
 
     # 머리 이동
     x, y = nx, ny
