@@ -1,6 +1,7 @@
 from bisect import bisect_left, bisect_right
 from collections import defaultdict
 
+
 # [left, right] 범위에 있는 데이터의 개수를 리턴
 def count_by_range(arr, left, right):
     right_idx = bisect_right(arr, right)
