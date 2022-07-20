@@ -42,8 +42,6 @@ def solution(fees, records):
         car_to_fee[car] = fee
 
     # 정렬해서 결과 리턴하기.
-    answer1 = sorted(list(car_to_fee.items()))
-    answer2 = []
-    for item in answer1:
-        answer2.append(item[1])
-    return answer2
+    answer = sorted(list(car_to_fee.items()))
+    answer = [x[1] for x in answer]
+    return answer
