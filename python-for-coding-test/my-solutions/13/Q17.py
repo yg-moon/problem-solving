@@ -1,3 +1,4 @@
+# BOJ 18405
 # from 이코테
 from collections import deque
 

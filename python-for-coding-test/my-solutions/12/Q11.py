@@ -1,3 +1,4 @@
+# BOJ 3190
 from collections import defaultdict, deque
 
 N = int(input())

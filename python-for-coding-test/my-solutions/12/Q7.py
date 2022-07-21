@@ -1,3 +1,4 @@
+# BOJ 18406
 n = input()
 
 length = len(n)

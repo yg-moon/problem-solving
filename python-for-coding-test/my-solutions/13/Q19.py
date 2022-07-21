@@ -1,3 +1,4 @@
+# BOJ 14888
 N = int(input())
 nums = list(map(int, input().split()))
 add, sub, mul, div = map(int, input().split())

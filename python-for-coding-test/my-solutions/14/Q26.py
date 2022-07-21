@@ -1,3 +1,5 @@
+# BOJ 1715
+# from 이코테
 import heapq
 
 N = int(input())

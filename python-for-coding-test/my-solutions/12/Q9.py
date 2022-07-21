@@ -1,3 +1,4 @@
+# Kakao 2020
 def solution(s):
     min_len = len(s)
 

@@ -1,3 +1,4 @@
+# BOJ 10825
 N = int(input())
 
 students = []

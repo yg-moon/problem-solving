@@ -1,3 +1,4 @@
+# Kakao 2020
 # 시계방향 90도 회전
 def rotate(key):
     size = len(key)

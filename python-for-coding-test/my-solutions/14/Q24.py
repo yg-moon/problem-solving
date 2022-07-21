@@ -1,3 +1,4 @@
+# BOJ 18310
 N = int(input())
 houses = list(map(int, input().split()))
 

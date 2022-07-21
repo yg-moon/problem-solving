@@ -1,3 +1,5 @@
+# BOJ 16234
+# from 이코테
 from collections import deque
 
 N, L, R = map(int, input().split())

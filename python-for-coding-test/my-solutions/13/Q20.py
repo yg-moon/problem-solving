@@ -1,3 +1,4 @@
+# BOJ 18428
 N = int(input())
 
 graph = []

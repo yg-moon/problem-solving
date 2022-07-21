@@ -1,3 +1,4 @@
+# BOJ 15686
 from itertools import combinations
 INF = 1e9
 

@@ -1,3 +1,4 @@
+# BOJ 14502
 from itertools import combinations
 from copy import deepcopy
 
