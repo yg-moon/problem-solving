@@ -1,4 +1,4 @@
-# 망함
+# 실패. (BFS가 아닌 DFS로 풀었고, 회전분기 제대로 나누지 못했음.)
 def solution(board):
     N = len(board)
     answer = [1e9]

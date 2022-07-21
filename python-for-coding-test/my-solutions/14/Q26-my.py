@@ -1,4 +1,4 @@
-# 실패!
+# 실패. (논리가 잘못됨)
 N = int(input())
 nums = []
 for _ in range(N):

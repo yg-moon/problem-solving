@@ -1,4 +1,4 @@
-# 시간 초과
+# 실패. (시간 초과)
 from copy import deepcopy
 
 N, K = map(int, input().split())

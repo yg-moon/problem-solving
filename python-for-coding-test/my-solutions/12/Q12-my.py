@@ -1,4 +1,4 @@
-# 망함.
+# 실패. (전수조사가 아니라 일일이 분기하려다가 망함)
 def solution(n, build_frame):
     pillars = []
     plates = []
