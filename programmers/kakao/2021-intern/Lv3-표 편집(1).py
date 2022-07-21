@@ -1,3 +1,4 @@
+# 링크드 리스트 풀이
 def solution(n, k, cmd):
     class ListNode:
         def __init__(self, x):

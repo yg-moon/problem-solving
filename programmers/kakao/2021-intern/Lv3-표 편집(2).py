@@ -1,3 +1,5 @@
+# 배열 풀이
+# 효율성 테스트 실패
 def solution(n, k, cmd):
     # 테이블 채우기
     table = []
