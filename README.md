@@ -2,7 +2,7 @@
 
 ### 목록
 
-- DS-ALG: 자료구조, 알고리즘 정리 (주로 [GFG](https://www.geeksforgeeks.org/) 참고)
+- DS-ALG: 자료구조, 알고리즘 정리 ([GFG](https://www.geeksforgeeks.org/) 참고)
 - [baekjoon](https://www.acmicpc.net/)
 - [leetcode](https://leetcode.com/)
 - [programmers](https://programmers.co.kr/)
