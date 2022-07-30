@@ -1,40 +1,48 @@
-n, m = map(int, input().split())
-a, b, d = map(int, input().split())
-game_map = [list(map(int, input().split())) for _ in range(n)]
+N, M = map(int, input().split())
+A, B, dir = map(int, input().split())
+graph = [list(map(int, input().split())) for _ in range(N)]
 
-dx = [-1, 0, 1, 0]  # 북, 동, 남, 서
+LAND = 0
+SEA = 1
+VISITED = 2
+
+# NESW
+dx = [-1, 0, 1, 0]
 dy = [0, 1, 0, -1]
-game_map[a][b] = 2  # 방문했다는 표시
-count = 1 # 방문 횟수
+
+graph[A][B] = VISITED
+cnt = 1
 
 # 왼쪽으로 회전
-def turn_left(d: int):
+def turn_left(d):
     if d == 0:
         return 3
     return d - 1
 
+
 while True:
     moved = False
     for _ in range(4):
-        d = turn_left(d)
-        na = a + dx[d]
-        nb = b + dy[d]
-        if game_map[na][nb] == 0:
-            game_map[na][nb] = 2
-            a = na
-            b = nb
-            count += 1
+        dir = turn_left(dir)
+        na = A + dx[dir]
+        nb = B + dy[dir]
+        if graph[na][nb] == LAND:
+            graph[na][nb] = VISITED
+            A = na
+            B = nb
+            cnt += 1
             moved = True
             break
 
+    # 움직이지 않은 경우, 뒤로 가보기
     if not moved:
-        na = a - dx[d]
-        nb = b - dy[d]
-        # 뒤로 방문할 수 없는 경우 게임종료
-        if game_map[na][nb] != 0:
+        na = A - dx[dir]
+        nb = B - dy[dir]
+        # 뒤로 방문할 수 없는 경우, 게임종료
+        if graph[na][nb] != LAND:
             break
         # 뒤로 가기
-        a = na
-        b = nb
+        A = na
+        B = nb
 
-print(count)
+print(cnt)
