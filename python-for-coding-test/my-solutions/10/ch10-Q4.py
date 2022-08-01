@@ -1,39 +1,39 @@
-import collections
+from collections import defaultdict, deque
 
-n = int(input())
-graph = collections.defaultdict(list)
-idg = collections.defaultdict(int)
-val = collections.defaultdict(int)  # 각 노드의 값
+N = int(input())
+graph = defaultdict(list)
+indegree = defaultdict(int)
+node_val = defaultdict(int)
 
-# graph, idg, val 채우기
-for i in range(1, n + 1):
+# 세 변수 내용 채우기
+for i in range(1, N + 1):
     time, *prereqs = map(int, input().split())
     for p in prereqs:
         if p != -1:
             graph[p].append(i)
-            idg[i] += 1
-    val[i] = time
+            indegree[i] += 1
+    node_val[i] = time
 
 
 def topoSort():
-    result = val.copy()
-    Q = collections.deque()
+    result = node_val.copy()
+    Q = deque()
 
-    # 진입간선이 0개인 노드부터 큐에 넣고 시작
-    for i in range(1, n + 1):
-        if idg[i] == 0:
+    # 진입차수가 0인 노드부터 큐에 넣고 시작
+    for i in range(1, N + 1):
+        if indegree[i] == 0:
             Q.append(i)
 
     while Q:
-        curr = Q.popleft()    
+        curr = Q.popleft()
         for i in graph[curr]:
             # 핵심: 인접노드result = max(인접노드result, 현재노드result + 인접노드val)
-            result[i] = max(result[i], result[curr] + val[i])
-            idg[i] -= 1
-            if idg[i] == 0:
+            result[i] = max(result[i], result[curr] + node_val[i])
+            indegree[i] -= 1
+            if indegree[i] == 0:
                 Q.append(i)
 
-    for i in range(1, n + 1):
+    for i in range(1, N + 1):
         print(result[i])
 
 
