@@ -1,3 +1,4 @@
+# from 이코테
 INF = int(1e9)
 
 N, M = map(int, input().split())
