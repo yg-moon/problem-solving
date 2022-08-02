@@ -57,7 +57,7 @@ def is_cyclic():
     return cycle
 
 
-# Driver code
+# Driver code (동시에 돌리지 말 것)
 
 # Option 1:
 make_graph()
