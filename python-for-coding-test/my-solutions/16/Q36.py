@@ -1,4 +1,4 @@
-# from 이코테
+# 출처: 이코테
 def edit_dist(str1, str2):
     n = len(str1)
     m = len(str2)

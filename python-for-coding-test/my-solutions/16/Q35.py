@@ -1,4 +1,4 @@
-# from 이코테
+# 출처: 이코테
 N = int(input())
 
 dp = [0] * N

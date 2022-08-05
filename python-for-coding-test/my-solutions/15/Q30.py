@@ -1,5 +1,5 @@
 # Kakao 2020
-# from 이코테
+# 출처: 이코테
 from bisect import bisect_left, bisect_right
 from collections import defaultdict
 

@@ -1,4 +1,4 @@
-# from 이코테
+# 출처: 이코테
 for T in range(int(input())):
     N, M = map(int, input().split())
     arr = list(map(int, input().split()))

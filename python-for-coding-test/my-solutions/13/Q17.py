@@ -1,5 +1,5 @@
 # BOJ 18405
-# from 이코테
+# 출처: 이코테
 from collections import deque
 
 N, K = map(int, input().split())

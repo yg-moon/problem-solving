@@ -1,5 +1,5 @@
 # BOJ 18353
-# from 이코테
+# 출처: 이코테
 N = int(input())
 arr = list(map(int, input().split()))
 arr.reverse()
