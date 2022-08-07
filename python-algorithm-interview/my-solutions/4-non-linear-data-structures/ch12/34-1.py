@@ -1,25 +1,25 @@
+# LeetCode 46
 from typing import List
 
 
 class Solution:
     def permute(self, nums: List[int]) -> List[List[int]]:
-        results = []
-        prev_elements = []
+        result = []
+        temp = []
 
         def dfs(elements):
-            # 리프 노드일때 결과 추가
+            # 리프노드이면 결과에 추가
             if len(elements) == 0:
-                results.append(prev_elements[:])
-                return # 없어도 되지만 있으면 확실
-
+                result.append(temp[:])
+                return
             # 순열 생성
             for e in elements:
-                next_elements = elements[:]
-                next_elements.remove(e)
-
-                prev_elements.append(e)
-                dfs(next_elements)
-                prev_elements.pop()
+                other_elements = elements[:]
+                other_elements.remove(e)
+                # 핵심: append -> dfs -> pop
+                temp.append(e)
+                dfs(other_elements)
+                temp.pop()
 
         dfs(nums)
-        return results
+        return result

@@ -1,20 +1,23 @@
+# LeetCode 77
 from typing import List
 
 
 class Solution:
     def combine(self, n: int, k: int) -> List[List[int]]:
-        results = []
+        result = []
 
-        def dfs(elements, start: int, k: int):
+        def dfs(elements, start, k):
+            # k가 0이면 현재 조합을 정답에 추가
             if k == 0:
-                results.append(elements[:])
+                result.append(elements[:])
                 return
 
-            # 자신 이전의 모든 값을 고정하여 재귀 호출
+            # 자신 이후의 값만 고려하기: start + 1
+            # 남은 개수 계산하기: k - 1
             for i in range(start, n + 1):
                 elements.append(i)
                 dfs(elements, i + 1, k - 1)
                 elements.pop()
 
         dfs([], 1, k)
-        return results
+        return result
