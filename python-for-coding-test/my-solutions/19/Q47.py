@@ -5,7 +5,7 @@ from copy import deepcopy
 DEAD = 0
 SHARK = 100
 
-# 지도상에 각 물고기의 번호만 표시(상어는 100으로 표현)
+# 지도상에 각 물고기의 번호만 표시
 origin_graph = []
 
 # 물고기 정보: {번호 : [방향, (x좌표, y좌표)]}
@@ -15,7 +15,7 @@ origin_fish_dic = defaultdict(list)
 # 상어 정보: [방향, (x좌표, y좌표)]
 origin_shark_info = [0, (0, 0)]
 
-# 먹은 총 물고기 번호를 저장 (이 중 최댓값이 정답)
+# 먹은 총 물고기 번호를 저장
 result = []
 
 # 값 입력
@@ -31,7 +31,7 @@ for i in range(4):
     for j in range(4):
         origin_fish_dic[origin_graph[i][j]].append((i, j))
 
-# 0번째 인덱스는 사용하지 않음
+# dx[1], dy[1]이 '방향 1'에 대응
 dx = [0, -1, -1, 0, 1, 1, 1, 0, -1]
 dy = [0, 0, -1, -1, -1, 0, 1, 1, 1]
 
@@ -41,7 +41,7 @@ def move_fish(graph, fish_dic):
     for curr_fish in range(1, 17):
         # 물고기가 살아있으면
         dir = fish_dic[curr_fish][0]
-        if dir != 0:
+        if dir != DEAD:
             x, y = fish_dic[curr_fish][1]
             nx = x + dx[dir]
             ny = y + dy[dir]
@@ -95,10 +95,10 @@ origin_graph[0][0] = SHARK  # 상어가 공간에 들어옴
 
 
 def run(graph, fish_dic, shark_info, fish_sum):
-    # 물고기 이동
+    # 1. 물고기 이동
     move_fish(graph, fish_dic)
 
-    # 상어가 물고기 먹기
+    # 2. 상어가 물고기 먹기
     # 가능한 후보들을 파악
     candidates = []
     dir = shark_info[0]
@@ -115,6 +115,7 @@ def run(graph, fish_dic, shark_info, fish_sum):
     if not candidates:
         result.append(fish_sum)
         return
+    # DFS 완전탐색
     else:
         # 매 후보들 마다
         for c in candidates:
@@ -130,7 +131,7 @@ def run(graph, fish_dic, shark_info, fish_sum):
             shark_info[1] = fish_pos
             fish_dic[c][0] = DEAD
             fish_sum += c
-            # 그래프를 복사해서 다음 과정을 돌리고
+            # 그래프를 복사해서 다음 상황을 돌리고
             run(deepcopy(graph), deepcopy(fish_dic), deepcopy(shark_info), fish_sum)
             # 다시 복구하기
             graph[shark_pos[0]][shark_pos[1]] = SHARK
