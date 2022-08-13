@@ -1,7 +1,5 @@
-test.py
-test2.py
-**/test.py
-**/test2.py
+**/temp.py
+**/temp2.py
 .vscode
 .mypy_cache
 do-not-upload
