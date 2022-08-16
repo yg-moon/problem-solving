@@ -13,7 +13,7 @@ data = list(map(int, input().split()))
 for i in range(M):
     init_dir[i + 1] = data[i]
 
-# 우선순위 정보
+# 우선순위 정보: {상어 번호: [[위쪽일때 4방향]],[아래쪽..],[왼쪽..],[오른쪽..]]}
 priority = defaultdict(list)
 for i in range(M):
     priority[i + 1].append([0])
@@ -58,7 +58,7 @@ while True:
                 if new_graph[x][y][2] == 0:
                     # 냄새가 있는 경우
                     if info[2] != 0:
-                        # 남은 냄새가 1인 경우
+                        # 남은 시간이 1인 경우
                         if info[3] == 1:
                             new_graph[x][y] = [0, 0, 0, 0]
                         else:
