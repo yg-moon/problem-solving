@@ -1,18 +1,16 @@
-# Naive approach
 n, m, k = map(int, input().split())
-nums = list(map(int, input().split()))
+data = list(map(int, input().split()))
 
-nums.sort(reverse=True)
-n1 = nums[0]
-n2 = nums[1]
-sum = 0
+data.sort()
+first = data[n - 1]
+second = data[n - 2]
 
-while m > 0:
-    if m > k:
-        sum += n1 * k
-        sum += n2
-        m -= k + 1
-    else:
-        sum += n1
+# 가장 큰 수가 더해지는 횟수 계산
+count = int(m / (k + 1)) * k
+count += m % (k + 1)
 
-print(sum)
+result = 0
+result += (count) * first
+result += (m - count) * second
+
+print(result)
