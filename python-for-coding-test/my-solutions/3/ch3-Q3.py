@@ -1,5 +1,5 @@
-n, m = map(int, input().split())
-data = [list(map(int, input().split())) for _ in range(n)]
+N, M = map(int, input().split())
+data = [list(map(int, input().split())) for _ in range(N)]
 
 answer = min(data[0])
 for d in data:

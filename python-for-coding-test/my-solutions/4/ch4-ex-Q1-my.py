@@ -1,10 +1,10 @@
 # 같은 풀이지만, 책 구현이 더 깔끔.
-n = int(input())
+N = int(input())
 plans = input().split()
 
 
 def valid(i, j):
-    if i < 1 or j < 1 or i > n or j > n:
+    if i < 1 or j < 1 or i > N or j > N:
         return False
     return True
 
