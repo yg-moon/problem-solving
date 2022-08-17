@@ -1,7 +1,7 @@
-n = int(input())
-nums = [int(input()) for _ in range(n)]
+N = int(input())
+nums = [int(input()) for _ in range(N)]
 
 nums.sort(reverse=True)
 
-for n in nums:
-    print(n, end=" ")
+for N in nums:
+    print(N, end=" ")
