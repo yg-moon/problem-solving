@@ -1,4 +1,3 @@
-# 같은 풀이지만, 책 구현이 더 깔끔.
 n = int(input())
 cnt = 0
 
@@ -7,4 +6,5 @@ for hour in range(n + 1):
         for second in range(60):
             if "3" in str(hour) + str(minute) + str(second):
                 cnt += 1
+
 print(cnt)

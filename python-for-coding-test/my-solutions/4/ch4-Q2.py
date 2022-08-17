@@ -1,27 +1,14 @@
-loc = input()
+input_data = input()
+row = int(input_data[1])
+column = int(ord(input_data[0])) - int(ord("a")) + 1
 
-al_to_num ={
-    "a": 1,
-    "b": 2,
-    "c": 3,
-    "d": 4,
-    "e": 5,
-    "f": 6,
-    "g": 7,
-    "h": 8
-}
+steps = [(-2, -1), (-1, -2), (1, -2), (2, -1), (2, 1), (1, 2), (-1, 2), (-2, 1)]
 
-x = int(loc[1])
-y = al_to_num[loc[0]]
+result = 0
+for step in steps:
+    next_row = row + step[0]
+    next_column = column + step[1]
+    if next_row >= 1 and next_row <= 8 and next_column >= 1 and next_column <= 8:
+        result += 1
 
-dx = [-1, -2, -2, -1, 1, 2, 2, 1]
-dy = [-2, -1, 1, 2, 2, 1, -1 ,-2]
-
-cnt = 0
-for i in range(len(dx)):
-    nx = x + dx[i]
-    ny = y + dy[i]
-    if 1 <= nx <= 8 and 1 <= ny <= 8:
-        cnt += 1
-
-print(cnt)
+print(result)
