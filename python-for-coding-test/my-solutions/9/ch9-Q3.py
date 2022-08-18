@@ -1,10 +1,10 @@
 import collections
 import heapq
 
-n, m, c = map(int, input().split())
+N, M, C = map(int, input().split())
 
 graph = collections.defaultdict(list)
-for _ in range(m):
+for _ in range(M):
     src, dst, time = map(int, input().split())
     graph[src].append((dst, time))
 
@@ -26,5 +26,5 @@ def dijkstra(src):
     return [cnt, longest_time]
 
 
-result = dijkstra(c)
+result = dijkstra(C)
 print(result[0], result[1])
