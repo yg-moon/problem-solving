@@ -1,21 +1,21 @@
-import collections
-import sys
+INF = int(1e9)
 
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 coins = []
-for _ in range(n):
+for _ in range(N):
     coins.append(int(input()))
 
-dp = collections.defaultdict(lambda: -1)
-for c in coins:
-    dp[c] = 1
+dp = [INF] * (M + 1)
+dp[0] = 0
 
-for i in range(1, m + 1):
-    min_cnt = sys.maxsize
-    for c in coins:
-        if i - c >= 1 and dp[i - c] != -1:
-            min_cnt = min(min_cnt, dp[i - c])
-    if min_cnt != sys.maxsize:
-        dp[i] = min_cnt + 1
+# Bottom-up
+for i in range(N):
+    for j in range(coins[i], M + 1):
+        # (i - k)원을 만드는 방법이 존재하는 경우
+        if dp[j - coins[i]] != INF:
+            dp[j] = min(dp[j], dp[j - coins[i]] + 1)
 
-print(dp[m])
+if dp[M] == INF:
+    print(-1)
+else:
+    print(dp[M])
