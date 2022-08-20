@@ -14,16 +14,14 @@ for i in range(1, N + 1):
             indegree[i] += 1
     node_val[i] = time
 
+result = node_val.copy()
+
 
 def topoSort():
-    result = node_val.copy()
     Q = deque()
-
-    # 진입차수가 0인 노드부터 큐에 넣고 시작
     for i in range(1, N + 1):
         if indegree[i] == 0:
             Q.append(i)
-
     while Q:
         curr = Q.popleft()
         for i in graph[curr]:
@@ -33,8 +31,8 @@ def topoSort():
             if indegree[i] == 0:
                 Q.append(i)
 
-    for i in range(1, N + 1):
-        print(result[i])
-
 
 topoSort()
+
+for i in range(1, N + 1):
+    print(result[i])

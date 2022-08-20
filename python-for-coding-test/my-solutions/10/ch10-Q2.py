@@ -1,13 +1,13 @@
 import collections
 
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 
 parent = collections.defaultdict(int)
-for i in range(1, n + 1):
+for i in range(1, N + 1):
     parent[i] = i
 
 ops = []
-for _ in range(m):
+for _ in range(M):
     ops.append(list(map(int, input().split())))
 
 
@@ -30,4 +30,7 @@ for op, a, b in ops:
     if op == 0:
         union(a, b)
     elif op == 1:
-        print("YES") if find(a) == find(b) else print("NO")
+        if find(a) == find(b):
+            print("YES")
+        else:
+            print("NO")

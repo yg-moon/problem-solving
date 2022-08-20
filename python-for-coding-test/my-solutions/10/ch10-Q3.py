@@ -1,15 +1,17 @@
+# BOJ 1647
+# 출처: 이코테
 import collections
 
-n, m = map(int, input().split())
+N, M = map(int, input().split())
 
 edges = []
-for _ in range(m):
+for _ in range(M):
     a, b, cost = map(int, input().split())
     edges.append((cost, a, b))
 edges.sort()
 
 parent = collections.defaultdict(int)
-for i in range(1, n + 1):
+for i in range(1, N + 1):
     parent[i] = i
 
 
