@@ -1,4 +1,3 @@
-# Leetcode 39
 from typing import List
 
 
@@ -8,15 +7,15 @@ class Solution:
         len_cand = len(candidates)
 
         def dfs(csum, idx, path):
-            if csum < 0:
+            if csum > target:
                 return
-            if csum == 0:
+            if csum == target:
                 result.append(path)
                 return
 
             # 자신부터 하위원소까지 재귀호출
             for i in range(idx, len_cand):
-                dfs(csum - candidates[i], i, path + [candidates[i]])
+                dfs(csum + candidates[i], i, path + [candidates[i]])
 
-        dfs(target, 0, [])
+        dfs(0, 0, [])
         return result

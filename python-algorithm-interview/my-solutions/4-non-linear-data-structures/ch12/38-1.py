@@ -1,10 +1,11 @@
-import collections
+# LeetCode 332
+from collections import defaultdict
 from typing import List
 
 
 class Solution:
     def findItinerary(self, tickets: List[List[str]]) -> List[str]:
-        graph = collections.defaultdict(list)
+        graph = defaultdict(list)
         # {출발점: [도착점 목록]} 으로 구성된 딕셔너리 생성
         for departure, arrival in sorted(tickets):
             graph[departure].append(arrival)
@@ -17,6 +18,6 @@ class Solution:
                 dfs(graph[airport].pop(0))
             route.append(airport)
 
-        dfs('JFK')
+        dfs("JFK")
         # 결과가 거꾸로 된 상태이므로 뒤집기
         return route[::-1]

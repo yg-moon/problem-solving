@@ -1,5 +1,3 @@
-# This solution is also valid.
-
 from typing import List
 
 
@@ -7,10 +5,10 @@ class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
         results = []
 
-        def dfs(elements, start: int):
+        def dfs(elements, idx):
             results.append(elements[:])
 
-            for i in range(start, len(nums)):
+            for i in range(idx, len(nums)):
                 elements.append(nums[i])
                 dfs(elements, i + 1)
                 elements.pop()
