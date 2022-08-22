@@ -4,8 +4,8 @@ s = input()
 
 group_zero = 0
 group_one = 0
-
 recent = s[0]
+
 for i in range(1, len(s)):
     # 현재 숫자가 최근 숫자와 다르면 묶음 개수 갱신
     if s[i] != recent:
