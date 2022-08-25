@@ -4,7 +4,7 @@
 # 현재 설치된 구조물들이 모두 조건을 만족하는지 확인
 def valid(answer):
     for x, y, material in answer:
-        # 기둥
+        # 기둥인 경우
         if material == 0:
             # '바닥 위' 혹은 '보의 한쪽 끝 부분 위' 혹은 '다른 기둥 위'라면 정상
             if (
@@ -15,7 +15,7 @@ def valid(answer):
             ):
                 continue
             return False
-        # 보
+        # 보인 경우
         elif material == 1:
             # '한쪽 끝부분이 기둥 위' 혹은 '양쪽 끝부분이 다른 보와 동시에 연결'이라면 정상
             if (
@@ -34,12 +34,13 @@ def solution(n, build_frame):
         x, y, material, op = frame
         # 삭제
         if op == 0:
-            # 일단 삭제를 해본 뒤에, 가능한 구조물이 아니라면 다시 설치
+            # 일단 삭제를 해본 뒤에, 결과가 규칙에 맞지 않으면 되돌리기
             answer.remove([x, y, material])
             if not valid(answer):
                 answer.append([x, y, material])
         # 설치
         if op == 1:
+            # 일단 설치를 해본 뒤에, 결과가 규칙에 맞지 않으면 되돌리기
             answer.append([x, y, material])
             if not valid(answer):
                 answer.remove([x, y, material])

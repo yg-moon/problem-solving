@@ -1,10 +1,10 @@
-s = input()
+S = input()
 
 alpha = ""
 num = 0
-has_int = False # 0만 들어온 경우와 숫자가 없는 경우를 구분하기 위함
+has_int = False  # 0만 들어온 경우와 숫자가 없는 경우를 구분하기 위함
 
-for char in s:
+for char in S:
     if char.isalpha():
         alpha += char
     else:

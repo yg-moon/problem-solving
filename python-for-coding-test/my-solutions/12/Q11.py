@@ -1,20 +1,19 @@
 # BOJ 3190
 from collections import defaultdict, deque
 
-N = int(input())
-K = int(input())
-
-apple = []
-for _ in range(K):
-    x, y = map(int, input().split())
-    apple.append((x, y))
-
 EMPTY = 0
 SNAKE = 1
 WALL = 2
 APPLE = 3
 
-# 방향전환 정보: dict를 이용하여 탐색시간 단축
+N = int(input())
+K = int(input())
+apple = []
+for _ in range(K):
+    x, y = map(int, input().split())
+    apple.append((x, y))
+
+# 방향전환 정보 dict
 change_dir = defaultdict(str)
 L = int(input())
 for _ in range(L):
@@ -44,7 +43,7 @@ tail = deque()
 
 while True:
     time += 1
-    tail.append((x, y)) # 현재 꼬리위치 저장
+    tail.append((x, y))  # 현재 꼬리위치 저장
     nx = x + dx[dir]
     ny = y + dy[dir]
     next = graph[nx][ny]

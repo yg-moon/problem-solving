@@ -1,29 +1,31 @@
 # Kakao 2020
 # 출처: 이코테
-
 from itertools import permutations
+
+INF = int(1e9)
+
 
 def solution(n, weak, dist):
     # 원본 길이 저장
-    weak_len = len(weak)
-    
+    len_weak = len(weak)
+
     # 원형구조 처리: 길이를 2배로 늘려서 일자로 변형
-    for i in range(weak_len):
+    for i in range(len_weak):
         weak.append(weak[i] + n)
 
     # 정답: 투입할 친구 수의 최솟값
-    answer = len(dist) + 1
+    answer = INF
 
     # 핵심: 취약점 배열 weak에 대해, 늘리기 전 길이까지만 시작점으로 잡고 순회.
-    for start in range(weak_len):
-        # 친구를 나열하는 모든 경우 각각에 대하여 확인
+    for start in range(len_weak):
+        # 친구를 나열하는 모든 경우에 대하여
         for friends in list(permutations(dist, len(dist))):
             # 투입할 친구의 수
             cnt = 1
             # 지금 친구가 점검할 수 있는 마지막 위치
             last = weak[start] + friends[cnt - 1]
             # 시작점부터 모든 취약점을 확인
-            for idx in range(start, start + weak_len):
+            for idx in range(start, start + len_weak):
                 # 점검할 수 있는 위치를 벗어나는 경우
                 if last < weak[idx]:
                     # 새로운 친구를 투입

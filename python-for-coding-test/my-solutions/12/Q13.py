@@ -1,19 +1,20 @@
 # BOJ 15686
 from itertools import combinations
-INF = 1e9
+
+INF = int(1e9)
 
 N, M = map(int, input().split())
-city = []
+graph = []
 for _ in range(N):
-    city.append(list(map(int, input().split())))
+    graph.append(list(map(int, input().split())))
 
 houses = []
 chickens = []
 for i in range(N):
     for j in range(N):
-        if city[i][j] == 1:
+        if graph[i][j] == 1:
             houses.append((i, j))
-        elif city[i][j] == 2:
+        elif graph[i][j] == 2:
             chickens.append((i, j))
 
 # M개의 치킨집으로 가능한 모든 조합 만들기

@@ -1,11 +1,11 @@
 # Kakao 2020
 # 시계방향 90도 회전
-def rotate(key):
-    size = len(key)
+def rotate(mat):
+    size = len(mat)
     rotated = [[0] * size for _ in range(size)]
     for i in range(size):
         for j in range(size):
-            rotated[j][size - 1 - i] = key[i][j]
+            rotated[j][size - 1 - i] = mat[i][j]
     return rotated
 
 
@@ -16,9 +16,9 @@ def solution(key, lock):
     graph = [[0] * P for _ in range(P)]
     lock_zero_pos = []  # 자물쇠에서 0인 좌표 목록
 
-    # 자물쇠를 padding: 범위 밖은 2로 처리
     for x in range(P):
         for y in range(P):
+            # 자물쇠를 padding: 범위 밖은 2로 처리
             if x < M - 1 or x > P - M or y < M - 1 or y > P - M:
                 graph[x][y] = 2
             else:
@@ -27,7 +27,7 @@ def solution(key, lock):
                     lock_zero_pos.append((x, y))
     lock_zero_pos.sort()
 
-    # 돌려가면서 열쇠 꽂기
+    # (열쇠 회전후 배열 전체 탐색) x 4
     answer = False
     for _ in range(4):
         key = rotate(key)
@@ -37,7 +37,7 @@ def solution(key, lock):
                 overlap = False  # 돌기가 겹치는지 확인
                 for a in range(M):
                     for b in range(M):
-                        # 주의: mat[x][y]가 아님!
+                        # 주의: graph[x][y]가 아님!
                         if graph[x + a][y + b] == 0 and key[a][b] == 1:
                             key_match_pos.append((x + a, y + b))
                         elif graph[x + a][y + b] == 1 and key[a][b] == 1:
