@@ -13,7 +13,7 @@ class Solution:
 
         # dist: 최단거리 정보를 저장하는 dict
         dist = collections.defaultdict(int)
-        for i in range(1, n+1):
+        for i in range(1, n + 1):
             dist[i] = sys.maxsize
         dist[k] = 0
 
@@ -41,21 +41,9 @@ class Solution:
 
             unvisited.remove(curr)
 
-            # 현재 노드의 모든 이웃에 대해, relax 진행
+            # 현재 노드의 모든 이웃에 대해, relaxation 진행
             for v, w in graph[curr]:
                 if dist[v] > dist[curr] + w:
                     dist[v] = dist[curr] + w
 
         return max(dist.values())
-
-
-# Time complexity
-#
-
-### Note
-# 수도 코드
-# while not Q empty
-#   현재노드 = 최소거리인 곳
-#       도달할 수 없는 곳이 있다면 return -1
-#   현재노드를 Q에서 빼기
-#   현재 노드의 모든 이웃에 대해, relax 진행
