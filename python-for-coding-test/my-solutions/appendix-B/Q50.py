@@ -1,3 +1,4 @@
+# BOJ 1759
 # 출처: 이코테
 # 훨씬 풀이가 간결함.
 from itertools import combinations
