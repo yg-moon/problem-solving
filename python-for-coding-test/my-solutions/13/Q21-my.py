@@ -1,4 +1,5 @@
-from copy import deepcopy
+# BOJ 16234
+# 인구 재조정을 따로 처리하여 비효율적
 from collections import defaultdict, deque
 
 N, L, R = map(int, input().split())
@@ -7,16 +8,16 @@ graph = []
 for _ in range(N):
     graph.append(list(map(int, input().split())))
 
-zeros = [[0] * N for _ in range(N)]
-unions = []
+unions = []  # 연합 상태를 나타낼 2차원 배열
+cnt = 0  # 총 인구이동 횟수
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
 
-def bfs(x, y, n):
+def bfs(x, y, num):
     Q = deque([[x, y]])
-    unions[x][y] = n
+    unions[x][y] = num
     while Q:
         curr_x, curr_y = Q.popleft()
         for i in range(4):
@@ -28,13 +29,12 @@ def bfs(x, y, n):
                 and unions[nx][ny] == 0
                 and L <= abs(graph[curr_x][curr_y] - graph[nx][ny]) <= R
             ):
-                unions[nx][ny] = n
+                unions[nx][ny] = num
                 Q.append([nx, ny])
 
 
-cnt = 0
 while True:
-    unions = deepcopy(zeros)
+    unions = [[0] * N for _ in range(N)]  # 연합 상태는 매번 초기화
     ally_num = 0
     for x in range(N):
         for y in range(N):

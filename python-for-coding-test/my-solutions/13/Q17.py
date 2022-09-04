@@ -19,23 +19,22 @@ Q = deque(virus_info)
 
 S, X, Y = map(int, input().split())
 
-# 상하좌우
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
 # BFS
 while Q:
-    virus, s, x, y = Q.popleft()
-    # 정확히 s초가 지나거나, 큐가 빌 때까지 반복
-    if s == S:
+    virus, time, x, y = Q.popleft()
+    # 정확히 S초가 지나거나, 큐가 빌 때까지 반복
+    if time == S:
         break
     for i in range(4):
         nx = x + dx[i]
         ny = y + dy[i]
-        if 0 <= nx and nx < N and 0 <= ny and ny < N:
+        if 0 <= nx < N and 0 <= ny < N:
             # 아직 방문하지 않은 위치라면, 그 위치에 바이러스 넣기
             if graph[nx][ny] == 0:
                 graph[nx][ny] = virus
-                Q.append((virus, s + 1, nx, ny))
+                Q.append((virus, time + 1, nx, ny))
 
 print(graph[X - 1][Y - 1])

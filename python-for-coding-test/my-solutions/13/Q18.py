@@ -1,58 +1,51 @@
 # Kakao 2020
-from collections import Counter
+# 출처: 이코테
 
-
-# 균형잡힌 괄호 문자열 검증: ( 와 ) 의 개수가 같으면.
-def isBalanced(s):
-    counter = Counter(s)
-    if counter["("] == counter[")"]:
-        return True
-    return False
-
-
-# 올바른 괄호 문자열 검증 방법: 스택 구현
-def isCorrect(s):
-    stack = []
-    for char in s:
-        if char == "(":
-            stack.append(char)
+# "균형잡힌 괄호 문자열"의 인덱스 반환
+def balanced_index(p):
+    count = 0  # 왼쪽 괄호의 개수
+    for i in range(len(p)):
+        if p[i] == "(":
+            count += 1
         else:
-            if not stack:
+            count -= 1
+        if count == 0:
+            return i
+
+
+# "올바른 괄호 문자열"인지 판단
+def check_proper(p):
+    count = 0  # 왼쪽 괄호의 개수
+    for i in p:
+        if i == "(":
+            count += 1
+        else:
+            if count == 0:  # 쌍이 맞지 않는 경우에 False 반환
                 return False
-            stack.pop()
-    if stack:
-        return False
-    return True
+            count -= 1
+    return True  # 쌍이 맞는 경우에 True 반환
 
 
 def solution(p):
-    # 1.
+    answer = ""
     if p == "":
-        return p
-    # 2.
-    for i in range(2, len(p) + 1, 2):
-        if isBalanced(p[0:i]):
-            u = p[0:i]
-            v = p[i:]
-            # 3.
-            if isCorrect(u):
-                # 3-1.
-                return u + solution(v)
-            # 4.
+        return answer
+    index = balanced_index(p)
+    u = p[: index + 1]
+    v = p[index + 1 :]
+    # "올바른 괄호 문자열"이면, v에 대해 함수를 수행한 결과를 붙여 반환
+    if check_proper(u):
+        answer = u + solution(v)
+    # "올바른 괄호 문자열"이 아니라면 아래의 과정을 수행
+    else:
+        answer = "("
+        answer += solution(v)
+        answer += ")"
+        u = list(u[1:-1])  # 첫 번째와 마지막 문자를 제거
+        for i in range(len(u)):
+            if u[i] == "(":
+                u[i] = ")"
             else:
-                # 4-1.
-                result = "("
-                # 4-2.
-                result += solution(v)
-                # 4-3.
-                result += ")"
-                # 4-4.
-                temp = ""
-                for char in u[1 : len(u) - 1]:
-                    if char == "(":
-                        temp += ")"
-                    else:
-                        temp += "("
-                result += temp
-                # 4-5.
-                return result
+                u[i] = "("
+        answer += "".join(u)
+    return answer

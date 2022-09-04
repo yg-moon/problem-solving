@@ -8,9 +8,10 @@ def get_next_pos(pos, board):
     pos = list(pos)  # 변환: set -> list
     pos1_x, pos1_y, pos2_x, pos2_y = pos[0][0], pos[0][1], pos[1][0], pos[1][1]
 
-    # 이동: 상하좌우
     dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
+
+    # 이동
     for i in range(4):
         pos1_next_x, pos1_next_y, pos2_next_x, pos2_next_y = (
             pos1_x + dx[i],
@@ -18,7 +19,7 @@ def get_next_pos(pos, board):
             pos2_x + dx[i],
             pos2_y + dy[i],
         )
-        # 이동하고자 하는 두 칸이 모두 비어 있다면
+        # 이동하고자 하는 두 칸이 모두 비어 있다면 이동 가능
         if (
             board[pos1_next_x][pos1_next_y] == 0
             and board[pos2_next_x][pos2_next_y] == 0

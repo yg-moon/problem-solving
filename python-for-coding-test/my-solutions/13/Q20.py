@@ -1,14 +1,14 @@
 # BOJ 18428
+WALL = "O"
+EMPTY = "X"
+STUDENT = "S"
+TEACHER = "T"
+
 N = int(input())
 
 graph = []
 for _ in range(N):
     graph.append(input().split())
-
-WALL = "O"
-EMPTY = "X"
-STUDENT = "S"
-TEACHER = "T"
 
 empty_locs = []
 for i in range(N):
@@ -16,7 +16,6 @@ for i in range(N):
         if graph[i][j] == EMPTY:
             empty_locs.append((i, j))
 
-# 상하좌우
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
@@ -29,8 +28,7 @@ def dfs(i, x, y):
         if graph[nx][ny] == STUDENT:
             return False
         if graph[nx][ny] == EMPTY:
-            # 팁: 이렇게 해야 리턴값을 맨 위로 올릴 수 있음
-            return dfs(i, nx, ny)
+            return dfs(i, nx, ny)  # 이렇게 해야 리턴값을 맨 위로 올릴 수 있음
     return True
 
 

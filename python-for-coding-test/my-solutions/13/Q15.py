@@ -5,12 +5,12 @@ from collections import deque
 N, M, K, X = map(int, input().split())
 
 graph = [[] for _ in range(N + 1)]
-# 간선 길이는 1로 동일하므로 생략
+# 가중치는 모두 1이므로 생략
 for _ in range(M):
     a, b = map(int, input().split())
     graph[a].append(b)
 
-# 최단 거리 초기화, 출발 도시는 0.
+# 최단 거리 초기화 (출발점은 0)
 dist = [-1] * (N + 1)
 dist[X] = 0
 
@@ -26,10 +26,10 @@ while Q:
             dist[next] = dist[curr] + 1
             Q.append(next)
 
-check = False
+has_answer = False
 for i in range(1, N + 1):
     if dist[i] == K:
         print(i)
-        check = True
-if check == False:
+        has_answer = True
+if not has_answer:
     print(-1)

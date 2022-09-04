@@ -14,14 +14,12 @@ dy = [0, -1, 0, 1]
 
 # 연합을 형성하고 인구 이동
 def unite_and_move(x, y, union_num):
-    united = []  # (x, y)의 위치와 연결된 나라(연합) 정보를 담는 리스트
-    united.append((x, y))
+    union_pos = [(x, y)]  # 현재 연합의 좌표들
     union_total = graph[x][y]  # 현재 연합의 전체 인구 수
     nation_cnt = 1  # 현재 연합의 국가 수
 
     # BFS
-    Q = deque()
-    Q.append((x, y))
+    Q = deque([(x, y)])
     union[x][y] = union_num  # 현재 연합의 번호 할당
     while Q:
         curr_x, curr_y = Q.popleft()
@@ -31,17 +29,18 @@ def unite_and_move(x, y, union_num):
             if 0 <= nx < N and 0 <= ny < N and union[nx][ny] == -1:
                 if L <= abs(graph[nx][ny] - graph[curr_x][curr_y]) <= R:
                     Q.append((nx, ny))
-                    # 연합에 추가하기
+                    # 연합에 추가
                     union[nx][ny] = union_num
                     union_total += graph[nx][ny]
                     nation_cnt += 1
-                    united.append((nx, ny))
+                    union_pos.append((nx, ny))
     # 연합 국가끼리 인구를 분배
-    for i, j in united:
-        graph[i][j] = union_total // nation_cnt
+    mean = union_total // nation_cnt
+    for i, j in union_pos:
+        graph[i][j] = mean
 
 
-total_count = 0
+total_cnt = 0
 while True:
     union = [[-1] * N for _ in range(N)]
     union_num = 0
@@ -54,6 +53,6 @@ while True:
     # 아무 연합이 없으면 종료 (모든 인구 이동이 끝난 경우)
     if union_num == N * N:
         break
-    total_count += 1
+    total_cnt += 1
 
-print(total_count)
+print(total_cnt)

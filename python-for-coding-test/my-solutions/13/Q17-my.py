@@ -1,4 +1,5 @@
-# 실패. (시간 초과)
+# BOJ 18405
+# 실패. (DFS는 시간 초과)
 from copy import deepcopy
 
 N, K = map(int, input().split())
@@ -9,7 +10,6 @@ for _ in range(N):
 
 S, X, Y = map(int, input().split())
 
-# 상하좌우
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
 
