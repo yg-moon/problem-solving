@@ -1,5 +1,4 @@
 # 출처: 이코테
-# 요약: x가 처음으로 등장하는 인덱스와 마지막으로 등장하는 인덱스의 차이를 구한다.
 from bisect import bisect_left, bisect_right
 
 N, x = map(int, input().split())
