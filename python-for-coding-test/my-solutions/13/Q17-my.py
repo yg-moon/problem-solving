@@ -1,5 +1,5 @@
 # BOJ 18405
-# 실패. (DFS는 시간 초과)
+# 시간 초과 (BFS가 아닌 DFS 완전탐색이기 때문)
 from copy import deepcopy
 
 N, K = map(int, input().split())

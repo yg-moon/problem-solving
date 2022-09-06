@@ -1,10 +1,7 @@
 # BOJ 18310
 N = int(input())
-houses = list(map(int, input().split()))
+arr = list(map(int, input().split()))
+arr.sort()
 
-houses.sort()
-
-if N % 2 == 0:
-    print(houses[N//2 - 1])
-else:
-    print(houses[N//2])
+# 중간값(median)
+print(arr[(N - 1) // 2])
