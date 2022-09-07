@@ -4,7 +4,6 @@ dp = []
 for _ in range(N):
     dp.append(list(map(int, input().split())))
 
-# 핵심: 모든 값은 상 또는 좌상에서만 들어올 수 있음. (단, 끝값 주의)
 for i in range(1, N):
     for j in range(i + 1):
         # 맨 왼쪽 숫자인 경우: 위쪽 값만 더한다.

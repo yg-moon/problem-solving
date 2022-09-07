@@ -1,16 +1,16 @@
 # 출처: 이코테
-for T in range(int(input())):
+T = int(input())
+for _ in range(T):
     N, M = map(int, input().split())
     arr = list(map(int, input().split()))
 
-    # 2차원 배열 dp: arr 내용으로 초기화
+    # dp: arr 내용으로 초기화
     dp = []
     idx = 0
     for i in range(N):
         dp.append(arr[idx : idx + M])
         idx += M
 
-    # DP
     for j in range(1, M):
         for i in range(N):
             # 왼쪽 위에서 오는 경우

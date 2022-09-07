@@ -11,13 +11,13 @@ for _ in range(N):
     t.append(x)
     p.append(y)
 
-# 뒤쪽부터 거꾸로 확인
+# 뒤쪽부터 진행
 for i in range(N, 0, -1):
-    time = t[i] + i  # 상담을 마친 날
+    end_day = t[i] + i  # 상담을 마친 날
     # 상담이 기간 안에 끝나는 경우
-    if time <= N + 1:
+    if end_day <= N + 1:
         # dp[i]: i번째 날부터 시작했을 때, 마지막 날까지 낼 수 있는 최대 수익.
-        dp[i] = max(max_val, p[i] + dp[time])
+        dp[i] = max(max_val, p[i] + dp[end_day])
         # 현재까지의 최댓값 업데이트
         max_val = dp[i]
     # 상담이 기간을 벗어나는 경우
