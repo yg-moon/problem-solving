@@ -1,3 +1,4 @@
+# '행 or 열'로 확인하면 되는데 '행 and 열'로 확인하여 비효율적.
 INF = int(1e9)
 
 N, M = map(int, input().split())

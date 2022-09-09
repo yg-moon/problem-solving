@@ -1,15 +1,7 @@
-# 출처: 이코테
-
-# 다익스트라 정보
-# - 인접 행렬
 # - dist 타입: dict
 # - 파알인 로직
 import heapq
-import sys
 from collections import defaultdict
-
-INF = int(1e9)
-input = sys.stdin.readline  # 팁: 입력 빠르게 받기
 
 dx = [-1, 1, 0, 0]
 dy = [0, 0, -1, 1]
@@ -25,7 +17,7 @@ for _ in range(T):
         graph.append(list(map(int, input().split())))
 
     # 다익스트라
-    dist = defaultdict(lambda: defaultdict(int))  # 팁: defaultdict 중첩하기
+    dist = defaultdict(lambda: defaultdict(int))  # defaultdict 중첩
     Q = [(graph[0][0], 0, 0)]
     while Q:
         time, x, y = heapq.heappop(Q)

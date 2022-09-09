@@ -21,7 +21,7 @@ for k in range(1, N + 1):
         for j in range(1, N + 1):
             graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
 
-# 각 학생을 번호에 따라 한 명씩 확인하며 도달 가능한지 체크
+# 플로이드 배열에서 본인의 행 or 열에서 연결된 개수를 세고, 전체 인원수와 같으면 순위 확정.
 answer = 0
 for i in range(1, N + 1):
     cnt = 0
