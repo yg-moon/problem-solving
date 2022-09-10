@@ -5,7 +5,7 @@ from copy import deepcopy
 DEAD = 0
 SHARK = 100
 
-# 지도상에 각 물고기의 번호만 표시
+# 지도: 물고기 번호만 표시
 origin_graph = []
 
 # 물고기 정보: {번호 : [방향, (x좌표, y좌표)]}
@@ -15,10 +15,10 @@ origin_fish_dic = defaultdict(list)
 # 상어 정보: [방향, (x좌표, y좌표)]
 origin_shark_info = [0, (0, 0)]
 
-# 먹은 총 물고기 번호를 저장
+# 각 경우마다 먹은 물고기 번호의 총합을 저장
 result = []
 
-# 값 입력
+# 정보 입력
 for _ in range(4):
     data = list(map(int, input().split()))
     row = []
@@ -49,17 +49,16 @@ def move_fish(graph, fish_dic):
             finished = False
             cnt = 0
             while not finished:
-                # 현재 방향으로 이동이 되는지 확인
-                # 이동이 되는 경우
+                # 현재 방향으로 이동이 되는 경우
                 if 0 <= nx < 4 and 0 <= ny < 4 and graph[nx][ny] != SHARK:
                     # 물고기가 있으면 교체
                     next_fish = graph[nx][ny]
                     if next_fish != 0:
                         # 주의: 좌표값만 교체해야지, 방향도 교체하면 안 됨
-                        pos1 = fish_dic[curr_fish][1]
-                        pos2 = fish_dic[next_fish][1]
-                        fish_dic[curr_fish][1] = pos2
-                        fish_dic[next_fish][1] = pos1
+                        fish_dic[curr_fish][1], fish_dic[next_fish][1] = (
+                            fish_dic[next_fish][1],
+                            fish_dic[curr_fish][1],
+                        )
                         graph[x][y] = next_fish
                     # 빈칸이면 그냥 이동
                     else:
@@ -68,7 +67,7 @@ def move_fish(graph, fish_dic):
                     # 물고기 이동
                     graph[nx][ny] = curr_fish
                     finished = True
-                # 이동이 안되는 경우
+                # 현재 방향으로 이동이 안되는 경우
                 else:
                     # 한바퀴 돌았는데도 갈데가 없으면 종료
                     if cnt == 7:
