@@ -3,7 +3,6 @@
 from collections import deque
 
 TC = int(input())
-
 for _ in range(TC):
     N = int(input())
     indegree = [0] * (N + 1)
@@ -21,6 +20,7 @@ for _ in range(TC):
     M = int(input())
     for _ in range(M):
         a, b = map(int, input().split())
+        # 작년에는 a가 b보다 높았던 경우
         if graph[a][b]:
             graph[a][b] = False
             graph[b][a] = True
@@ -32,7 +32,7 @@ for _ in range(TC):
             indegree[a] -= 1
             indegree[b] += 1
 
-    # 위상정렬 시작
+    # 위상 정렬
     result = []
     Q = deque()
 
@@ -44,9 +44,9 @@ for _ in range(TC):
     unique = True
     cycle = False
 
-    # 정확히 노드의 개수만큼 반복
+    # 노드의 개수만큼 반복
     for _ in range(N):
-        # 큐가 비어 있다면: 사이클이 발생했다는 의미
+        # N개의 노드를 방문하기 전에 큐가 비어 있다면: 사이클이 발생했다는 의미
         if len(Q) == 0:
             cycle = True
             break
@@ -54,7 +54,8 @@ for _ in range(TC):
         if len(Q) >= 2:
             unique = False
             break
-        # 큐에서 원소 꺼내기
+        # 큐에서 원소를 꺼내기
+        # 그 순서가 위상정렬 순서
         curr = Q.popleft()
         result.append(curr)
         # 해당 원소와 연결된 노드들의 진입차수에서 1 빼기
