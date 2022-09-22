@@ -1,47 +1,44 @@
-import collections
-import math
+from collections import defaultdict
+from math import ceil
 
 
 def solution(fees, records):
-    # dict1: 차 번호 - [시간 정보]
-    car_to_records = collections.defaultdict(list)
-    # dict2: 차 번호 - 누적 주차 시간
-    car_to_total_time = collections.defaultdict(int)
-    # dict3: 차 번호 - 주차 요금
-    car_to_fee = collections.defaultdict(int)
+    # dic1. {차량번호: [입출차 시간]}
+    car_to_records = defaultdict(list)
+    # dic2. {차량번호: 총 주차시간}
+    car_to_time = defaultdict(int)
+    # dic3. {차량번호: 요금}
+    car_to_fee = defaultdict(int)
 
-    # dict1 채우기.
-    for record in records:
-        r = record.split()
+    # dic1 채우기: 차량번호마다 입출차 시간 기록
+    for r in records:
+        r = r.split()
         car_to_records[r[1]].append(r[0])
-
-    # 시간 정보 배열의 길이 홀수면 "23:59"를 직접 추가하기.
+    # 입출차 시간 배열의 길이가 홀수라면 "23:59"를 수동으로 추가
     for car in car_to_records:
         if len(car_to_records[car]) % 2 != 0:
             car_to_records[car].append("23:59")
 
-    # dict2 채우기.
+    # dic2 채우기: 주차시간 계산
     for car in car_to_records:
-        time = 0
-        while car_to_records[car]:
-            out_time = car_to_records[car].pop()
-            in_time = car_to_records[car].pop()
-            o = out_time.split(":")
-            i = in_time.split(":")
-            hour = (int(o[0]) - int(i[0])) * 60
-            minute = int(o[1]) - int(i[1])
-            time += hour
-            time += minute
-        car_to_total_time[car] = time
+        times = car_to_records[car]
+        for i in range(0, len(times), 2):
+            in_time = times[i].split(":")
+            out_time = times[i + 1].split(":")
+            elapsed_time = (int(out_time[0]) - int(in_time[0])) * 60 + (
+                int(out_time[1]) - int(in_time[1])
+            )
+            car_to_time[car] += elapsed_time
 
-    # dict3 채우기.
-    for car in car_to_total_time:
+    # dic3 채우기: 요금 계산
+    for car in car_to_time:
+        time = car_to_time[car]
         fee = fees[1]
-        if car_to_total_time[car] > fees[0]:
-            fee += math.ceil((car_to_total_time[car] - fees[0]) / fees[2]) * fees[3]
+        if time > fees[0]:
+            fee += ceil((time - fees[0]) / fees[2]) * fees[3]
         car_to_fee[car] = fee
 
-    # 정렬해서 결과 리턴하기.
+    # 차량 번호가 작은 자동차의 요금부터 출력
     answer = sorted(list(car_to_fee.items()))
     answer = [x[1] for x in answer]
     return answer

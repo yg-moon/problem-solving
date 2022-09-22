@@ -1,26 +1,30 @@
-def solution(n, k):
-    # 숫자 n을 k 진수로 바꾸기
-    num = []
-    while n >= k:
-        q, r = divmod(n, k)
-        num.append(str(r))
-        n = q
-    num.append(str(n))
-    num = "".join(num[::-1])
+from math import sqrt
 
-    # 소수 판별
-    def isPrime(n):
-        if n < 2:
+
+def is_prime(n):
+    if n <= 1:
+        return False
+    for i in range(2, int(sqrt(n)) + 1):
+        if n % i == 0:
             return False
-        for i in range(2, int(n**0.5) + 1):
-            if n % i == 0:
-                return False
-        return True
+    return True
 
-    # 조건에 맞는 소수 개수 찾기
-    count = 0
-    num = num.split("0")
-    for n in num:
-        if n != "" and isPrime(int(n)):
-            count += 1
-    return count
+
+def convert_base(n, k):
+    result = []
+    while n >= k:
+        n, mod = divmod(n, k)
+        result.append(str(mod))
+    result.append(str(n))
+    return "".join(result[::-1])
+
+
+def solution(n, k):
+    conv_num = convert_base(n, k)
+    conv_num_splt = conv_num.split("0")
+
+    cnt = 0
+    for n in conv_num_splt:
+        if n != "" and is_prime(int(n)):
+            cnt += 1
+    return cnt

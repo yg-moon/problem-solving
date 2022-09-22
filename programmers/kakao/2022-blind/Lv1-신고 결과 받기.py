@@ -2,7 +2,9 @@ from collections import defaultdict
 
 
 def solution(id_list, report, k):
+    # {유저: 내가 신고한 유저 목록}
     user_to_list = defaultdict(list)
+    # {유저: 신고당한 횟수}
     user_to_cnt = defaultdict(int)
 
     for r in report:
@@ -15,7 +17,9 @@ def solution(id_list, report, k):
     answer = []
     for id in id_list:
         cnt = 0
+        # 내가 신고한 유저에 대해
         for user in user_to_list[id]:
+            # 해당 유저의 신고당한 횟수가 k 이상일 경우
             if user_to_cnt[user] >= k:
                 cnt += 1
         answer.append(cnt)
