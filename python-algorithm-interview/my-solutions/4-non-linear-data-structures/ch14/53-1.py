@@ -13,8 +13,8 @@ class Solution:
     prev = -sys.maxsize
     result = sys.maxsize
 
-    # 재귀구조로 inorder traversal 하며 차이 비교.
     def minDiffInBST(self, root: TreeNode) -> int:
+        # 재귀구조 Inorder traversal
         if root.left:
             self.minDiffInBST(root.left)
 

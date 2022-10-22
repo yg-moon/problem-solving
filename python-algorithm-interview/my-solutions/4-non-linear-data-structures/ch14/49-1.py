@@ -1,4 +1,4 @@
-import collections
+from collections import defaultdict
 from typing import List
 
 
@@ -16,7 +16,7 @@ class Solution:
             return [0]
 
         # 양방향 그래프 구성
-        graph = collections.defaultdict(list)
+        graph = defaultdict(list)
         for i, j in edges:
             graph[i].append(j)
             graph[j].append(i)
@@ -34,10 +34,8 @@ class Solution:
             for leaf in leaves:
                 neighbor = graph[leaf].pop()
                 graph[neighbor].remove(leaf)
-
                 if len(graph[neighbor]) == 1:
                     new_leaves.append(neighbor)
-
             leaves = new_leaves
 
         return leaves

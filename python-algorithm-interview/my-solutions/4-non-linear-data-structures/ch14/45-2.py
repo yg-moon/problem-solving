@@ -12,15 +12,11 @@ class TreeNode:
 
 class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
-        queue = collections.deque([root])
-
-        while queue:
-            node = queue.popleft()
-            # 부모 노드 부터 하향식 스왑
+        q = collections.deque([root])
+        while q:
+            node = q.popleft()
             if node:
                 node.left, node.right = node.right, node.left
-
-                queue.append(node.left)
-                queue.append(node.right)
-
+                q.append(node.left)
+                q.append(node.right)
         return root

@@ -16,7 +16,6 @@ class Solution:
 
         mid = len(nums) // 2
 
-        # 분할 정복을 통한 이진탐색의 결과로 트리를 구성
         node = TreeNode(nums[mid])
         node.left = self.sortedArrayToBST(nums[:mid])
         node.right = self.sortedArrayToBST(nums[mid + 1 :])
