@@ -1,9 +1,9 @@
 def solution(nums):
-    num_set = set(nums)
-    N_set = len(num_set)
-    N_half = len(nums) // 2
+    set_nums = set(nums)
+    len_set = len(set_nums)
+    len_half = len(nums) // 2
 
-    if N_half <= N_set:
-        return N_half
+    if len_half <= len_set:
+        return len_half
     else:
-        return N_set
+        return len_set

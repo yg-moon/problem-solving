@@ -7,15 +7,10 @@ def solution(clothes):
     for cloth in clothes:
         dic[cloth[1]] += 1
 
-    # 옷의 개수를 모두 배열에 넣는다.
-    arr = []
-    for key in dic:
-        arr.append(dic[key])
-
-    # 배열의 모든 (원소+1)를 곱한다.
+    # 모든 종류의 (개수+1)을 누적으로 곱한다. (각 종류를 입지 않는 경우까지 고려)
     answer = 1
-    for i in range(len(arr)):
-        answer *= arr[i] + 1
+    for key in dic:
+        answer *= dic[key] + 1
 
-    # 아무것도 입지 않은 경우를 제외해야 하므로 추가로 -1
+    # 아무것도 입지 않은 경우를 제외해야 하므로 마지막에 -1
     return answer - 1
