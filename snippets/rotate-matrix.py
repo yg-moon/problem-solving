@@ -1,19 +1,31 @@
-mat = [
-    [1, 2, 3, 4],
-    [5, 6, 7, 8],
-    [9, 10, 11, 12]
-]
+"""
+- Rotating 2d-array by 90 degrees clockwise
+"""
 
-''' Rotate a matrix by 90 degree '''
-def rotate_matrix(mat_in):
-    row_len = len(mat_in)
-    col_len = len(mat_in[0])
+sample_mat = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
 
-    mat_out = [[0] * row_len for _ in range(col_len)]
-    for r in range(row_len):
-        for c in range(col_len):
-            mat_out[c][row_len - 1 - r] = mat_in[r][c]
+# Ver1. Conventional way
+def rotate_ver1(mat):
+    r = len(mat)
+    c = len(mat[0])
+    result = [[0] * r for _ in range(c)]
+    for i in range(r):
+        for j in range(c):
+            result[j][r - 1 - i] = mat[i][j]
+    return result
 
-    return mat_out
 
-print(rotate_matrix(mat))
+# Ver2. Pythonic way
+def rotate_ver2(mat):
+    return list(map(list, zip(*mat[::-1])))
+
+
+# Result
+# Ver1
+for row in rotate_ver1(sample_mat):
+    print(row)
+print()
+# Ver2
+for row in rotate_ver2(sample_mat):
+    print(row)
+print()
