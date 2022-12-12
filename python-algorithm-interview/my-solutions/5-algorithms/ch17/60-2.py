@@ -7,15 +7,17 @@ class ListNode:
 
 class Solution:
     def insertionSortList(self, head: ListNode) -> ListNode:
-        # 초기값 변경
-        curr = root = ListNode(0)
+        root = cur = ListNode(0)
         while head:
-            while curr.next and curr.next.val < head.val:
-                curr = curr.next
-
-            curr.next, head.next, head = head, curr.next, head.next
-
+            while cur.next and cur.next.val < head.val:
+                cur = cur.next
+            cur.next, head.next, head = head, cur.next, head.next
             # 필요한 경우에만 cur 포인터가 되돌아가도록 처리
-            if head and curr.val > head.val:
-                curr = root
+            if head and cur.val > head.val:
+                cur = root
         return root.next
+
+
+"""
+- 요약: 새로운 연결리스트를 만들어서 적절한 위치에 각 노드 넣기.
+"""
