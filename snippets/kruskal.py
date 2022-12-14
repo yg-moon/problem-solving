@@ -7,15 +7,15 @@ for i in range(1, V + 1):
     parent[i] = i
 
 
-def find(x):
+def find(parent, x):
     if parent[x] != x:
-        parent[x] = find(parent[x])
+        parent[x] = find(parent, parent[x])
     return parent[x]
 
 
-def union(a, b):
-    a = find(a)
-    b = find(b)
+def union(parent, a, b):
+    a = find(parent, a)
+    b = find(parent, b)
     if a < b:
         parent[b] = a
     else:
@@ -23,7 +23,7 @@ def union(a, b):
 
 
 edges = []
-result = 0
+total_cost = 0
 
 for _ in range(E):
     a, b, cost = map(int, input().split())
@@ -34,9 +34,9 @@ edges.sort()
 
 for edge in edges:
     cost, a, b = edge
-    # 사이클이 발생하지 않는 경우에만 MST에 포함 (Union)
-    if find(a) != find(b):
-        union(a, b)
-        result += cost
+    # 사이클이 발생하지 않는 경우에만 MST에 포함 (union)
+    if find(parent, a) != find(parent, b):
+        union(parent, a, b)
+        total_cost += cost
 
-print(result)
+print(total_cost)
