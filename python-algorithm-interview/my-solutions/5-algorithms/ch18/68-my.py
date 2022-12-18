@@ -1,12 +1,10 @@
-import bisect
 from typing import List
+import bisect
 
 
 class Solution:
     def twoSum(self, numbers: List[int], target: int) -> List[int]:
-        for i, num in enumerate(numbers):
-            diff = target - num
-            j = bisect.bisect_left(numbers, diff)
-            if i != j and j < len(numbers) and numbers[j] == diff: 
-                return sorted([i + 1, j + 1])
-        return -1
+        for i, n in enumerate(numbers):
+            idx = bisect.bisect_left(numbers, target - n)
+            if idx < len(numbers) and i != idx and numbers[idx] == target - n:
+                return sorted([i + 1, idx + 1])

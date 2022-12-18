@@ -1,10 +1,6 @@
 class Solution:
     def searchMatrix(self, matrix, target):
-        # 예외 처리
-        if not matrix:
-            return False
-
-        # 첫 행의 맨 뒤
+        # 첫행의 맨뒤에서 출발
         row = 0
         col = len(matrix[0]) - 1
 

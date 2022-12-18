@@ -1,15 +1,16 @@
-# 이진검색은 아니고 투포인터.
-from typing import List, Set
+from typing import List
 
 
 class Solution:
     def intersection(self, nums1: List[int], nums2: List[int]) -> List[int]:
-        result: Set = set()
+        result = set()
+
         # 양쪽 모두 정렬
         nums1.sort()
         nums2.sort()
+
+        # 투 포인터를 우측으로 이동하며 일치 여부 판별
         i = j = 0
-        # 투 포인터 우측으로 이동하며 일치 여부 판별
         while i < len(nums1) and j < len(nums2):
             if nums1[i] > nums2[j]:
                 j += 1
