@@ -1,9 +1,9 @@
 def solution(progresses, speeds):
-    n = len(progresses)
+    N = len(progresses)
 
     # 배포까지 걸리는 날짜를 계산
     deploys = []
-    for i in range(n):
+    for i in range(N):
         div, mod = divmod(100 - progresses[i], speeds[i])
         if mod != 0:
             div += 1
@@ -12,7 +12,7 @@ def solution(progresses, speeds):
     answer = []
     stack = []
     largest = deploys[0]
-    for i in range(n):
+    for i in range(N):
         # 기준보다 높은 숫자가 나올때까지 모두 스택에 push
         if deploys[i] <= largest:
             stack.append(deploys[i])

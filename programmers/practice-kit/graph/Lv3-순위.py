@@ -4,13 +4,13 @@ INF = int(1e9)
 def solution(n, results):
     graph = [[INF] * (n + 1) for _ in range(n + 1)]
 
-    # 자기 자신에게 가는 비용은 0
+    # 자기자신에게 가는 비용은 0
     for i in range(1, n + 1):
         for j in range(1, n + 1):
             if i == j:
                 graph[i][j] = 0
 
-    # 주의: 순위를 결정할 때 승패 여부는 중요하므로 단방향 그래프로 입력
+    # 주의: 순위를 결정할 때 승패여부는 중요하므로 단방향 그래프로 입력
     for a, b in results:
         graph[a][b] = 1
 
@@ -20,7 +20,7 @@ def solution(n, results):
             for j in range(1, n + 1):
                 graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
 
-    # 모든 선수와 연결되어 있으면 정답+1
+    # 본인의 행 or 열에서 연결된 개수를 세고, 그것이 전체 인원수와 같으면 순위가 확정
     answer = 0
     for i in range(1, n + 1):
         cnt = 0

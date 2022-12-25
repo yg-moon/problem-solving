@@ -14,5 +14,5 @@ def solution(word):
 
 
 """
-- DFS 완탐
+- DFS 완전탐색
 """

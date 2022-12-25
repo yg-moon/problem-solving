@@ -7,6 +7,7 @@ def solution(n, lost, reserve):
         students[r] += 1
 
     # 매번 여벌이 있는 학생이 왼쪽, 오른쪽을 확인하며 나눠준다.
+    # 주의: 순서를 반대로 확인하면 틀림
     for i in range(1, n + 1):
         if students[i] == 2:
             if i - 1 >= 1 and students[i - 1] == 0:

@@ -8,7 +8,7 @@ def solution(scoville, K):
     while len(scoville) >= 2 and scoville[0] < K:
         item1 = heapq.heappop(scoville)
         item2 = heapq.heappop(scoville)
-        new_item = item1 + item2 * 2
+        new_item = item1 + (item2 * 2)
         heapq.heappush(scoville, new_item)
         cnt += 1
 

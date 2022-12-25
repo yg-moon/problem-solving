@@ -22,3 +22,8 @@ def solution(people, limit):
         boat += 1
 
     return boat
+
+
+"""
+- deque 풀이
+"""

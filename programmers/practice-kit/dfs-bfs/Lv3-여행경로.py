@@ -14,7 +14,7 @@ def solution(tickets):
         if len(path) < len(tickets) + 1 and not src_to_dst[airport]:
             return
 
-        # 항공권을 다 사용했고, 다음 행선지가 없다면 처음 찾은 경로가 정답
+        # 항공권을 다 사용했고, 다음 행선지가 없다면 가장 먼저 찾은 경로가 정답
         nonlocal answer, found
         if len(path) == len(tickets) + 1 and not src_to_dst[airport] and not found:
             answer = path[:]
@@ -38,6 +38,6 @@ def solution(tickets):
 
 
 """
-- LeetCode #332: Time Limit Exceeded
 - DFS 완전탐색
+- LeetCode #332: Time Limit Exceeded
 """

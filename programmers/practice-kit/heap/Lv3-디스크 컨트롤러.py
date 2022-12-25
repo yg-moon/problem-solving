@@ -19,9 +19,9 @@ def solution(jobs):
         temp.sort(key=lambda x: (x[1], x[0]))
 
         # 가장 짧은 작업만 처리하고, 나머지는 다시 넣기
-        start, length = temp.pop(0)
-        cur_time += length
-        total_time += cur_time - start
+        start_time, duration = temp.pop(0)
+        cur_time += duration
+        total_time += cur_time - start_time
         for job in temp:
             heapq.heappush(jobs, job)
 

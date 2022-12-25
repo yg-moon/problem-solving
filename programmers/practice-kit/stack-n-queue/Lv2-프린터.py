@@ -3,8 +3,9 @@ from collections import deque
 
 def solution(priorities, location):
     q = deque([(idx, pri) for idx, pri in enumerate(priorities)])  # [(인덱스1, 중요도1), ...]
-    max_pri = max([pri for idx, pri in q])
+    max_pri = max([pri for _, pri in q])
     print_cnt = 1
+
     while q:
         # 현재 문서의 중요도가 가장 높다면
         if q[0][1] >= max_pri:
@@ -15,14 +16,14 @@ def solution(priorities, location):
             else:
                 q.popleft()
                 print_cnt += 1
-                max_pri = max([pri for idx, pri in q])
+                max_pri = max([pri for _, pri in q])
         # 중요도가 더 높은 문서가 있다면 대기목록 맨 뒤로 보내기
         else:
             q.append(q.popleft())
 
 
 """
-- 요약: 주어진 그대로 구현
+- 요약: 시뮬레이션
 - 핵심
     - 큐: [(인덱스1, 중요도1), ...]
     - deque의 popleft()를 통해 왼쪽에서 제거

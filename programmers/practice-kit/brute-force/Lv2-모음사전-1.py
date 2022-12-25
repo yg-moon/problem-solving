@@ -14,5 +14,5 @@ def solution(word):
 
 
 """
-- 중복 순열: product
+- 중복 순열: itertools.product
 """

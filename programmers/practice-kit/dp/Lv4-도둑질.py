@@ -16,7 +16,7 @@ def solution(money):
     for i in range(2, N):
         dp2[i] = max(dp2[i - 1], money[i] + dp2[i - 2])
 
-    # 두 경우를 통틀어서의 최댓값이 정답
+    # 두 경우를 통틀어서 최댓값이 정답
     return max(max(dp1), max(dp2))
 
 

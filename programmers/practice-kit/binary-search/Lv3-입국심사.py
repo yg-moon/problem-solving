@@ -6,7 +6,7 @@ def solution(n, times):
     # 즉, 가장 심사시간이 긴 심사관에게 n명 모두 심사받는 경우
 
     while left <= right:
-        mid = left + (right - left) // 2
+        mid = (left + right) // 2
         people = 0
         for time in times:
             # people: 모든 심사관들이 mid분 동안 심사한 사람의 수
@@ -26,9 +26,9 @@ def solution(n, times):
 
 
 """
-- 출처: https://sohee-dev.tistory.com/123
 - 요약: 파라메트릭 서치 기본
 - 구현:
     - 이분탐색의 대상: ‘모든 사람이 심사를 받는데 걸린 시간’
-    - 범위 조정의 기준: ‘심사를 받은 사람의 수’
+    - 범위조정의 기준: ‘심사를 받은 사람의 수’
+- - 출처: https://sohee-dev.tistory.com/123
 """

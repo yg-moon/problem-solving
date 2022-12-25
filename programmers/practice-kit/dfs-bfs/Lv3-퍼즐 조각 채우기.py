@@ -1,6 +1,3 @@
-# 원본 코드 출처: https://hkim-data.tistory.com/160
-
-
 def rotate(board):
     return list(map(list, zip(*board[::-1])))
 
@@ -44,7 +41,7 @@ def get_shapes(board, target):
         리턴값:
             shapes = {(절대 좌표) : [상대 좌표]}
 
-    - 개인적으로는 함수를 분리해야 한다고 생각한다.
+    - 사실 함수를 분리해야 한다고 생각한다.
     - 상황에 따라 리턴타입이 달라지는 방식은 직관성이 떨어진다.
     """
     visited = [[0] * len(board) for _ in range(len(board))]
@@ -84,7 +81,12 @@ def solution(game_board, table):
         for abs_pos, rel_pos in puzzle_pieces.items():
             if rel_pos in empty_slots:
                 empty_slots.remove(rel_pos)
-                answer += len(rel_pos)
                 for i, j in abs_pos:
                     table[i][j] = 0
+                answer += len(rel_pos)
     return answer
+
+
+"""
+- 원본 코드 출처: https://hkim-data.tistory.com/160
+"""

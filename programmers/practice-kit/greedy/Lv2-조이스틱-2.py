@@ -5,7 +5,7 @@ def countChanges(char):
     return min(ord("Z") - ord(char) + 1, ord(char) - ord("A"))
 
 
-# 왼쪽, 오른쪽 중 최단으로 가는 거리를 구하는 함수
+# 왼쪽, 오른쪽 중 최단거리를 구하는 함수
 def findShortestPath(name, cur, next):
     left, right = min(cur, next), max(cur, next)
     leftDist = left + len(name) - right

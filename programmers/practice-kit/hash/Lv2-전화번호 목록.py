@@ -12,5 +12,4 @@ def solution(phone_book):
             # temp가 dic에 있는데, temp가 num이 아니라면 접두어인 경우인 것
             if temp in dic and temp != num:
                 return False
-
     return True

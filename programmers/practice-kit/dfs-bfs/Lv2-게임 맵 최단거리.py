@@ -6,7 +6,8 @@ def solution(maps):
     m = len(maps[0])
     min_dist = int(1e9)
 
-    dx = [-1, 1, 0, 0]  # 상하좌우
+    # 상하좌우
+    dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
 
     visited = set([(0, 0)])
@@ -27,8 +28,8 @@ def solution(maps):
                 and maps[nx][ny] == 1
                 and (nx, ny) not in visited
             ):
-                q.append((nx, ny, cnt + 1))
                 visited.add((nx, ny))
+                q.append((nx, ny, cnt + 1))
 
     if min_dist == int(1e9):
         return -1
@@ -36,5 +37,5 @@ def solution(maps):
 
 
 """
-- 가장 기본적인 BFS
+- 기본적인 BFS
 """
