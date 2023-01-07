@@ -5,6 +5,7 @@ for _ in range(T):
     K = int(input())
     N = int(input())
 
+    # dp[i][j]: i층 j+1호에 사는 사람수
     dp = [[0] * N for _ in range(K + 1)]  # 주의: K는 0층부터 시작하므로, (K + 1)로 생성
 
     # 0층 채우기

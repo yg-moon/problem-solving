@@ -1,5 +1,7 @@
 # 1, 2, 3 더하기
 # 출처 및 해설: https://e-you.tistory.com/304
+
+# dp[i]: i를 1,2,3의 합으로 나타내는 방법의 수
 dp = [0] * 11
 dp[1] = 1
 dp[2] = 2
@@ -9,6 +11,7 @@ for i in range(4, 11):
     dp[i] = dp[i - 3] + dp[i - 2] + dp[i - 1]
 
 T = int(input())
+
 for _ in range(T):
     n = int(input())
     print(dp[n])
