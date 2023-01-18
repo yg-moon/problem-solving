@@ -2,7 +2,6 @@
 # 출처: https://zidarn87.tistory.com/378
 N = int(input())
 board = [list(map(int, input().split())) for _ in range(N)]
-
 white = 0
 blue = 0
 

@@ -1,7 +1,6 @@
 # 색종이 만들기
 N = int(input())
 graph = [list(map(int, input().split())) for _ in range(N)]
-
 white = 0
 blue = 0
 
@@ -16,7 +15,6 @@ def div_and_conq(x, y, n):
                 all_white = False
             elif graph[i][j] == 0:
                 all_blue = False
-
     if all_white:
         global white
         white += 1

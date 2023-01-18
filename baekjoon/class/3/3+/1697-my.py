@@ -2,28 +2,20 @@
 from collections import deque
 
 N, K = map(int, input().split())
-
 q = deque([(N, 0)])  # (위치, 시간)
 visited = set()
-min_time = int(1e9)
 
 while q:
     pos, time = q.popleft()
     if pos == K:
-        min_time = time
+        print(time)
         break
     else:
         for next_pos in [pos - 1, pos + 1, 2 * pos]:
             next_info = (next_pos, time + 1)
-            if (
-                0 <= next_pos <= 100000
-                and next_pos not in visited
-                and time + 1 <= min_time
-            ):
+            if 0 <= next_pos <= 100000 and next_pos not in visited:
                 q.append(next_info)
                 visited.add(next_pos)
-
-print(min_time)
 
 """
 - 난이도: 실버1

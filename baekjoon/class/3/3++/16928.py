@@ -3,7 +3,6 @@ from collections import defaultdict, deque
 
 ladder = defaultdict(int)
 snake = defaultdict(int)
-
 N, M = map(int, input().split())
 for _ in range(N):
     a, b = map(int, input().split())

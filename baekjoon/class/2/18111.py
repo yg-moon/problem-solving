@@ -1,7 +1,6 @@
 # 마인크래프트
 N, M, B = map(int, input().split())
 ground = [list(map(int, input().split())) for _ in range(N)]
-
 min_time = int(1e9)
 max_level = -1
 
