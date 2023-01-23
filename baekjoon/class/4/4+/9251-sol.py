@@ -14,15 +14,6 @@ for i in range(1, len(str1)):
 
 print(dp[-1][-1])
 
-# 번외: 길이가 아니라 실제 LCS 문자열 구하기
-# LCS = ""
-# cur_len = 0
-# for i, row in enumerate(dp):
-#     if row[-1] > cur_len:
-#         cur_len = row[-1]
-#         LCS += str1[i]
-# print(LCS)
-
 """
 - 난이도: 골드5
 - 분류: dp (LCS)
