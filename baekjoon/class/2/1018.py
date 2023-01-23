@@ -1,7 +1,6 @@
 # 체스판 다시 칠하기
 N, M = map(int, input().split())
 board = [list(input()) for _ in range(N)]
-
 min_cnt = int(1e9)
 wb = list("WBWBWBWB")
 bw = list("BWBWBWBW")
