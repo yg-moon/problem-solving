@@ -9,6 +9,8 @@ dy = [0, 0, -1, 1]
 shark_size = 2
 grow_cnt = 0
 time = 0
+
+# 상어 초기위치
 for i in range(N):
     for j in range(N):
         if graph[i][j] == 9:
@@ -56,14 +58,14 @@ while True:
     dist = bfs(shark_x, shark_y)
     nx = 0
     ny = 0
-    curr_d = 0
+    cur_d = 0
 
     # 후보가 한마리 일 때
     if len(pos) == 1:
         nx = pos[0][0]
         ny = pos[0][1]
-        curr_d = dist[nx][ny]
-        if curr_d == -1:
+        cur_d = dist[nx][ny]
+        if cur_d == -1:
             break
     # 후보가 여러 마리 일 때
     else:
@@ -83,7 +85,7 @@ while True:
                 idx = i
                 min_dist = d_info[i]
         nx, ny = pos[idx]
-        curr_d = min_dist
+        cur_d = min_dist
 
     # 먹기
     # 상어 이동
@@ -91,7 +93,7 @@ while True:
     graph[nx][ny] = 9
     shark_x, shark_y = nx, ny
     # 시간 추가
-    time += curr_d
+    time += cur_d
     # 크기 갱신
     grow_cnt += 1
     if grow_cnt == shark_size:

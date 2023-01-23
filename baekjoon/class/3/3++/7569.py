@@ -5,9 +5,9 @@ M, N, H = map(int, input().split())
 graph = [[list(map(int, input().split())) for _ in range(N)] for _ in range(H)]
 
 q = deque()
+dz = [0, 0, 0, 0, -1, 1]
 dx = [-1, 1, 0, 0, 0, 0]
 dy = [0, 0, -1, 1, 0, 0]
-dz = [0, 0, 0, 0, -1, 1]
 answer = 0
 
 # 처음 토마토 위치를 큐에 넣기
@@ -24,7 +24,7 @@ while q:
         nz = z + dz[i]
         nx = x + dx[i]
         ny = y + dy[i]
-        if 0 <= nx < N and 0 <= ny < M and 0 <= nz < H and graph[nz][nx][ny] == 0:
+        if 0 <= nz < H and 0 <= nx < N and 0 <= ny < M and graph[nz][nx][ny] == 0:
             graph[nz][nx][ny] = graph[z][x][y] + 1
             q.append([nz, nx, ny])
 
@@ -42,5 +42,5 @@ print(answer - 1)
 - 난이도: 골드5
 - 분류: BFS
 
-- 요약: 3차원 그래프에서의 BFS.
+- 요약: 3차원 그래프에서의 BFS
 """

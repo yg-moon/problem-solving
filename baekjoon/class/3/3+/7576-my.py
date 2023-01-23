@@ -23,8 +23,8 @@ for i in range(N):
             visited[i][j] = 1
             already += 1
 
+# 이미 모든 토마토가 익어있다면 0을 출력
 if already == N * M:
-    # 이미 모든 토마토가 익어있다면 0을 출력
     print(0)
 else:
     # BFS

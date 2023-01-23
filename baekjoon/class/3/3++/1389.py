@@ -7,11 +7,8 @@ result = []  # 사람들의 케빈 베이컨 수
 
 for _ in range(M):
     u, v = map(int, input().split())
-    # 주의: 친구 관계는 중복되어 들어올 수 있음
-    if v not in graph[u]:
-        graph[u].append(v)
-    if u not in graph[v]:
-        graph[v].append(u)
+    graph[u].append(v)
+    graph[v].append(u)
 
 
 def bfs(start, target):
