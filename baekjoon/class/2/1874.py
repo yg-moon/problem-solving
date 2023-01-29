@@ -6,7 +6,7 @@ input = sys.stdin.readline
 stack = []
 answer = []
 i = 1
-no_answer = False
+impossible = False
 
 n = int(input())
 
@@ -26,9 +26,9 @@ for _ in range(n):
         answer.append("-")
     # 여기까지 했는데 현재 정수를 찾을 수 없다면 불가능
     else:
-        no_answer = True
+        impossible = True
 
-if no_answer:
+if impossible:
     print("NO")
 else:
     for a in answer:

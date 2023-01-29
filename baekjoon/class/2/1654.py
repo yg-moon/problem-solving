@@ -7,14 +7,12 @@ answer = 0
 while left <= right:
     mid = (left + right) // 2
     cnt = 0
-
     # 현재 mid 값으로 만들 수 있는 최대 cnt를 구함
     for cable in cables:
         cnt += cable // mid
         # cnt가 N이상이라면 반복문을 조기에 종료
         if cnt >= N:
             break
-
     # 아직 여유가 남으면 정답을 저장하고 최소범위를 올림
     if cnt >= N:
         answer = mid

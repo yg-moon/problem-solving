@@ -16,7 +16,7 @@ for _ in range(N - 1):
 
 
 def dfs(cur):
-    # 연결된 노드들에 대해, 부모가 없으면 현재노드를 다음노드의 부모로 설정해주고, 나머지는 DFS
+    # 연결된 노드들에 대해, 부모가 없으면 현재 노드를 다음 노드의 부모로 설정해주고, 다음 노드로 DFS
     for nxt in graph[cur]:
         if parent[nxt] == 0:
             parent[nxt] = cur

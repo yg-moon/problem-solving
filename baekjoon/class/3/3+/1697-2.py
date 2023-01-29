@@ -2,21 +2,22 @@
 # 출처: https://chancoding.tistory.com/193
 from collections import deque
 
-N, K = map(int, input().split())
 MAX = 100001
+
+N, K = map(int, input().split())
 dist = [0] * MAX
 
 
-def bfs(v):
-    q = deque([v])
+def bfs(start):
+    q = deque([start])
     while q:
-        v = q.popleft()
-        if v == K:
-            return dist[v]
-        for next_v in (v - 1, v + 1, 2 * v):
-            if 0 <= next_v < MAX and not dist[next_v]:
-                dist[next_v] = dist[v] + 1
-                q.append(next_v)
+        cur = q.popleft()
+        if cur == K:
+            return dist[cur]
+        for nxt in [cur - 1, cur + 1, 2 * cur]:
+            if 0 <= nxt < MAX and dist[nxt] == 0:
+                dist[nxt] = dist[cur] + 1
+                q.append(nxt)
 
 
 print(bfs(N))

@@ -4,9 +4,8 @@ import sys, heapq
 
 input = sys.stdin.readline
 
-heap = []
-
 N = int(input())
+heap = []
 
 for _ in range(N):
     x = int(input())

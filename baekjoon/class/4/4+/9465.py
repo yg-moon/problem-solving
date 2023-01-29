@@ -18,7 +18,7 @@ for _ in range(T):
         # dp[0][i]: 0행 i열까지 진행했을 때의 최대 점수
         # dp[1][i]: 1행 i열까지 진행했을 때의 최대 점수
         dp[0][i] += max(dp[0][i - 2], dp[1][i - 2], dp[1][i - 1])
-        dp[1][i] += max(dp[1][i - 2], dp[0][i - 2], dp[0][i - 1])
+        dp[1][i] += max(dp[0][i - 2], dp[1][i - 2], dp[0][i - 1])
 
     print(max(dp[0][n - 1], dp[1][n - 1]))
 

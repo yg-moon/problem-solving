@@ -2,7 +2,7 @@
 from collections import deque
 
 N, K = map(int, input().split())
-q = deque([(N, 0)])  # (위치, 시간)
+q = deque([(N, 0)])
 visited = set()
 
 while q:
@@ -12,9 +12,8 @@ while q:
         break
     else:
         for next_pos in [pos - 1, pos + 1, 2 * pos]:
-            next_info = (next_pos, time + 1)
             if 0 <= next_pos <= 100000 and next_pos not in visited:
-                q.append(next_info)
+                q.append((next_pos, time + 1))
                 visited.add(next_pos)
 
 """

@@ -8,9 +8,6 @@ dic = defaultdict(int)
 
 def solve(x, y, n):
     num = mat[x][y]
-    if n == 1:
-        dic[num] += 1
-        return
     for i in range(x, x + n):
         for j in range(y, y + n):
             # 핵심: 처음 숫자랑 다른게 나오는 순간 9분할로 재귀

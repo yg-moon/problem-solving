@@ -7,16 +7,14 @@ answer = 0
 while left <= right:
     mid = (left + right) // 2
     take_home = 0
-
     # 현재 mid 값으로 만들 수 있는 최대 take_home을 구함
     for tree in trees:
         diff = tree - mid
         if diff > 0:
             take_home += diff
-        # take_home이 M이상이라면 반복문을 조기에 종료
+        # take_home이 M 이상이라면 반복문을 조기에 종료
         if take_home >= M:
             break
-
     # 아직 여유가 남으면 정답을 저장하고 최소범위를 올림
     if take_home >= M:
         answer = mid

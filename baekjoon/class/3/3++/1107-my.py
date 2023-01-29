@@ -9,16 +9,16 @@ broken = []
 if M != 0:
     broken = list(map(int, input().split()))
 
-nums = [x for x in range(10) if x not in broken]
 min_move = abs(N - 100)
-limit = N + abs(N - 100)
+nums = [x for x in range(10) if x not in broken]
+MAX = N + abs(N - 100)
 
 
 def solve(num_str):
-    global min_move, limit
+    global min_move
     if num_str != "":
         min_move = min(min_move, len(num_str) + abs(N - int(num_str)))
-        if int(num_str) > limit or int(num_str) == 0:
+        if int(num_str) > MAX or int(num_str) == 0:
             return
     for i in range(len(nums)):
         solve(num_str + str(nums[i]))

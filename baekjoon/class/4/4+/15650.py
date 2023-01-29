@@ -10,7 +10,7 @@ def dfs(start):
 
     for i in range(start, N + 1):
         arr.append(i)
-        dfs(i + 1)  # 오름차순이므로 다음 재귀는 i+1부터 시작
+        dfs(i + 1)  # 오름차순이므로 i+1
         arr.pop()
 
 

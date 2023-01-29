@@ -15,24 +15,24 @@ for _ in range(T):
     for i in range(k):
         op, num = input().split()
         if op == "I":
-            heapq.heappush(min_heap, (int(num), i))
+            heapq.heappush(min_heap, (int(num), i))  # 핵심: 인덱스도 힙에 넣어주기
             heapq.heappush(max_heap, (-int(num), i))
             valid[i] = True
         else:
-            if num == "1":
+            if num == "-1":
                 # 다른 힙에서 이미 삭제된 노드를 모두 제거
-                while max_heap and not valid[max_heap[0][1]]:
-                    heapq.heappop(max_heap)
-                # 현재 힙에서 노드를 삭제
-                if max_heap:
-                    valid[max_heap[0][1]] = False
-                    heapq.heappop(max_heap)
-            else:
                 while min_heap and not valid[min_heap[0][1]]:
                     heapq.heappop(min_heap)
+                # 현재 힙에서 노드를 삭제
                 if min_heap:
                     valid[min_heap[0][1]] = False
                     heapq.heappop(min_heap)
+            else:
+                while max_heap and not valid[max_heap[0][1]]:
+                    heapq.heappop(max_heap)
+                if max_heap:
+                    valid[max_heap[0][1]] = False
+                    heapq.heappop(max_heap)
 
     # 남아있는 불필요한 노드를 모두 제거
     while min_heap and not valid[min_heap[0][1]]:

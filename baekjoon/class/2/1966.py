@@ -8,8 +8,8 @@ for _ in range(TC):
     N, target = map(int, input().split())
     doc_list = deque((range(N)))
     pri_list = deque((map(int, input().split())))
-    print_cnt = 1
     max_pri = max(pri_list)
+    print_cnt = 1
 
     while doc_list:
         # 현재 문서의 중요도가 가장 높다면

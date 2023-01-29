@@ -3,6 +3,7 @@
 N = int(input())
 M = int(input())
 S = input()
+
 i = cnt = answer = 0
 
 while i <= (M - 3):
@@ -13,8 +14,9 @@ while i <= (M - 3):
             answer += 1
             cnt -= 1
     else:
-        i += 1
         cnt = 0
+        i += 1
+
 
 print(answer)
 

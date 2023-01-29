@@ -12,7 +12,7 @@ def solve(x, y, n):
     for i in range(x, x + n):
         for j in range(y, y + n):
             # 핵심: 시작한 좌표와 다른 값이 나오는 순간 4분할로 재귀
-            if color != board[i][j]:
+            if board[i][j] != color:
                 half_n = n // 2
                 solve(x, y, half_n)
                 solve(x, y + half_n, half_n)

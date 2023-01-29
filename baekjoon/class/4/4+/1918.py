@@ -42,7 +42,7 @@ print(answer)
 - 1. 피연산자는 결과에 바로 추가.
 - 2. 괄호와 연산자는 스택에 쌓고, 조건이 맞으면 스택에 있는 연산자를 결과에 추가.
 
-추가설명 출처
+추가설명
 - https://subin-0320.tistory.com/73
 - https://kyun2da.github.io/2021/05/13/postfix_notation/
 """

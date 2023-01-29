@@ -4,7 +4,7 @@ N, M = map(int, input().split())
 arr = list(map(int, input().split()))
 
 arr.sort()  # 사전순으로 출력하기 위해 정렬
-visited = [False] * N  # 주어진 배열에 대해 작업하며, 원소는 중복 불가능이므로 방문여부 확인
+visited = [False] * N  # 주어진 배열에 대해 작업하는데, 원소는 중복 불가능이므로 방문여부를 확인
 result = []
 
 

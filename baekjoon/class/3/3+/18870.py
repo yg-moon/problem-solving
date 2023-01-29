@@ -2,10 +2,9 @@
 N = int(input())
 arr = list(map(int, input().split()))
 
-sorted_arr = sorted(set(arr))
 dic = {}
-for i, sa in enumerate(sorted_arr):
-    dic[sa] = i
+for i, a in enumerate(sorted(set(arr))):
+    dic[a] = i
 
 answer = []
 for a in arr:

@@ -1,48 +1,40 @@
 # 트리의 지름
-# 출처: https://my-coding-notes.tistory.com/285
+# 출처: https://kyun2da.github.io/2021/05/04/tree's_diameter/
 import sys
 
 sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 n = int(input())
-tree = [[] for _ in range(n + 1)]
-diameter = 0
+graph = [[] for _ in range(n + 1)]
 
 for _ in range(n - 1):
     u, v, w = map(int, input().split())
-    tree[u].append((v, w))
-
-# DFS로 리프노드까지 내려가서 해당 노드의 가중치를 리턴
-def dfs(node, weight):
-    global diameter
-    left, right = 0, 0
-
-    # 자식이 있는 노드는 왼쪽과 오른쪽 최장경로를 계산
-    for child, wei in tree[node]:
-        res = dfs(child, wei)
-        if left <= right:
-            left = max(left, res)
-        else:
-            right = max(right, res)
-
-    # 현재노드 기준으로 트리의 지름: left + right
-    # 최종 정답: 전체 트리에서의 최대치
-    diameter = max(diameter, left + right)
-
-    # 상태값: 리프노드부터 현재노드까지의 최장경로
-    # 왼쪽과 오른쪽 경로 중 더 큰 것을 리턴
-    return max(left + weight, right + weight)
+    graph[u].append([v, w])
+    graph[v].append([u, w])
 
 
+def dfs(node, cur_w):
+    for nxt, nxt_w in graph[node]:
+        if dist[nxt] == -1:
+            dist[nxt] = cur_w + nxt_w
+            dfs(nxt, cur_w + nxt_w)
+
+
+# 1번 노드에서 가장 먼 곳을 찾는다.
+dist = [-1] * (n + 1)
+dist[1] = 0
 dfs(1, 0)
+start = dist.index(max(dist))
 
-print(diameter)
+# 위에서 찾은 노드에 대한 가장 먼 노드를 찾는다.
+dist = [-1] * (n + 1)
+dist[start] = 0
+dfs(start, 0)
 
+print(max(dist))
 
 """
 - 난이도: 골드4
 - 분류: 트리
-
-- 아이디어: 트리의 지름 = 왼쪽 최장경로 + 오른쪽 최장경로
 """

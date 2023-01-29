@@ -1,8 +1,6 @@
 # 정수 삼각형
 N = int(input())
-dp = []
-for _ in range(N):
-    dp.append(list(map(int, input().split())))
+dp = [list(map(int, input().split())) for _ in range(N)]
 
 # dp[i][j]: 삼각형에서 i행 j열까지 진행했을 때의 최대값
 for i in range(1, N):

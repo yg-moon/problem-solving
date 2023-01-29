@@ -19,7 +19,6 @@ for start, end in meetings:
     if last_end <= start:
         cnt += 1
         last_end = end
-
 print(cnt)
 
 """

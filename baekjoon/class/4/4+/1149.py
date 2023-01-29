@@ -1,9 +1,7 @@
 # RGB 거리
 # 출처: https://pacific-ocean.tistory.com/147
 N = int(input())
-dp = []
-for i in range(N):
-    dp.append(list(map(int, input().split())))
+dp = [list(map(int, input().split())) for _ in range(N)]
 
 for i in range(1, len(dp)):
     # dp[i][0]: i번째 집을 빨강(R)으로 칠했을 때의 최솟값

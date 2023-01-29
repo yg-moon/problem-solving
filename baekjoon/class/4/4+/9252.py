@@ -16,13 +16,13 @@ for i in range(1, len(str1)):
                 dp[i][j] = dp[i][j - 1]
 
 result = dp[-1][-1]
+
 print(len(result))
+
 if result != "":
     print(result)
 
 """
 - 난이도: 골드4
-- 분류: dp (LCS)
-
-- (클래스5 문제지만, LCS 공부하는 김에 같이 풀어봄)
+- 분류: dp
 """

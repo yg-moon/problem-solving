@@ -27,7 +27,6 @@ T = int(input())
 
 for _ in range(T):
     A, B = map(int, input().split())
-
     # BFS
     q = deque([[A, ""]])
     visited = set()
@@ -37,10 +36,10 @@ for _ in range(T):
             print(cmd)
             break
         for op in ops:
-            next = trans(num, op)
-            if next not in visited:
-                visited.add(next)
-                q.append([next, cmd + op])
+            nxt = trans(num, op)
+            if nxt not in visited:
+                visited.add(nxt)
+                q.append([nxt, cmd + op])
 
 """
 - 난이도: 골드4

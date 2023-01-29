@@ -1,19 +1,19 @@
 # Z
 # 출처: https://dank-code.tistory.com/7
 N, r, c = map(int, input().split())
-num = 0
+answer = 0
 
 
 def solve(x, y, n):
-    global num
+    global answer
     if x == r and y == c:
-        print(num)
+        print(answer)
         exit(0)  # 주의: return 으로는 나머지 함수가 멈추지 않는다.
     if n == 1:
-        num += 1
+        answer += 1
         return
     if not (x <= r < x + n and y <= c < y + n):
-        num += n * n
+        answer += n * n
         return
     half_n = n // 2
     solve(x, y, half_n)
@@ -23,7 +23,8 @@ def solve(x, y, n):
 
 
 solve(0, 0, 2**N)
-print(num)
+
+print(answer)
 
 """
 - 난이도: 실버1

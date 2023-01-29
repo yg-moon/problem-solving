@@ -3,13 +3,12 @@ import sys, heapq
 
 input = sys.stdin.readline
 
-heap = []
-
 N = int(input())
+heap = []
 
 for _ in range(N):
     x = int(input())
-    # 배열에서 뽑기
+    # pop
     if x == 0:
         temp = []
         if heap:
@@ -39,7 +38,7 @@ for _ in range(N):
                 print(item[0])
             for t in temp:
                 heapq.heappush(heap, t)
-    # 배열에 넣기
+    # push
     else:
         # 양수일 경우
         if x == abs(x):

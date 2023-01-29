@@ -18,12 +18,12 @@ def bfs(start):
     q = deque([start])
     dist = [-1] * (V + 1)
     dist[start] = 0
-    ret = [0, 0]
+    ret = [0, 0]  # [노드, 거리]
     while q:
         cur = q.popleft()
-        for nxt, nxt_w in graph[cur]:
+        for nxt, w in graph[cur]:
             if dist[nxt] == -1:
-                dist[nxt] = dist[cur] + nxt_w
+                dist[nxt] = dist[cur] + w
                 q.append(nxt)
                 if ret[1] < dist[nxt]:
                     ret = nxt, dist[nxt]
@@ -32,6 +32,7 @@ def bfs(start):
 
 node, max_dist = bfs(1)  # 1번 노드에서 가장 먼 곳을 찾는다.
 _, max_dist = bfs(node)  # 위에서 찾은 노드에 대한 가장 먼 노드를 찾는다.
+
 print(max_dist)
 
 """

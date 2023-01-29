@@ -1,8 +1,8 @@
 # 케빈 베이컨의 6단계 법칙
-from collections import defaultdict, deque
+from collections import deque
 
 N, M = map(int, input().split())
-graph = defaultdict(list)
+graph = [[] for _ in range(N + 1)]
 result = []  # 사람들의 케빈 베이컨 수
 
 for _ in range(M):
@@ -19,10 +19,10 @@ def bfs(start, target):
         node, dist = q.popleft()
         if node == target:
             min_dist = min(min_dist, dist)
-        for next in graph[node]:
-            if next not in visited:
-                visited.add(next)
-                q.append([next, dist + 1])
+        for nxt in graph[node]:
+            if nxt not in visited:
+                visited.add(nxt)
+                q.append([nxt, dist + 1])
     return min_dist
 
 

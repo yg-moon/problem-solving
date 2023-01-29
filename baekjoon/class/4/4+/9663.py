@@ -27,6 +27,7 @@ def put_queen(x):
 
 
 put_queen(0)
+
 print(answer)
 
 """
