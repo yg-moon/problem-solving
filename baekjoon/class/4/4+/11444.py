@@ -15,11 +15,11 @@ def mul_mat(mat1, mat2):
 
 
 # 행렬의 거듭제곱 (by 분할정복)
-def power(mat, p):
+def pow_mat(mat, p):
     if p == 1:  # p가 1이 될 때까지 재귀
         return mat
     else:
-        tmp_mat = power(mat, p // 2)  # mat^(p // 2)
+        tmp_mat = pow_mat(mat, p // 2)  # mat^(p // 2)
         if p % 2 == 0:
             return mul_mat(tmp_mat, tmp_mat)  # p가 짝수인 경우
         else:
@@ -27,7 +27,7 @@ def power(mat, p):
 
 
 # n번째 피보나치 수는 행렬 [[1,1],[1,0]]^n 의 1행 2열 값
-result = power(matrix, n)
+result = pow_mat(matrix, n)
 print(result[0][1] % 1000000007)
 
 """
