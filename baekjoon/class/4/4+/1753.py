@@ -32,7 +32,7 @@ def dijk(start):
 result = dijk(K)
 
 for i in range(1, V + 1):
-    print("INF" if result[i] == INF else result[i])
+    print(result[i] if result[i] != INF else "INF")
 
 """
 - 난이도: 골드4

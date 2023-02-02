@@ -1,4 +1,4 @@
-# 피보나치 수6
+# 피보나치 수 6
 # 출처: https://star7sss.tistory.com/358
 n = int(input())
 matrix = [[1, 1], [1, 0]]
@@ -19,11 +19,11 @@ def pow_mat(mat, p):
     if p == 1:  # p가 1이 될 때까지 재귀
         return mat
     else:
-        tmp_mat = pow_mat(mat, p // 2)  # mat^(p // 2)
+        root = pow_mat(mat, p // 2)  # mat^(p // 2)
         if p % 2 == 0:
-            return mul_mat(tmp_mat, tmp_mat)  # p가 짝수인 경우
+            return mul_mat(root, root)  # p가 짝수인 경우
         else:
-            return mul_mat(mul_mat(tmp_mat, tmp_mat), mat)  # p가 홀수인 경우
+            return mul_mat(mul_mat(root, root), mat)  # p가 홀수인 경우
 
 
 # n번째 피보나치 수는 행렬 [[1,1],[1,0]]^n 의 1행 2열 값

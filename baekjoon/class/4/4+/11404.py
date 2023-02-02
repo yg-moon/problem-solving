@@ -27,7 +27,7 @@ for k in range(1, n + 1):
 
 for i in range(1, n + 1):
     for j in range(1, n + 1):
-        print(0 if graph[i][j] == INF else graph[i][j], end=" ")
+        print(graph[i][j] if graph[i][j] != INF else 0, end=" ")
     print()
 
 """

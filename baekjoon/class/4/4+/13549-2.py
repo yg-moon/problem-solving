@@ -20,7 +20,7 @@ while q:
     if 0 <= s - 1 < MAX and visited[s - 1] == -1:
         visited[s - 1] = visited[s] + 1
         q.append(s - 1)
-    if 0 <= s + 1 < 100001 and visited[s + 1] == -1:
+    if 0 <= s + 1 < MAX and visited[s + 1] == -1:
         visited[s + 1] = visited[s] + 1
         q.append(s + 1)
 
