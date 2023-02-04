@@ -4,6 +4,7 @@ from collections import defaultdict
 def solution(genres, plays):
     genre_to_plays = defaultdict(int)  # {장르: 총 재생횟수}
     genre_to_info = defaultdict(list)  # {장르: [[고유번호1, 재생횟수1], ...]}
+
     for i in range(len(genres)):
         genre_to_plays[genres[i]] += plays[i]
         genre_to_info[genres[i]].append([i, plays[i]])

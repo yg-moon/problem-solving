@@ -12,6 +12,7 @@ def solution(numbers, target):
         dfs(res - numbers[idx], idx + 1)
 
     dfs(0, 0)
+
     return cnt
 
 

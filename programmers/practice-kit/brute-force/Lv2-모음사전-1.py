@@ -3,14 +3,15 @@ from itertools import product
 
 def solution(word):
     alphas = ["A", "E", "I", "O", "U"]
-    words_list = []
+    words = []
 
     for i in range(1, 6):
         for p in list(product(alphas, repeat=i)):
-            words_list.append("".join(p))
+            words.append("".join(p))
 
-    words_list.sort()
-    return words_list.index(word) + 1
+    words.sort()
+
+    return words.index(word) + 1
 
 
 """

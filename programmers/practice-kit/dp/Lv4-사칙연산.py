@@ -11,7 +11,7 @@ def solution(arr):
         max_dp[i][i] = int(arr[i * 2])
         min_dp[i][i] = int(arr[i * 2])
 
-    # 매번 step의 크기만큼의 모든 구간들의 최댓값, 최솟값이 한번에 계산되는 방식
+    # 매번 step의 크기만큼의 모든 구간들의 최댓값, 최솟값이 한번씩 계산되는 방식
     for step in range(1, N):  # i와 j의 간격 step을 하나씩 늘리면서
         for i in range(N - step):
             j = i + step

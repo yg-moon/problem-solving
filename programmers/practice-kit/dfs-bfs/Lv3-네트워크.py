@@ -2,10 +2,10 @@ def solution(n, computers):
     network_cnt = 0
     visited = set()
 
-    def dfs(x):
-        visited.add(x)
+    def dfs(i):
+        visited.add(i)
         for j in range(n):
-            if x != j and computers[x][j] == 1 and j not in visited:
+            if i != j and computers[i][j] == 1 and j not in visited:
                 dfs(j)
 
     for node in range(n):

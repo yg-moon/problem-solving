@@ -14,6 +14,7 @@ def solution(k, dungeons):
                 visited.remove(i)
 
     dfs(k, 0)
+
     return max_cnt
 
 

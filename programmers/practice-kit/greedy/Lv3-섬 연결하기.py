@@ -24,6 +24,7 @@ def solution(n, costs):
     edges = []
     for a, b, cost in costs:
         edges.append((cost, a, b))
+
     # 간선을 비용순으로 정렬
     edges.sort()
 
@@ -39,5 +40,5 @@ def solution(n, costs):
 
 
 """
-- 크루스칼 알고리즘
+- 기본적인 크루스칼.
 """

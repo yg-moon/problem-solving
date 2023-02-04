@@ -11,7 +11,7 @@ def union(a, b, parent):
 
 
 def find(x, parent):
-    if x != parent[x]:
+    if parent[x] != x:
         parent[x] = find(parent[x], parent)
     return parent[x]
 
@@ -21,12 +21,8 @@ def solution(n, wires):
 
     # 매번 전선을 하나씩 제외하며 전력망 구축
     for skip in range(n - 1):
-        parent = defaultdict(int)
+        parent = list(range(n + 1))  # 부모는 자기 자신으로 초기화
         cnt_dic = defaultdict(int)  # 각 전력망의 송전탑 개수
-
-        # 부모는 자기 자신으로 초기화
-        for i in range(n):
-            parent[i] = i
 
         # 모든 노드를 union
         for i in range(n - 1):
@@ -35,7 +31,7 @@ def solution(n, wires):
             union(wires[i][0], wires[i][1], parent)
 
         # 모든 노드에 find
-        for i in range(n):
+        for i in range(1, n + 1):
             cnt_dic[find(i, parent)] += 1
 
         # 차이의 최솟값을 갱신

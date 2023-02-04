@@ -15,8 +15,8 @@ def solution(answers):
 
     # 최고점인 사람들을 출력
     score = [solve(person_1), solve(person_2), solve(person_3)]
-    result = []
+    answer = []
     for i in range(3):
         if score[i] == max(score):
-            result.append(i + 1)
-    return result
+            answer.append(i + 1)
+    return answer

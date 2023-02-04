@@ -11,25 +11,23 @@ def solution(progresses, speeds):
 
     answer = []
     stack = []
-    largest = deploys[0]
+    largest = deploys[0]  # 시작점을 기준으로 잡기
+
+    # 날짜 배열을 돌면서
     for i in range(N):
         # 기준보다 높은 숫자가 나올때까지 모두 스택에 push
         if deploys[i] <= largest:
             stack.append(deploys[i])
         # 기준보다 높은 숫자가 나오면
+        # - 현재 스택의 크기를 정답에 추가
+        # - 스택을 비우고, 현재 숫자로 기준을 갱신하고, 새 기준을 스택에 push
         else:
             answer.append(len(stack))
             stack.clear()
-            stack.append(deploys[i])
             largest = deploys[i]
+            stack.append(deploys[i])
+
     # 마지막에 남은것 append
     answer.append(len(stack))
+
     return answer
-
-
-"""
-- 일단 배포까지 걸리는 날짜 배열을 구하기.
-- 날짜 배열을 돌면서
-    - 시작점을 기준으로 잡고, 기준보다 높은 숫자가 나올때까지 모두 스택에 push.
-    - 기준보다 높은 숫자가 나오면 현재 스택의 크기를 정답에 추가하고, 스택을 비우고, 기준을 갱신.
-"""

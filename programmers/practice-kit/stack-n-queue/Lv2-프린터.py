@@ -20,12 +20,3 @@ def solution(priorities, location):
         # 중요도가 더 높은 문서가 있다면 대기목록 맨 뒤로 보내기
         else:
             q.append(q.popleft())
-
-
-"""
-- 요약: 시뮬레이션
-- 핵심
-    - 큐: [(인덱스1, 중요도1), ...]
-    - deque의 popleft()를 통해 왼쪽에서 제거
-    - 문서가 인쇄될 때만 최대 중요도를 다시 계산하면 효율적
-"""

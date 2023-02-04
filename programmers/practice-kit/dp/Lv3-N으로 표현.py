@@ -12,8 +12,8 @@ def calc_set(set_x, set_y):
 
 def solution(N, number):
     dp = [{} for _ in range(9)]
-
     dp[1] = {N}
+
     if number == N:
         return 1
 

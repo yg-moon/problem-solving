@@ -2,6 +2,7 @@ INF = int(1e9)
 
 
 def solution(n, results):
+    # INF로 채우고 시작
     graph = [[INF] * (n + 1) for _ in range(n + 1)]
 
     # 자기자신에게 가는 비용은 0

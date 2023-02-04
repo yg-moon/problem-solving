@@ -1,12 +1,10 @@
 # 한글자만 바꿔서 변환 가능한지 체크: 두 문자열에서 다른 문자가 정확히 1개인 경우
-def changeable(word_1, word_2):
-    diff_cnt = 0
+def is_changeable(word_1, word_2):
+    diff = 0
     for i in range(len(word_1)):
         if word_1[i] != word_2[i]:
-            diff_cnt += 1
-        if diff_cnt == 2:
-            return False
-    return True
+            diff += 1
+    return diff == 1
 
 
 def solution(begin, target, words):
@@ -17,12 +15,12 @@ def solution(begin, target, words):
     min_step = int(1e9)
     visited = set()
 
-    def dfs(curr, step):
-        if curr == target:
+    def dfs(cur, step):
+        if cur == target:
             nonlocal min_step
             min_step = min(min_step, step)
         for word in words:
-            if word not in visited and changeable(curr, word):
+            if word not in visited and is_changeable(cur, word):
                 visited.add(word)
                 dfs(word, step + 1)
                 visited.remove(word)

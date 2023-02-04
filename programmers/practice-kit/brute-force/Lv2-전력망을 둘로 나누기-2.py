@@ -1,18 +1,15 @@
-from collections import defaultdict
-
-
-def dfs(start, visited):
+def dfs(cur, visited):
     global cnt
-    visited.add(start)
+    visited.add(cur)
     cnt += 1
-    for i in tree[start]:
+    for i in tree[cur]:
         if i not in visited:
             dfs(i, visited)
 
 
 def solution(n, wires):
     global tree, cnt
-    tree = defaultdict(list)
+    tree = [[] for _ in range(n + 1)]
     answer = int(1e9)
 
     # 그래프 구축

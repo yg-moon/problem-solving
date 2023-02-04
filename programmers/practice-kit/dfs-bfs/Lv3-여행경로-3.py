@@ -7,7 +7,9 @@ def solution(tickets):
     for src, dst in sorted(tickets):
         graph[src].append(dst)
 
-    route, stack = [], ["ICN"]
+    route = []
+    stack = ["ICN"]
+
     while stack:
         # 현재 스택의 끝 공항에서 갈 수 있는 도착점을 하나 뽑아서 또 스택에 추가.
         while graph[stack[-1]]:

@@ -1,5 +1,5 @@
 def solution(word):
-    alphas = ["A", "E", "I", "O", "U", ""]
+    alphas = ["", "A", "E", "I", "O", "U"]
     words = set()
 
     # 주의: 이렇게 만들면 첫 단어는 빈 문자열

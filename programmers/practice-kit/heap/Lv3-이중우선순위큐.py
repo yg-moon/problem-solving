@@ -17,16 +17,16 @@ def solution(operations):
         elif cmd == "D":
             if cur_len == 0:
                 continue
-            elif num == 1:
-                while max_heap:
-                    _, shared_obj = heapq.heappop(max_heap)
+            elif num == -1:
+                while min_heap:
+                    shared_obj = heapq.heappop(min_heap)
                     if shared_obj[1]:
                         shared_obj[1] = False
                         cur_len -= 1
                         break
-            elif num == -1:
-                while min_heap:
-                    shared_obj = heapq.heappop(min_heap)
+            elif num == 1:
+                while max_heap:
+                    _, shared_obj = heapq.heappop(max_heap)
                     if shared_obj[1]:
                         shared_obj[1] = False
                         cur_len -= 1

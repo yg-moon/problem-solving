@@ -1,5 +1,5 @@
-from collections import defaultdict
 import heapq
+from collections import defaultdict
 
 INF = int(1e9)
 
@@ -22,12 +22,12 @@ def solution(n, edge):
             continue
         for v, w in graph[node]:
             alt = dist[node] + w
-            if alt < dist[v]:
+            if dist[v] > alt:
                 dist[v] = alt
                 heapq.heappush(q, (alt, v))
 
-    vals = list(dist.values())
-    return vals.count(max(vals))
+    result = list(dist.values())
+    return result.count(max(result))
 
 
 """

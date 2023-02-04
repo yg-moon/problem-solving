@@ -15,13 +15,13 @@ def solution(n, edge):
     q = deque([1])
     while q:
         cur = q.popleft()
-        for next in graph[cur]:
-            if dist[next] == -1:
-                dist[next] = dist[cur] + 1
-                q.append(next)
+        for nxt in graph[cur]:
+            if dist[nxt] == -1:
+                dist[nxt] = dist[cur] + 1
+                q.append(nxt)
 
-    vals = list(dist.values())
-    return vals.count(max(vals))
+    result = list(dist.values())
+    return result.count(max(result))
 
 
 """
