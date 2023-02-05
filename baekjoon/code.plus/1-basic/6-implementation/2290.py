@@ -66,7 +66,6 @@ for row in screen:
         print(c, end="")
     print()
 
-
 """
 - 요약: 주어진 그대로 구현
 - 구현

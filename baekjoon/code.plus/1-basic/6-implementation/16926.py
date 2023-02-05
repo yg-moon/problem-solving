@@ -1,7 +1,7 @@
 # 배열 돌리기 1
 N, M, R = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
-dir = [(1, 0), (0, 1), (-1, 0), (0, -1)]  # D R U L
+dirs = [(1, 0), (0, 1), (-1, 0), (0, -1)]  # D R U L
 
 
 def rotate(arr):
@@ -10,27 +10,27 @@ def rotate(arr):
     ret = [[0] * c for _ in range(r)]
     visited = [[False] * c for _ in range(r)]
 
-    # 시작점: i == j 중에, 행과 열의 절반을 넘지 않는 좌표까지.
+    # 시작점: i == j 중에, 행과 열의 절반을 넘지 않는 좌표까지
     starts = [(0, 0)]
     max_start = min(r // 2 - 1, c // 2 - 1)
     if max_start >= 1:
         for i in range(1, max_start + 1):
             starts.append((i, i))
 
+    # 매번 왼쪽 위를 시작점으로 잡고, 바깥쪽부터 한줄씩 회전시키기
     for start in starts:
         x, y = start
-        curr_dir = 0
-        stop = False
-        while not stop:
-            nx, ny = x + dir[curr_dir][0], y + dir[curr_dir][1]
+        cur_dir = 0
+        while True:
+            nx, ny = x + dirs[cur_dir][0], y + dirs[cur_dir][1]
             if 0 <= nx < r and 0 <= ny < c and not visited[nx][ny]:
                 ret[nx][ny] = arr[x][y]
                 visited[nx][ny] = True
                 x, y = nx, ny
             else:
-                curr_dir += 1
-                if curr_dir == 4:
-                    stop = True
+                cur_dir += 1
+                if cur_dir == 4:
+                    break
 
     return ret
 

@@ -21,6 +21,7 @@ def check_line(line):
         elif line[i] > line[i - 1]:
             for j in range(L):
                 # 범위 넘어감 or 높이가 다름 or 이미 설치했을 경우, 종료
+                # 주의: 모든 작업을 현재 위치가 아니라 한칸 왼쪽(-1)에서 해야함
                 if i - j - 1 < 0 or line[i - 1] != line[i - j - 1] or slope[i - j - 1]:
                     return False
                 # 경사로 설치

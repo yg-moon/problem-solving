@@ -1,7 +1,7 @@
 # 배열 돌리기 2
 N, M, R = map(int, input().split())
 arr = [list(map(int, input().split())) for _ in range(N)]
-dir = [(1, 0), (0, 1), (-1, 0), (0, -1)]  # D R U L
+dirs = [(1, 0), (0, 1), (-1, 0), (0, -1)]  # D R U L
 
 
 def rotate(arr):
@@ -19,23 +19,20 @@ def rotate(arr):
 
     for start in starts:
         x, y = start
-        curr_dir = 0
-        stop = False
-
+        cur_dir = 0
         # 바깥쪽부터 한줄씩 떼어내기
         shell = []  # [[(좌표 정보1), 값1], ...]
-        while not stop:
-            nx, ny = x + dir[curr_dir][0], y + dir[curr_dir][1]
+        while True:
+            nx, ny = x + dirs[cur_dir][0], y + dirs[cur_dir][1]
             if 0 <= nx < r and 0 <= ny < c and not visited[nx][ny]:
                 shell.append([(x, y), arr[x][y]])
                 ret[nx][ny] = arr[x][y]
                 visited[nx][ny] = True
                 x, y = nx, ny
             else:
-                curr_dir += 1
-                if curr_dir == 4:
-                    stop = True
-
+                cur_dir += 1
+                if cur_dir == 4:
+                    break
         # R번 밀어낸 이후의 상태를 계산
         values_after_rotation = [0] * len(shell)
         for i in range(len(shell)):

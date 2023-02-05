@@ -33,6 +33,7 @@ while not done:
                 moved = True
                 break
             # 2-2
+            # 주의: 방향전환은 항상 해주어야 함
             d = nd
 
         if not moved:

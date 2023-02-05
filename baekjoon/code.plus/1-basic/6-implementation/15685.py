@@ -10,15 +10,15 @@ for x, y, d, g in dragons:
     graph[x][y] = 1
 
     # 모든 선분의 방향 구하기
-    directions = [d]
+    dirs = [d]
     for _ in range(g):
-        for i in reversed(range(len(directions))):
-            directions.append((directions[i] + 1) % 4)
+        for i in reversed(range(len(dirs))):
+            dirs.append((dirs[i] + 1) % 4)
 
     # 드래곤 커브 그리기
-    for i in directions:
-        nx = x + dx[i]
-        ny = y + dy[i]
+    for dir in dirs:
+        nx = x + dx[dir]
+        ny = y + dy[dir]
         graph[nx][ny] = 1
         x, y = nx, ny
 

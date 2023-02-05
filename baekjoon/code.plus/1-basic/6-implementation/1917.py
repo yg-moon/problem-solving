@@ -42,6 +42,7 @@ def check_point(x, y, figure):
     return True
 
 
+# 하나의 전개도에 대해 확인
 def check_figure(figure):
     for i in range(6):
         for j in range(6):
@@ -51,6 +52,7 @@ def check_figure(figure):
     return True
 
 
+# 모든 전개도를 4방향으로 돌려가면서 확인
 for figure in figures:
     is_possible = True
     for _ in range(4):

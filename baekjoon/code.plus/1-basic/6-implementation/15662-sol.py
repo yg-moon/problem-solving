@@ -1,4 +1,5 @@
 # 톱니바퀴 (2)
+# 출처: https://velog.io/@i_am_developer/백준python15662-톱니바퀴2
 from collections import deque
 
 T = int(input())
@@ -29,10 +30,10 @@ def rotate_gears(gear_num, dir):
             break
 
 
-for gear_num, dir in cmds:
-    cur_left, cur_right = gears[gear_num][6], gears[gear_num][2]
-    gears[gear_num].rotate(dir)
-    rotate_gears(gear_num, dir)
+for num, dir in cmds:
+    cur_left, cur_right = gears[num][6], gears[num][2]
+    gears[num].rotate(dir)
+    rotate_gears(num, dir)
 
 answer = 0
 for i in range(1, T + 1):
@@ -41,5 +42,9 @@ for i in range(1, T + 1):
 print(answer)
 
 """
-출처: https://velog.io/@i_am_developer/백준python15662-톱니바퀴2
+- 구현
+    - 현재 톱니바퀴의 왼쪽 이빨, 오른쪽 이빨을 글로벌 변수로 선언해두고 추적한다.
+    - 현재 톱니바퀴에서 출발하여
+        - 왼쪽으로 쭉 진행하며 톱니를 돌리며, 왼쪽 이빨과 회전 방향을 갱신한다.
+        - 오른쪽으로 쭉 진행하며 톱니를 돌리며, 오른쪽 이빨과 회전 방향을 갱신한다.
 """

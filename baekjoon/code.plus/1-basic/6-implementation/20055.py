@@ -48,6 +48,7 @@ def simulate():
 
 
 simulate()
+
 print(steps)
 
 """

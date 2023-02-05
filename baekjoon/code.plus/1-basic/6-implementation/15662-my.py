@@ -5,21 +5,12 @@ gears = [0] + gears  # 1-index
 K = int(input())
 cmds = [list(map(int, input().split())) for _ in range(K)]
 
-N = 0
-S = 1
-CLOCK = 1
-ANTI_CLOCK = -1
-
 # 톱니바퀴 하나를 회전
 def rotate(gear, dir):
-    rotated_gear = [0] * 8
-    if dir == CLOCK:
-        for i in range(8):
-            rotated_gear[(i + 1) % 8] = gear[i]
-    elif dir == ANTI_CLOCK:
-        for i in range(8):
-            rotated_gear[(i - 1) % 8] = gear[i]
-    return rotated_gear
+    new_gear = [0] * 8
+    for i in range(8):
+        new_gear[(i + dir) % 8] = gear[i]
+    return new_gear
 
 
 # 시작점부터 왼쪽으로 진행
@@ -42,7 +33,7 @@ def check_left(cmd):
 
 
 # 시작점부터 오른쪽으로 진행
-def check_right(target):
+def check_right(cmd):
     target, dir = cmd
     num_and_dir = set()
     cur = target
@@ -63,7 +54,7 @@ def check_right(target):
 # 모든 톱니바퀴를 회전
 def run_cmd(gears, cmd):
     new_gears = gears[:]
-    # 주의: 일단 자기 자신은 무조건 돌려야한다!
+    # 주의: 일단 자기 자신은 무조건 돌려야 함!
     gears_to_rotate = set([(cmd[0], cmd[1])])  # {[톱니번호1, 방향1], ...}
     # 입력값이 처음 톱니바퀴가 아닐때만 왼쪽으로 진행
     if cmd[0] != 1:
@@ -71,18 +62,17 @@ def run_cmd(gears, cmd):
     # 입력값이 마지막 톱니바퀴가 아닐때만 오른쪽으로 진행
     if cmd[0] != T:
         gears_to_rotate.update(check_right(cmd))
-    for gear, dir in gears_to_rotate:
-        new_gears[gear] = rotate(gears[gear], dir)
+    for num, dir in gears_to_rotate:
+        new_gears[num] = rotate(gears[num], dir)
     return new_gears
 
 
 for cmd in cmds:
     gears = run_cmd(gears, cmd)
 
-
 answer = 0
 for i in range(1, T + 1):
-    if gears[i][0] == S:
+    if gears[i][0] == 1:
         answer += 1
 print(answer)
 

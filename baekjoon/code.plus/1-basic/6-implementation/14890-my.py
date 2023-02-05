@@ -13,7 +13,8 @@ for i in range(N):
         if abs(cur_num - board[i][j]) >= 2:
             possible = False
             break
-        # 더 큰게 나올 경우
+        # 오른쪽이 1 높은 경우
+        # 왼쪽의 숫자 개수 >= L 이면 가능 (아니면 불가능)
         elif cur_num - board[i][j] == -1:
             tmp_cnt = 0
             tmp_j = j - 1
@@ -35,7 +36,8 @@ for i in range(N):
             else:
                 possible = False
                 break
-        # 더 작은게 나올 경우
+        # 오른쪽이 1 낮은 경우
+        # 오른쪽의 숫자 개수 >= L 이면 가능 (아니면 불가능)
         elif cur_num - board[i][j] == 1:
             tmp_cnt = 0
             tmp_j = j  # 주의: 여기는 j+1 아님

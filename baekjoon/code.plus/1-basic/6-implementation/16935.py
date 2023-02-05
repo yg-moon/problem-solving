@@ -47,16 +47,16 @@ def op5(arr):
     ret = [[0] * col_cnt for _ in range(row_cnt)]
     for i in range(row_cnt):
         for j in range(col_cnt):
-            # 1사분면
+            # 그룹1
             if i < row_half and j < col_half:
                 ret[i][j + col_half] = arr[i][j]
-            # 2사분면
+            # 그룹2
             elif i < row_half and j >= col_half:
                 ret[i + row_half][j] = arr[i][j]
-            # 3사분면
+            # 그룹3
             elif i >= row_half and j >= col_half:
                 ret[i][j - col_half] = arr[i][j]
-            # 4사분면
+            # 그룹4
             elif i >= row_half and j < col_half:
                 ret[i - row_half][j] = arr[i][j]
     return ret
@@ -72,16 +72,16 @@ def op6(arr):
     ret = [[0] * col_cnt for _ in range(row_cnt)]
     for i in range(row_cnt):
         for j in range(col_cnt):
-            # 1사분면
+            # 그룹1
             if i < row_half and j < col_half:
                 ret[i + row_half][j] = arr[i][j]
-            # 2사분면
+            # 그룹2
             elif i < row_half and j >= col_half:
                 ret[i][j - col_half] = arr[i][j]
-            # 3사분면
+            # 그룹3
             elif i >= row_half and j >= col_half:
                 ret[i - row_half][j] = arr[i][j]
-            # 4사분면
+            # 그룹4
             elif i >= row_half and j < col_half:
                 ret[i][j + col_half] = arr[i][j]
     return ret
