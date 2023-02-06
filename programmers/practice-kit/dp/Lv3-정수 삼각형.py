@@ -1,10 +1,10 @@
 def solution(triangle):
     for i in range(1, len(triangle)):
         for j in range(len(triangle[i])):
-            # 첫 행
+            # 첫 열
             if j == 0:
                 triangle[i][j] += triangle[i - 1][j]
-            # 마지막 행
+            # 마지막 열
             elif j == len(triangle[i]) - 1:
                 triangle[i][j] += triangle[i - 1][j - 1]
             # 나머지
