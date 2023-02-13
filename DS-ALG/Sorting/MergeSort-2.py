@@ -1,29 +1,29 @@
-def mergeSort(A, start, end):
-    if start < end:
-        mid = start + (end - start) // 2
-        mergeSort(A, start, mid)
-        mergeSort(A, mid + 1, end)
-        merge(A, start, mid, end)
+def mergeSort(A, l, r):
+    if l < r:
+        mid = l + (r - l) // 2
+        mergeSort(A, l, mid)
+        mergeSort(A, mid + 1, r)
+        merge(A, l, mid, r)
 
 
-def merge(A, start, mid, end):
-    l_size = mid - start + 1
-    r_size = end - mid
+def merge(A, l, mid, r):
+    l_size = mid - l + 1
+    r_size = r - mid
 
     # L, R 채우기
-    L = [0] * l_size  # 배열처럼 쓰려면 이렇게 미리 초기화 해야 함.
+    L = [0] * l_size
     R = [0] * r_size
     for i in range(l_size):
-        L[i] = A[start + i]
+        L[i] = A[l + i]
     for i in range(r_size):
         R[i] = A[mid + 1 + i]
 
     # 값 비교해가며 merge
     i = 0
     j = 0
-    k = start
+    k = l
 
-    while i < l_size and j < r_size:  # 포함 여부 조심!
+    while i < l_size and j < r_size:  # 주의: 포함 여부 조심!
         if L[i] <= R[j]:
             A[k] = L[i]
             i += 1
@@ -67,4 +67,4 @@ if __name__ == "__main__":
 #   - 오버플로우 방지를 위해 mid = start + (end - start) // 2 로 구한다. (오버플로우 방지)
 #
 # - 디버깅
-#   - 개 멍청했다. R[j] 이어야 하는 부분을 코드 고치다가 L[j] 로 써놨다.
+#   - 멍청했다. R[j] 이어야 하는 부분을 코드 고치다가 L[j] 로 써놨다.
