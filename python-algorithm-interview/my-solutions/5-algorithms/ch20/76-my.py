@@ -1,5 +1,4 @@
-# Time Limit Exceeded at 265/266 test case.
-import collections
+from collections import Counter
 
 
 class Solution:
@@ -8,8 +7,8 @@ class Solution:
         if len(s) < len(t):
             return ""
 
-        def isSubstring(s: str) -> bool:
-            s_cnt = collections.Counter(s)
+        def isSubstring(s):
+            s_cnt = Counter(s)
             for c in t:
                 if c not in s_cnt or s_cnt[c] == 0:
                     return False
@@ -24,3 +23,6 @@ class Solution:
                     return "".join(window)
 
         return ""
+
+
+# TLE
