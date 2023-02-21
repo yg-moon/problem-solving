@@ -14,10 +14,10 @@ def solve(i, j, n):
             answer[i + 2][j - k] = "*"
     # 아닐 경우, 절반 크기의 삼각형 3개로 분할하여 재귀호출
     else:
-        half_n = n // 2
-        solve(i, j, half_n)
-        solve(i + half_n, j - half_n, half_n)
-        solve(i + half_n, j + half_n, half_n)
+        half = n // 2
+        solve(i, j, half)
+        solve(i + half, j - half, half)
+        solve(i + half, j + half, half)
 
 
 solve(0, N - 1, N)
@@ -27,7 +27,7 @@ for row in answer:
 
 """
 - 난이도: 골드4
-- 분류: 재귀
+- 분류: 분할정복
 
 핵심
 - 전체 배열 크기는 N x 2N 이다.
