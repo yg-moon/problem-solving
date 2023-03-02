@@ -27,6 +27,7 @@ for _ in range(E):
 # 간선을 비용순으로 정렬
 edges.sort()
 
+# 모든 간선을 확인하며
 for edge in edges:
     cost, a, b = edge
     # 사이클이 발생하지 않는 경우에만 MST에 포함 (union)

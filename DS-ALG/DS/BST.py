@@ -1,119 +1,93 @@
-# Python program to demonstrate delete operation
-# in binary search tree
-
-# A Binary Tree Node
-
-
+# BST
 class Node:
-
-	# Constructor to create a new node
-	def __init__(self, key):
-		self.key = key
-		self.left = None
-		self.right = None
+    def __init__(self, key):
+        self.key = key
+        self.left = None
+        self.right = None
 
 
-# A utility function to do inorder traversal of BST
-def inorder(root):
-	if root is not None:
-		inorder(root.left)
-		print(root.key)
-		inorder(root.right)
+def inorder(node):
+    if node:
+        inorder(node.left)
+        print(node.key)
+        inorder(node.right)
 
 
-# A utility function to insert a
-# new node with given key in BST
+def search(node, key):
+    if not node or node.key == key:
+        return node
+    # 찾으려는 값이 더 작으면 왼쪽, 더 크면 오른쪽으로 내려감 (재귀적으로)
+    if key < node.key:
+        return search(node.left, key)
+    else:
+        return search(node.right, key)
+
+
 def insert(node, key):
-
-	# If the tree is empty, return a new node
-	if node is None:
-		return Node(key)
-
-	# Otherwise recur down the tree
-	if key < node.key:
-		node.left = insert(node.left, key)
-	else:
-		node.right = insert(node.right, key)
-
-	# return the (unchanged) node pointer
-	return node
-
-# Given a non-empty binary
-# search tree, return the node
-# with minum key value
-# found in that tree. Note that the
-# entire tree does not need to be searched
+    # 빈 트리의 경우 새로운 노드를 리턴
+    if not node:
+        return Node(key)
+    # 삽입하려는 값이 더 작으면 왼쪽 서브트리에서 재귀
+    if key < node.key:
+        node.left = insert(node.left, key)
+    # 삽입하려는 값이 더 크면 오른쪽 서브트리에서 재귀
+    else:
+        node.right = insert(node.right, key)
+    # 입력으로 받은 (루트)노드를 그대로 리턴
+    return node
 
 
-def minValueNode(node):
-	current = node
-
-	# loop down to find the leftmost leaf
-	while(current.left is not None):
-		current = current.left
-
-	return current
-
-# Given a binary search tree and a key, this function
-# delete the key and returns the new root
+def min_val(node):
+    cur = node
+    # 왼쪽 끝까지 내려가서 가장 작은 노드를 찾음
+    while cur.left:
+        cur = cur.left
+    return cur
 
 
-def deleteNode(root, key):
+def delete(node, key):
+    # Base Case
+    if not node:
+        return node
+    # 삭제하려는 값이 더 작으면 왼쪽 서브트리에서 재귀
+    if key < node.key:
+        node.left = delete(node.left, key)
+    # 삭제하려는 값이 더 크면 오른쪽 서브트리에서 재귀
+    elif key > node.key:
+        node.right = delete(node.right, key)
+    # 값이 일치하면 현재 노드를 삭제
+    else:
+        # 자식이 1개 또는 0개인 경우
+        if not node.left:
+            temp = node.right
+            node = None
+            return temp
+        elif not node.right:
+            temp = node.left
+            node = None
+            return temp
 
-	# Base Case
-	if root is None:
-		return root
+        # 자식이 2개인 경우
+        # Get the inorder successor (smallest in the right subtree)
+        temp = min_val(node.right)
+        # Copy the inorder successor's content to current node
+        node.key = temp.key
+        # Delete the inorder successor
+        node.right = delete(node.right, temp.key)
 
-	# If the key to be deleted
-	# is smaller than the root's
-	# key then it lies in left subtree
-	if key < root.key:
-		root.left = deleteNode(root.left, key)
-
-	# If the key to be delete
-	# is greater than the root's key
-	# then it lies in right subtree
-	elif key > root.key:
-		root.right = deleteNode(root.right, key)
-
-	# If key is same as root's key, then this is the node
-	# to be deleted
-	else:
-
-		# Node with only one child or no child
-		if root.left is None:
-			temp = root.right
-			root = None
-			return temp
-
-		elif root.right is None:
-			temp = root.left
-			root = None
-			return temp
-
-		# Node with two children:
-		# Get the inorder successor
-		# (smallest in the right subtree)
-		temp = minValueNode(root.right)
-
-		# Copy the inorder successor's
-		# content to this node
-		root.key = temp.key
-
-		# Delete the inorder successor
-		root.right = deleteNode(root.right, temp.key)
-
-	return root
+    # 입력으로 받은 (루트)노드를 그대로 리턴
+    return node
 
 
 # Driver code
-""" Let us create following BST
+""" 
+Let's create the following BST
 		  50
 		/	 \
-		30	 70
-		/ \ / \
-	20 40 60 80 """
-
+	  30	 70
+      / \    / \
+	20  40  60  80
+"""
 root = None
 root = insert(root, 50)
 root = insert(root, 30)
@@ -123,30 +97,26 @@ root = insert(root, 70)
 root = insert(root, 60)
 root = insert(root, 80)
 
-print ("Inorder traversal of the given tree")
+print("Inorder traversal of the given tree")
 inorder(root)
+print()
 
-print ("\nDelete 20")
-root = deleteNode(root, 20)
-print ("Inorder traversal of the modified tree")
+print("Delete 20")
+root = delete(root, 20)
+print("Inorder traversal of the modified tree")
 inorder(root)
+print()
 
-print ("\nDelete 30")
-root = deleteNode(root, 30)
-print ("Inorder traversal of the modified tree")
+print("Delete 30")
+root = delete(root, 30)
+print("Inorder traversal of the modified tree")
 inorder(root)
+print()
 
-print ("\nDelete 50")
-root = deleteNode(root, 50)
-print ("Inorder traversal of the modified tree")
+print("Delete 50")
+root = delete(root, 50)
+print("Inorder traversal of the modified tree")
 inorder(root)
+print()
 
-# This code is contributed by Nikhil Kumar Singh(nickzuck_007)
-
-# - BST insert, delete 배운거 다 들어있음.
-#
-#   - insert: 최종 동작이 return node 로 충분함을 이해했음.
-#     - 그 위의 코드에서 root.left 또는 root.right 가 = insertNode() 이기 때문에.
-#
-#   - delete: 0 or 1 child에서 return temp 이어야 함을 이해했음. (그림+코드)
-#     - 그 위의 코드에서 root.left 또는 root.right 가 = deleteNode() 이기 때문에.
+# 원본 출처: https://www.geeksforgeeks.org/deletion-in-binary-search-tree/

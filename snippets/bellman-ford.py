@@ -15,12 +15,12 @@ for _ in range(M):
 def bellman_ford(start):
     dist[start] = 0
     for i in range(N):  # n번 반복
-        for edge in edges:  # 매 반복 마다 모든 간선 확인
+        for edge in edges:  # 매 반복마다 모든 간선을 확인
             cur, nxt, cost = edge
-            # 현재 간선을 거쳐서 이동하는 거리가 더 짧은 경우 갱신
+            # 현재 간선을 거치는게 더 짧으면 갱신
             if dist[cur] != INF and dist[nxt] > dist[cur] + cost:
                 dist[nxt] = dist[cur] + cost
-                # n번째 반복에서도 값이 갱신된다면 음수 순환이 존재
+                # n번째 반복에서도 값이 갱신되면 negative cycle이 존재
                 if i == N - 1:
                     return True
     return False
