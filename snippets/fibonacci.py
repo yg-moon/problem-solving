@@ -27,7 +27,6 @@ dp_bu = [0] * 50
 
 
 def fib3(n):
-    dp_bu[0] = 0
     dp_bu[1] = 1
     for i in range(2, n + 1):
         dp_bu[i] = dp_bu[i - 1] + dp_bu[i - 2]
