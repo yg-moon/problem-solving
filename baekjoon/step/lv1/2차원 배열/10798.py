@@ -7,11 +7,9 @@ for i in range(5):
         arr[i][j] = c
 
 answer = ""
-
 for j in range(15):
     for i in range(5):
         answer += arr[i][j]
-
 print(answer)
 
 """

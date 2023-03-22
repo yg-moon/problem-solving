@@ -2,7 +2,7 @@
 # 출처: https://pacific-ocean.tistory.com/207
 N, K = map(int, input().split())
 
-dp = [[0] * 1 for _ in range(1002)]
+dp = [[0] for _ in range(1002)]
 dp[1].append(1)
 
 for i in range(2, 1002):

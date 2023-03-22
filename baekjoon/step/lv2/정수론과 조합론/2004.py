@@ -11,12 +11,10 @@ def count(n, k):
     return cnt
 
 
-# nCm = n! / ((n-m)! * m!)
+# nCr = n! / ((n-r)! * r!)
 two_cnt = count(n, 2) - count(n - m, 2) - count(m, 2)
 five_cnt = count(n, 5) - count(n - m, 5) - count(m, 5)
-
-answer = min(two_cnt, five_cnt)
-print(answer)
+print(min(two_cnt, five_cnt))
 
 """
 - 난이도: 실버2
