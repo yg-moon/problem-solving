@@ -3,11 +3,11 @@
 n, m = map(int, input().split())
 
 
-def count(n, k):
+def count(num, div):
     cnt = 0
-    while n:
-        n //= k
-        cnt += n
+    while num > 0:
+        num //= div
+        cnt += num
     return cnt
 
 
@@ -19,6 +19,15 @@ print(min(two_cnt, five_cnt))
 """
 - 난이도: 실버2
 - 분류: 조합론
+
+로직 해설
+- ex. 8!에서 2는 7번 등장한다.
+- 구하는 방법:
+    - 2의 배수의 개수를 구함 8//2 = 4
+    - 제곱수의 개수를 구함 8//(2*2) = 2
+    - 세제곱수의 개수를 구함 8//(2*2*2) = 1
+    - 4+2+1 = 7
+- 설명 출처: https://tmdrl5779.tistory.com/95
 
 핵심
 - 끝자리가 0이라는 것은 10의 배수
