@@ -4,7 +4,7 @@ N = int(input())
 arr = list(map(int, input().split()))
 
 LIS = [1] * N  # 가장 긴 증가하는 부분 수열
-LDS = [1] * N  # 가장 긴 감소하는 부분 수열
+LDS2 = [1] * N  # 현재 수'부터' 가능한 가장 긴 감소하는 부분 수열 (원래 LDS는 현재 수'까지')
 LBS = [0] * N  # 가장 긴 바이토닉 부분 수열
 
 # LIS
@@ -19,13 +19,13 @@ arr.reverse()
 for i in range(N):
     for j in range(i):
         if arr[j] < arr[i]:
-            LDS[i] = max(LDS[i], LDS[j] + 1)
-LDS.reverse()
+            LDS2[i] = max(LDS2[i], LDS2[j] + 1)
+LDS2.reverse()
 
 # LBS
 # 가장 큰 원소를 중복해서 더했으므로 결과에 -1
 for i in range(N):
-    LBS[i] = LIS[i] + LDS[i] - 1
+    LBS[i] = LIS[i] + LDS2[i] - 1
 
 print(max(LBS))
 
