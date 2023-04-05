@@ -13,22 +13,22 @@ for _ in range(E):
 
 
 def topo_sort():
-    Q = deque()
+    q = deque()
     # 진입차수가 0인 노드를 큐에 넣고 시작
     for i in range(1, V + 1):
         if indegree[i] == 0:
-            Q.append(i)
+            q.append(i)
     # 큐가 빌 때까지 다음을 반복
-    while Q:
-        cur = Q.popleft()
+    while q:
+        cur = q.popleft()
         # 큐에서 꺼낸 순서가 위상정렬의 결과
         result.append(cur)
         # 큐에서 원소를 꺼내, 해당 노드에서 출발하는 모든 간선을 그래프에서 제거
-        for i in graph[cur]:
-            indegree[i] -= 1
+        for nxt in graph[cur]:
+            indegree[nxt] -= 1
             # 다시 진입차수가 0인 노드를 큐에 넣음
-            if indegree[i] == 0:
-                Q.append(i)
+            if indegree[nxt] == 0:
+                q.append(nxt)
 
 
 topo_sort()
