@@ -18,6 +18,7 @@ for i in range(ord("a"), ord("z") + 1):
         dic[alp].append(csum)
 
 q = int(input())
+
 for _ in range(q):
     ch, l, r = input().split()
     l = int(l) + 1  # 팁: 구간합은 1-idx 기준

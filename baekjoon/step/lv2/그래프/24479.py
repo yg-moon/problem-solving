@@ -6,7 +6,6 @@ sys.setrecursionlimit(10**6)
 input = sys.stdin.readline
 
 graph = defaultdict(list)
-
 N, M, R = map(int, input().split())
 for _ in range(M):
     u, v = map(int, input().split())
@@ -18,11 +17,9 @@ for _ in range(M):
 for key in graph:
     graph[key].sort()
 
-# 방문순서를 기록
+# 핵심: 배열을 통해 방문여부와 방문순서를 한번에 기록
 visited = [-1] * (N + 1)
-
-# 방문순서는 전역변수로 관리
-cnt = 1
+cnt = 1  # 방문순서
 
 
 def dfs(x):

@@ -38,7 +38,7 @@ print(top * power(bot, P - 2) % P)
 2. 페르마의 소정리
     - a^p ≡ a (mod p)
     -> a^p-2 ≡ a^-1 (mod p)
-3. 따라서
+3. 결론
     - nCk % p
     -> n!((n-k)!k!)^-1 % p 
     -> n!((n-k)!k!)^(p-2) % p 

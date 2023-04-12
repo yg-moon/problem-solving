@@ -1,15 +1,14 @@
 # 부분합
-INF = int(1e9)
-
 N, S = map(int, input().split())
 arr = [0] + list(map(int, input().split()))  # 누적합을 위해 1-idx 맞춰주기
-psum = [0] * (N + 1)
 
+psum = [0] * (N + 1)
 for i in range(1, N + 1):
     psum[i] = psum[i - 1] + arr[i]
 
 l = 1
-r = 1  # 주의1: 맨 처음에 정답이 존재할 수 있으므로 r=2 가 아님
+r = 1  # 주의1: 처음에 정답이 존재할 수 있으므로 r=2 가 아님
+INF = int(1e9)
 min_len = INF
 
 while l <= r and r <= N:  # 주의2: 길이가 1인것도 세야 하므로 l<r 가 아님

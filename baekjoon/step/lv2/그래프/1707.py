@@ -37,11 +37,11 @@ for _ in range(K):
     # 모든 노드에 대해, 미방문인 경우 BFS 수행
     for i in range(1, V + 1):
         if visited[i] == 0:
-            result = bfs(i, 1)
-            if not result:
+            is_bipartite = bfs(i, 1)
+            if not is_bipartite:
                 break
 
-    print("YES" if result else "NO")
+    print("YES" if is_bipartite else "NO")
 
 """
 - 난이도: 골드4

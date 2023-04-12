@@ -3,8 +3,8 @@ arr = [[""] * 15 for _ in range(5)]
 
 for i in range(5):
     s = input()
-    for j, c in enumerate(s):
-        arr[i][j] = c
+    for j, char in enumerate(s):
+        arr[i][j] = char
 
 answer = ""
 for j in range(15):

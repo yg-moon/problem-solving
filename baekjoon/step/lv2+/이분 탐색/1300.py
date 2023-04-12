@@ -2,16 +2,18 @@
 # 출처: https://claude-u.tistory.com/449
 N = int(input())
 K = int(input())
+
 start = 1
 end = K  # K번째 수는 K보다 클 수 없으므로
 
 while start <= end:
     mid = (start + end) // 2
-    # (설명 참고)
+
     cnt = 0
     for i in range(1, N + 1):
-        cnt += min(mid // i, N)
-    # 여유가 있으면 정답을 저장하고, 범위를 줄임
+        cnt += min(mid // i, N)  # (설명 참고)
+
+    # 곱의 개수가 충분하면 mid를 더 줄여봄
     if cnt >= K:
         answer = mid
         end = mid - 1

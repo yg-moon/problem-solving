@@ -19,8 +19,9 @@ gcd = diffs[0]
 for d in diffs:
     gcd = math.gcd(gcd, d)
 
-# 전체간격을 gcd로 나누어 더 심을 가로수 파악
-print((arr[-1] - arr[0]) // gcd + 1 - N)
+# 전체간격을 gcd로 나누어 필요한 총 가로수 구하기
+# 더 심을 가로수 = 총 가로수 - 이미 심어진 가로수
+print(((arr[-1] - arr[0]) // gcd) + 1 - N)
 
 """
 - 난이도: 실버4

@@ -1,8 +1,4 @@
 # 별 찍기 - 10
-N = int(input())
-answer = [[" "] * N for _ in range(N)]
-
-
 def solve(i, j, n):
     # n == 3 이면 기본패턴을 출력
     # (i,j)는 현재 좌상단의 좌표
@@ -19,6 +15,9 @@ def solve(i, j, n):
                 if not (x == 1 and y == 1):
                     solve(i + third * x, j + third * y, third)
 
+
+N = int(input())
+answer = [[" "] * N for _ in range(N)]
 
 solve(0, 0, N)
 

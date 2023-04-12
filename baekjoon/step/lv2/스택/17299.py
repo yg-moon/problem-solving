@@ -10,6 +10,7 @@ for a in A:
 
 stack = []
 answer = [-1] * N
+
 for i in range(N):
     while stack and F[A[stack[-1]]] < F[A[i]]:
         answer[stack.pop()] = A[i]

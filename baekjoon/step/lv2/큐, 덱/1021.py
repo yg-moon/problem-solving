@@ -5,6 +5,7 @@ from collections import deque
 
 N, M = map(int, input().split())
 targets = list(map(int, input().split()))
+
 q = deque(range(1, N + 1))
 answer = 0
 

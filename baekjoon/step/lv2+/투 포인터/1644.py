@@ -13,8 +13,8 @@ def prime_list(n):
 
 N = int(input())
 arr = [0] + prime_list(N)
-psum = [0] * len(arr)
 
+psum = [0] * len(arr)
 for i in range(1, len(psum)):
     psum[i] = psum[i - 1] + arr[i]
 
@@ -23,12 +23,15 @@ answer = 0
 
 while l <= r and r < len(psum):
     cur_sum = psum[r] - psum[l - 1]
+
+    # 답을 찾았으면 정답+1
     if cur_sum == N:
         answer += 1
-    # 구간합이 N 미만이면 r을 올림
-    if cur_sum < N:
+
+    # 구간합이 N 이하면 r을 올림
+    if cur_sum <= N:
         r += 1
-    # 구간합이 N 이상이면 l을 올림
+    # 구간합이 N 초과면 l을 올림
     else:
         l += 1
 

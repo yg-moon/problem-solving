@@ -4,25 +4,25 @@
 N = int(input())
 A = list(map(int, input().split()))
 
-LIS = [0]
+lis = [0]
 
 for a in A:
     # 마지막 값보다 크면 append
-    if LIS[-1] < a:
-        LIS.append(a)
+    if lis[-1] < a:
+        lis.append(a)
     # 아니라면 적절한 위치에 이분탐색으로 삽입
     else:
         left = 0
-        right = len(LIS)  # 주의: len(LIS)-1 아님
+        right = len(lis)  # 주의: len(LIS)-1 아님
         while left < right:  # 주의: 등호 없음
             mid = (right + left) // 2
-            if LIS[mid] < a:
+            if lis[mid] < a:
                 left = mid + 1
             else:
                 right = mid  # 주의: mid-1 아님
-        LIS[right] = a
+        lis[right] = a
 
-print(len(LIS) - 1)
+print(len(lis) - 1)
 
 """
 - 난이도: 골드2

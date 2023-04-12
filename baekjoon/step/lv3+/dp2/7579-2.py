@@ -3,10 +3,11 @@
 N, M = map(int, input().split())
 memory = list(map(int, input().split()))
 cost = list(map(int, input().split()))
+
 sum_costs = sum(cost)
 
 # dp[j]: 비용 j로 확보할 수 있는 최대 메모리
-dp = [0] * 10001
+dp = [0] * (sum_costs + 1)
 
 # 1차원 냅색: 현재 비용까지만 역순으로 갱신
 for i in range(N):

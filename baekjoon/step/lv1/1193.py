@@ -10,13 +10,13 @@ for i in range(1, 5000):
         diff = (i * (i + 1) // 2) - X
         break
 
-numer = 1 + diff
-denom = n - diff
+a = 1 + diff
+b = n - diff
 
 if n % 2 != 0:
-    print(f"{numer}/{denom}")
+    print(f"{a}/{b}")
 else:
-    print(f"{denom}/{numer}")
+    print(f"{b}/{a}")
 
 """
 - 난이도: 실버5

@@ -11,7 +11,8 @@ stack = []
 answer = 0
 
 for i in range(N):
-    # 스택 top보다 낮은게 들어오면 while로 pop하며 계산
+    # 스택 top보다 작은게 나오면 while로 pop하며 계산
+    # (남은 스택은 오름차순이 됨)
     while stack and arr[stack[-1]] > arr[i]:
         height = arr[stack.pop()]
         width = i

@@ -3,6 +3,7 @@
 N, M = map(int, input().split())
 memory = [0] + list(map(int, input().split()))
 cost = [0] + list(map(int, input().split()))
+
 sum_costs = sum(cost)
 answer = sum_costs
 

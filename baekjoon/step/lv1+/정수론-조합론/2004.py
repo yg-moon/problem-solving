@@ -1,8 +1,5 @@
 # 조합 0의 개수
 # 출처: https://deok2kim.tistory.com/195
-n, m = map(int, input().split())
-
-
 def count(num, div):
     cnt = 0
     while num > 0:
@@ -12,6 +9,7 @@ def count(num, div):
 
 
 # nCr = n! / ((n-r)! * r!)
+n, m = map(int, input().split())
 two_cnt = count(n, 2) - count(n - m, 2) - count(m, 2)
 five_cnt = count(n, 5) - count(n - m, 5) - count(m, 5)
 print(min(two_cnt, five_cnt))

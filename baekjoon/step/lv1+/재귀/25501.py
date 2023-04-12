@@ -1,8 +1,4 @@
 # 재귀의 귀재
-def is_palindrome(s):
-    return recur(s, 0, len(s) - 1)
-
-
 def recur(s, l, r):
     global cnt
     cnt += 1
@@ -14,7 +10,12 @@ def recur(s, l, r):
         return recur(s, l + 1, r - 1)
 
 
+def is_palindrome(s):
+    return recur(s, 0, len(s) - 1)
+
+
 T = int(input())
+
 for _ in range(T):
     S = input()
     cnt = 0

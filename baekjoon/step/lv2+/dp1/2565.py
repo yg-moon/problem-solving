@@ -6,6 +6,7 @@ arr = [list(map(int, input().split())) for _ in range(N)]
 arr = [x for [_, x] in sorted(arr)]
 
 # dp[i]: i번째 원소까지 진행했을때 LIS의 길이
+# 주의: 1로 초기화
 dp = [1] * N
 
 # LIS
