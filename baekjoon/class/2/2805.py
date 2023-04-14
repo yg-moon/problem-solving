@@ -1,6 +1,7 @@
 # 나무 자르기
 N, M = map(int, (input().split()))
 trees = list(map(int, input().split()))
+
 left, right = 0, max(trees) - 1
 answer = 0
 

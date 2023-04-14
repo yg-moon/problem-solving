@@ -2,6 +2,7 @@
 from collections import deque
 
 N, K = map(int, input().split())
+
 q = deque([(N, 0)])
 visited = set()
 

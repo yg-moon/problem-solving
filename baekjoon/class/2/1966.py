@@ -1,8 +1,9 @@
 # 프린터 큐
 from collections import deque
 
-TC = int(input())
 answer = []
+
+TC = int(input())
 
 for _ in range(TC):
     N, target = map(int, input().split())

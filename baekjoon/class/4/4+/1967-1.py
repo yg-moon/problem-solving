@@ -14,8 +14,8 @@ for _ in range(n - 1):
     graph[v].append([u, w])
 
 
-def dfs(node, cur_w):
-    for nxt, nxt_w in graph[node]:
+def dfs(cur, cur_w):
+    for nxt, nxt_w in graph[cur]:
         if dist[nxt] == -1:
             dist[nxt] = cur_w + nxt_w
             dfs(nxt, cur_w + nxt_w)

@@ -1,18 +1,6 @@
 # 도시 분할 계획
 from collections import defaultdict
 
-N, M = map(int, input().split())
-
-edges = []
-for _ in range(M):
-    a, b, cost = map(int, input().split())
-    edges.append((cost, a, b))
-edges.sort()
-
-parent = defaultdict(int)
-for i in range(1, N + 1):
-    parent[i] = i
-
 
 def find(x):
     if parent[x] != x:
@@ -28,6 +16,18 @@ def union(a, b):
     else:
         parent[a] = b
 
+
+N, M = map(int, input().split())
+
+edges = []
+for _ in range(M):
+    a, b, cost = map(int, input().split())
+    edges.append((cost, a, b))
+edges.sort()
+
+parent = defaultdict(int)
+for i in range(1, N + 1):
+    parent[i] = i
 
 total_cost = 0
 last = 0

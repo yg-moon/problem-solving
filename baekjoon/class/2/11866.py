@@ -4,6 +4,7 @@ from collections import deque
 
 N, K = map(int, input().split())
 q = deque([x for x in range(1, N + 1)])
+
 answer = []
 
 # 핵심: k-1번만큼 (popleft + append)하고, 한번 더 popleft 한 것을 정답에 추가.

@@ -3,8 +3,6 @@ from collections import deque
 
 N, M = map(int, input().split())
 graph = [[] for _ in range(N + 1)]
-result = []  # 사람들의 케빈 베이컨 수
-
 for _ in range(M):
     u, v = map(int, input().split())
     graph[u].append(v)
@@ -16,15 +14,17 @@ def bfs(start, target):
     visited = set([start])
     min_dist = int(1e9)
     while q:
-        node, dist = q.popleft()
-        if node == target:
+        cur, dist = q.popleft()
+        if cur == target:
             min_dist = min(min_dist, dist)
-        for nxt in graph[node]:
+        for nxt in graph[cur]:
             if nxt not in visited:
                 visited.add(nxt)
                 q.append([nxt, dist + 1])
     return min_dist
 
+
+result = []  # 사람들의 케빈 베이컨 수
 
 for i in range(1, N + 1):
     kb_num = 0

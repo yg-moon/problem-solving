@@ -1,6 +1,7 @@
 # 색종이 만들기
 N = int(input())
 graph = [list(map(int, input().split())) for _ in range(N)]
+
 white = 0
 blue = 0
 
@@ -37,5 +38,5 @@ print(blue)
 - 난이도: 실버2
 - 분류: 분할정복
 
-(정답을 보니 더 간단하게 구현할 수 있다.)
+- (정답을 보니 더 간단하게 구현할 수 있다.)
 """

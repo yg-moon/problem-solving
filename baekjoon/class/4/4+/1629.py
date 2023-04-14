@@ -1,8 +1,5 @@
 # 곱셈
 # 출처: https://developer-next-to-you.tistory.com/35
-A, B, C = map(int, input().split())
-
-
 def solve(a, b, c):
     if b == 1:
         return a % c
@@ -14,6 +11,7 @@ def solve(a, b, c):
         return ((solve(a, b // 2, c) ** 2) * a) % c
 
 
+A, B, C = map(int, input().split())
 print(solve(A, B, C))
 
 """

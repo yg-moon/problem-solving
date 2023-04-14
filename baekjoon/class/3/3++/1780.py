@@ -3,6 +3,7 @@ from collections import defaultdict
 
 N = int(input())
 mat = [list(map(int, input().split())) for _ in range(N)]
+
 dic = defaultdict(int)
 
 

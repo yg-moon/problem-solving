@@ -4,14 +4,14 @@ N = int(input())
 arr = list(map(int, input().split()))
 dp = [1] * N
 
-# Part1
+# LIS 구하기
 for i in range(N):
     for j in range(i):
         if arr[j] < arr[i]:
             dp[i] = max(dp[i], dp[j] + 1)
 print(max(dp))
 
-# Part2
+# 역추적
 answer = []
 max_idx = max(dp)
 for i in range(N - 1, -1, -1):

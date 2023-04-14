@@ -1,6 +1,7 @@
 # 체스판 다시 칠하기
 N, M = map(int, input().split())
 board = [list(input()) for _ in range(N)]
+
 min_cnt = int(1e9)
 wb = list("WBWBWBWB")
 bw = list("BWBWBWBW")
@@ -11,6 +12,7 @@ for i in range(N - 8 + 1):
             cnt = 0
             for x in range(i, i + 8):
                 for y in range(j, j + 8):
+                    # 정답패턴과 다를 때마다 +1
                     if x % 2 == 0:
                         if board[x][y] != type1[y - j]:
                             cnt += 1

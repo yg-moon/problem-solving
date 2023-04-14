@@ -1,6 +1,7 @@
 # 랜선 자르기
 K, N = map(int, input().split())
 cables = [int(input()) for _ in range(K)]
+
 left, right = 1, max(cables)
 answer = 0
 

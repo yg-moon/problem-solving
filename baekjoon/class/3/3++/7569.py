@@ -4,10 +4,11 @@ from collections import deque
 M, N, H = map(int, input().split())
 graph = [[list(map(int, input().split())) for _ in range(N)] for _ in range(H)]
 
-q = deque()
 dz = [0, 0, 0, 0, -1, 1]
 dx = [-1, 1, 0, 0, 0, 0]
 dy = [0, 0, -1, 1, 0, 0]
+
+q = deque()
 answer = 0
 
 # 처음 토마토 위치를 큐에 넣기

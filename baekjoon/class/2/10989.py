@@ -4,6 +4,7 @@ import sys
 input = sys.stdin.readline
 
 N = int(input())
+
 arr = [0] * 10001
 
 for _ in range(N):

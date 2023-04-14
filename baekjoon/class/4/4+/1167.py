@@ -1,7 +1,7 @@
 # 트리의 지름
 # 출처: https://velog.io/@coding_egg/백준-1991번-트리의-지름-python-파이썬
-import sys
 from collections import deque
+import sys
 
 input = sys.stdin.readline
 

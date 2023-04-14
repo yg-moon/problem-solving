@@ -19,7 +19,7 @@ def bfs():
     q = deque([1])
     while q:
         cur = q.popleft()
-        # 연결된 노드들에 대해, 부모가 없으면 현재 노드를 다음 노드의 부모로 설정해주고, 다음 노드를 큐에 추가
+        # 연결된 노드들에 대해, 부모가 없으면 현재노드를 다음노드의 부모로 설정해주고, 다음노드를 큐에 추가
         for nxt in graph[cur]:
             if parent[nxt] == 0:
                 parent[nxt] = cur

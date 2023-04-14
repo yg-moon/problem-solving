@@ -5,14 +5,15 @@ input = sys.stdin.readline
 
 stack = []
 answer = []
-i = 1
 impossible = False
+i = 1
 
 n = int(input())
 
 for _ in range(n):
-    # 매 정수에 대해 확인하며
+    # 매번 들어오는 현재 정수에 대해
     cur = int(input())
+
     # 스택이 비었거나, 스택의 top이 현재 정수보다 작다면
     if not stack or stack[-1] < cur:
         # 현재 정수까지 모든 수를 스택에 push
@@ -20,6 +21,7 @@ for _ in range(n):
             stack.append(i)
             i += 1
             answer.append("+")
+
     # 스택의 top이 현재 정수와 일치하면 pop
     if stack and stack[-1] == cur:
         stack.pop()

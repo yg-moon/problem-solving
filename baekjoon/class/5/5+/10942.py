@@ -20,11 +20,11 @@ for i in range(1, N + 1):
         dp[i - 1][i] = 1
 
 # 핵심: 구간 (X, Y)가 팰린드롬 <=> 구간 (X+1, Y-1)가 팰린드롬이고, arr[X] = arr[Y]
-# i: 구간의 길이, j: 구간의 시작점
-for i in range(2, N):
-    for j in range(1, N - i + 1):
-        if dp[j + 1][j + i - 1] == 1 and arr[j] == arr[j + i]:
-            dp[j][j + i] = 1
+# gap: 구간의 길이, start: 구간의 시작점
+for gap in range(2, N):
+    for start in range(1, N - gap + 1):
+        if dp[start + 1][start + gap - 1] == 1 and arr[start] == arr[start + gap]:
+            dp[start][start + gap] = 1
 
 # 출력
 for _ in range(M):

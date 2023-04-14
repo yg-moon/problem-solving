@@ -1,12 +1,6 @@
 # 행성터널
 from collections import defaultdict
 
-N = int(input())
-
-parent = defaultdict(int)
-for i in range(1, N + 1):
-    parent[i] = i
-
 
 def find(x):
     if parent[x] != x:
@@ -21,6 +15,13 @@ def union(a, b):
         parent[b] = a
     else:
         parent[a] = b
+
+
+N = int(input())
+
+parent = defaultdict(int)
+for i in range(1, N + 1):
+    parent[i] = i
 
 
 # 모든 행성의 x,y,z 값을 따로 저장하고 각각 정렬한다.

@@ -1,5 +1,6 @@
 # 소수 구하기
 M, N = map(int, input().split())
+
 arr = [True] * (N + 1)
 arr[0] = False
 arr[1] = False

@@ -2,6 +2,7 @@
 # 출처: https://velog.io/@jajubal/파이썬백준-1107-리모컨
 N = int(input())
 M = int(input())
+
 broken = []
 if M != 0:
     broken = input().split()

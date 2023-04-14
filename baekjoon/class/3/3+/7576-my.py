@@ -4,11 +4,13 @@ from collections import deque
 M, N = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(N)]
 
-q = deque()  # (x좌표, y좌표, 소요일, 현재까지 추가로 익은 개수)
-visited = [[0] * M for _ in range(N)]
 dx = [1, -1, 0, 0]
 dy = [0, 0, -1, 1]
+
+q = deque()  # (x좌표, y좌표, 소요일, 현재까지 추가로 익은 개수)
+visited = [[0] * M for _ in range(N)]
 answer = -1
+
 target = 0
 total_cnt = 0
 already = 0

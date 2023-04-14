@@ -1,6 +1,7 @@
 # 테트로미노
 N, M = map(int, (input().split()))
 graph = [list(map(int, input().split())) for _ in range(N)]
+
 shapes = [
     [(0, 0), (0, 1), (0, 2), (0, 3)],  # 일자
     [(0, 0), (0, 1), (1, 0), (1, 1)],  # 네모

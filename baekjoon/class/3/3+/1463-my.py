@@ -1,10 +1,8 @@
 # 1로 만들기
-INF = int(1e9)
-
 N = int(input())
 
 # dp[i]: N을 i로 만드는데 필요한 연산의 최소 횟수
-dp = [INF] * (N + 1)
+dp = [int(1e9)] * (N + 1)
 dp[N] = 0
 
 # N부터 1까지 내려가면서 dp를 갱신

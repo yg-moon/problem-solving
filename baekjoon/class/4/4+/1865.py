@@ -1,8 +1,5 @@
 # 웜홀
 # 출처: https://backtony.github.io/algorithm/2021-02-13-algorithm-boj-class4-10/
-INF = int(1e9)
-
-
 def bellman_ford(start):
     dist = [INF] * (N + 1)
     dist[start] = 0
@@ -17,6 +14,7 @@ def bellman_ford(start):
     return False
 
 
+INF = int(1e9)
 TC = int(input())
 
 for _ in range(TC):

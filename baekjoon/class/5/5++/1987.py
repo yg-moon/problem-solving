@@ -1,12 +1,4 @@
 # 알파벳
-R, C = map(int, input().split())
-board = [list(input()) for _ in range(R)]
-max_len = 1
-visited = set()
-dx = (-1, 1, 0, 0)
-dy = (0, 0, -1, 1)
-
-
 def dfs(x, y, path_len):
     global max_len
     max_len = max(max_len, path_len)
@@ -18,6 +10,14 @@ def dfs(x, y, path_len):
             dfs(nx, ny, path_len + 1)
             visited.remove(board[nx][ny])
 
+
+R, C = map(int, input().split())
+board = [list(input()) for _ in range(R)]
+
+dx = [-1, 1, 0, 0]
+dy = [0, 0, -1, 1]
+visited = set()
+max_len = 1
 
 visited.add(board[0][0])
 dfs(0, 0, 1)
