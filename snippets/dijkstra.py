@@ -1,5 +1,4 @@
-# 가장 무난한 버전
-# - 출처: BOJ 1753 (최단경로)
+# BOJ 1753
 import sys, heapq
 
 input = sys.stdin.readline
