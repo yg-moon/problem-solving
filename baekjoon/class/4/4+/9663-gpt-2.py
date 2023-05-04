@@ -8,11 +8,11 @@ def solve(col):
         # is_safe를 대신함
         if columns[row] or diag1[row - col + N - 1] or diag2[row + col]:
             continue
-        columns[row] = diag1[row - col + N - 1] = diag2[row + col] = True
         board[row][col] = 1
+        columns[row] = diag1[row - col + N - 1] = diag2[row + col] = True
         solve(col + 1)
-        columns[row] = diag1[row - col + N - 1] = diag2[row + col] = False
         board[row][col] = 0
+        columns[row] = diag1[row - col + N - 1] = diag2[row + col] = False
 
 
 N = int(input())
@@ -20,14 +20,14 @@ board = [[0 for _ in range(N)] for _ in range(N)]
 cnt = 0
 
 columns = [False] * N
-diag1 = [False] * (2 * N - 1)
-diag2 = [False] * (2 * N - 1)
+diag1 = [False] * (2 * N - 1)  # 주대각선
+diag2 = [False] * (2 * N - 1)  # 역대각선
 
 solve(0)
 print(cnt)
 
 """
-- 첫 row부터 가로로 한줄씩 채워나가며 확인하는 방식
+- 첫 column 부터 세로로 한줄씩 채워나가며 확인하는 방식 (row, col 위치만 바꾸면 반대로도 간단히 가능)
 - 현재 상태(열, 대각, 역대각)를 저장하여 중복 확인을 줄여서 효율성 개선
 
 배운점

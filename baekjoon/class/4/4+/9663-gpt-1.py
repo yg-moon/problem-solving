@@ -1,13 +1,13 @@
 # Naive version
-def is_safe(row, col):
+def is_safe(r, c):
     # Check the current row on the left side
-    for j in range(col):
-        if board[row][j] == 1:
+    for j in range(c):
+        if board[r][j] == 1:
             return False
 
     # Check upper diagonal on the left side
-    i = row
-    j = col
+    i = r
+    j = c
     while i >= 0 and j >= 0:
         if board[i][j] == 1:
             return False
@@ -15,8 +15,8 @@ def is_safe(row, col):
         j -= 1
 
     # Check lower diagonal on the left side
-    i = row
-    j = col
+    i = r
+    j = c
     while i < N and j >= 0:
         if board[i][j] == 1:
             return False
@@ -31,11 +31,11 @@ def solve(col):
     if col == N:
         cnt += 1
         return
-    for i in range(N):
-        if is_safe(i, col):
-            board[i][col] = 1
+    for row in range(N):
+        if is_safe(row, col):
+            board[row][col] = 1
             solve(col + 1)
-            board[i][col] = 0
+            board[row][col] = 0
 
 
 N = int(input())
