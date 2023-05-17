@@ -6,24 +6,21 @@ def mergeSort(A, l, r):
         merge(A, l, mid, r)
 
 
-def merge(A, l, mid, r):
-    l_size = mid - l + 1
-    r_size = r - mid
-
+def merge(A, l, m, r):
     # L, R 채우기
-    L = [0] * l_size
-    R = [0] * r_size
-    for i in range(l_size):
-        L[i] = A[l + i]
-    for i in range(r_size):
-        R[i] = A[mid + 1 + i]
+    L = []
+    R = []
+    for i in range(l, m + 1):
+        L.append(A[i])
+    for i in range(m + 1, r + 1):
+        R.append(A[i])
 
     # 값 비교해가며 merge
     i = 0
     j = 0
     k = l
 
-    while i < l_size and j < r_size:  # 주의: 포함 여부 조심!
+    while i < len(L) and j < len(R):  # 주의: 포함 여부 조심!
         if L[i] <= R[j]:
             A[k] = L[i]
             i += 1
@@ -33,11 +30,11 @@ def merge(A, l, mid, r):
         k += 1
 
     # 남아 있으면 털어넣기
-    while i < l_size:
+    while i < len(L):
         A[k] = L[i]
         i += 1
         k += 1
-    while j < r_size:
+    while j < len(R):
         A[k] = R[j]
         j += 1
         k += 1
