@@ -7,8 +7,8 @@
 
 ### 사이트
 - [Baekjoon](https://www.acmicpc.net/)
-- [Leetcode](https://leetcode.com/)
 - [Programmers](https://programmers.co.kr/)
+- [Leetcode](https://leetcode.com/)
 
 ### 정리
 - DS-ALG: 자료구조, 알고리즘 ([GFG](https://www.geeksforgeeks.org/))
