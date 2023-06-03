@@ -6,10 +6,10 @@
 - [Cracking the Coding Interview](https://product.kyobobook.co.kr/detail/S000001033111)
 
 ### 사이트
-- [Baekjoon](https://www.acmicpc.net/)
+- [Baekjoon Online Judge](https://www.acmicpc.net/)
 - [Programmers](https://programmers.co.kr/)
-- [Leetcode](https://leetcode.com/)
+- [LeetCode](https://leetcode.com/)
 
 ### 정리
-- DS-ALG: 자료구조, 알고리즘 ([GFG](https://www.geeksforgeeks.org/))
+- DS-ALG: 자료구조, 알고리즘 ([GFG](https://www.geeksforgeeks.org/) 참고)
 - Snippets: 유용한 코드 스니펫
