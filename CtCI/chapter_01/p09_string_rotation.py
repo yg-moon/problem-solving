@@ -8,8 +8,13 @@ def string_rotation(s1, s2):
     return False
 
 
-class Test(unittest.TestCase):
+def my_sol(s1, s2):
+    if s2 in s1 + s1:
+        return True
+    return False
 
+
+class Test(unittest.TestCase):
     test_cases = [
         ("waterbottle", "erbottlewat", True),
         ("foo", "bar", False),

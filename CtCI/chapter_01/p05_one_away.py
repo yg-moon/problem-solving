@@ -10,7 +10,7 @@ def are_one_edit_different(s1, s2):
     if len(s1) + 1 == len(s2):
         return one_edit_insert(s1, s2)
     if len(s1) - 1 == len(s2):
-        return one_edit_insert(s2, s1)  # noqa
+        return one_edit_insert(s2, s1)
     return False
 
 
@@ -36,6 +36,33 @@ def one_edit_insert(s1, s2):
         else:
             i += 1
             j += 1
+    return True
+
+
+def my_sol(s1, s2):
+    # 길이 차이가 1보다 크면 안됨
+    if abs(len(s1) - len(s2)) > 1:
+        return False
+
+    # s1이 더 짧은 문자열이 되도록
+    if len(s1) > len(s2):
+        s1, s2 = s2, s1
+
+    i = 0
+    j = 0
+    edited = False
+    while i < len(s1) and j < len(s2):
+        if s1[i] != s2[j]:
+            # 이미 수정한 기록이 있으면 안됨
+            if edited:
+                return False
+            edited = True
+            # 삽입/삭제의 경우, 짧은 쪽의 포인터를 한칸 내림
+            if len(s1) != len(s2):
+                i -= 1
+        # 항상 두 포인터를 모두 올림
+        i += 1
+        j += 1
     return True
 
 
@@ -70,15 +97,14 @@ class Test(unittest.TestCase):
         ("ale", "elas", False),
     ]
 
-    testable_functions = [are_one_edit_different]
+    testable_functions = [are_one_edit_different, my_sol]
 
     def test_one_away(self):
-
         for f in self.testable_functions:
             start = time.perf_counter()
             for _ in range(100):
                 for [text_a, text_b, expected] in self.test_cases:
-                    assert f(text_a, text_b) == expected
+                    assert f(text_a, text_b) == expected, (text_a, text_b)
             duration = time.perf_counter() - start
             print(f"{f.__name__} {duration * 1000:.1f}ms")
 

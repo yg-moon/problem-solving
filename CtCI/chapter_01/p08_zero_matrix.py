@@ -34,8 +34,28 @@ def zero_matrix_pythonic(matrix):
     return matrix
 
 
-class Test(unittest.TestCase):
+def my_sol(mat):
+    rows = set()
+    cols = set()
 
+    for i in range(len(mat)):
+        for j in range(len(mat[0])):
+            if mat[i][j] == 0:
+                rows.add(i)
+                cols.add(j)
+
+    for r in rows:
+        for j in range(len(mat[0])):
+            mat[r][j] = 0
+
+    for c in cols:
+        for i in range(len(mat)):
+            mat[i][c] = 0
+
+    return mat
+
+
+class Test(unittest.TestCase):
     test_cases = [
         (
             [
@@ -54,7 +74,7 @@ class Test(unittest.TestCase):
             ],
         )
     ]
-    testable_functions = [zero_matrix, zero_matrix_pythonic]
+    testable_functions = [zero_matrix, zero_matrix_pythonic, my_sol]
 
     def test_zero_matrix(self):
         for f in self.testable_functions:

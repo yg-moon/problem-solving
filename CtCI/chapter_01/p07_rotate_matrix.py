@@ -57,8 +57,20 @@ def rotate_matrix_pythonic_alternate(matrix):
     return [list(reversed(row)) for row in zip(*matrix)]
 
 
-class Test(unittest.TestCase):
+def my_sol(mat):
+    N = len(mat)
+    ret = [[0] * N for _ in range(N)]
+    for i in range(N):
+        for j in range(N):
+            ret[j][N - i - 1] = mat[i][j]
+    return ret
 
+
+def my_sol_2(mat):
+    return list(map(list, zip(*mat[::-1])))
+
+
+class Test(unittest.TestCase):
     test_cases = [
         ([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[7, 4, 1], [8, 5, 2], [9, 6, 3]]),
         (
@@ -83,6 +95,8 @@ class Test(unittest.TestCase):
         rotate_matrix,
         rotate_matrix_pythonic_alternate,
         rotate_matrix_double_swap,
+        my_sol,
+        my_sol_2,
     ]
 
     def test_rotate_matrix(self):

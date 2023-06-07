@@ -20,6 +20,33 @@ def compress_string(string):
     return min(string, "".join(compressed), key=len)
 
 
+def my_sol(s):
+    # 예외처리: 빈 문자열
+    if not s:
+        return s
+
+    res = ""
+    prev = s[0]
+    cnt = 1
+
+    for char in s[1:]:
+        if char == prev:
+            cnt += 1
+        else:
+            res += prev
+            res += str(cnt)
+            cnt = 1
+            prev = char
+
+    # 주의: 끝부분 누락하지 말기
+    res += prev
+    res += str(cnt)
+
+    if len(res) >= len(s):
+        return s
+    return res
+
+
 class Test(unittest.TestCase):
     test_cases = [
         ("aabcccccaaa", "a2b1c5a3"),
@@ -29,16 +56,18 @@ class Test(unittest.TestCase):
         ("a", "a"),
         ("", ""),
     ]
-    testable_functions = [
-        compress_string,
-    ]
+    testable_functions = [compress_string, my_sol]
 
     def test_string_compression(self):
         for f in self.testable_functions:
             start = time.perf_counter()
             for _ in range(1000):
                 for test_string, expected in self.test_cases:
-                    assert f(test_string) == expected
+                    assert f(test_string) == expected, (
+                        test_string,
+                        f(test_string),
+                        expected,
+                    )
             duration = time.perf_counter() - start
             print(f"{f.__name__} {duration * 1000:.1f}ms")
 

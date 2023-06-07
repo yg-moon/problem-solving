@@ -35,6 +35,32 @@ def check_permutation_pythonic(str1, str2):
     return Counter(str1) == Counter(str2)
 
 
+def my_sol(s1, s2):
+    # 예외처리
+    if len(s1) != len(s2) or s1 == s2:
+        return False
+
+    dic = {}
+    for char in s1:
+        if char not in dic:
+            dic[char] = 1
+        dic[char] += 1
+    for char in s2:
+        if char not in dic or dic[char] == 0:
+            return False
+        dic[char] -= 1
+    return True
+
+
+def my_sol2(s1, s2):
+    if len(s1) != len(s2) or s1 == s2:
+        return False
+
+    if sorted(s1) == sorted(s2):
+        return True
+    return False
+
+
 class Test(unittest.TestCase):
     # str1, str2, is_permutation
     test_cases = (
@@ -55,6 +81,8 @@ class Test(unittest.TestCase):
         check_permutation_by_sort,
         check_permutation_by_count,
         check_permutation_pythonic,
+        my_sol,
+        my_sol2,
     ]
 
     def test_cp(self):

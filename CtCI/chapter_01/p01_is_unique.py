@@ -69,6 +69,31 @@ def is_unique_chars_sorting(string: str) -> bool:
     return True
 
 
+def my_sol(s):
+    dic = {}
+    for char in s:
+        if char in dic:
+            return False
+        dic[char] = 1
+    return True  # 중복된 문자가 없으면 True
+
+
+def my_sol_2(s):
+    seen = set()
+    for char in s:
+        if char in seen:
+            return False
+        else:
+            seen.add(char)
+    return True
+
+
+def my_sol_3(s):
+    if len(set(s)) == len(s):
+        return True
+    return False
+
+
 class Test(unittest.TestCase):
     test_cases = [
         ("abcd", True),
@@ -80,12 +105,15 @@ class Test(unittest.TestCase):
         ("".join([chr(val // 2) for val in range(129)]), False),  # non-unique 129 chars
     ]
     test_functions = [
-        is_unique_chars_pythonic,
         is_unique_chars_algorithmic,
+        is_unique_chars_pythonic,
         is_unique_bit_vector,
         is_unique_chars_using_dictionary,
         is_unique_chars_using_set,
         is_unique_chars_sorting,
+        my_sol,
+        my_sol_2,
+        my_sol_3,
     ]
 
     def test_is_unique_chars(self):
