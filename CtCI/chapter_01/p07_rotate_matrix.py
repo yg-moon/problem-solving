@@ -7,22 +7,26 @@ def rotate_matrix(matrix):
     """rotates a matrix 90 degrees clockwise"""
     n = len(matrix)
     for layer in range(n // 2):
-        first, last = layer, n - layer - 1
+        first = layer
+        last = n - layer - 1
         for i in range(first, last):
+            # get offset
+            offset = i - first
+
             # save top
-            top = matrix[layer][i]
+            top = matrix[first][i]
 
-            # left -> top
-            matrix[layer][i] = matrix[-i - 1][layer]
+            # 1. left -> top
+            matrix[first][i] = matrix[last - offset][first]
 
-            # bottom -> left
-            matrix[-i - 1][layer] = matrix[-layer - 1][-i - 1]
+            # 2. bottom -> left
+            matrix[last - offset][first] = matrix[last][last - offset]
 
-            # right -> bottom
-            matrix[-layer - 1][-i - 1] = matrix[i][-layer - 1]
+            # 3. right -> bottom
+            matrix[last][last - offset] = matrix[i][last]
 
-            # top -> right
-            matrix[i][-layer - 1] = top
+            # 4. top -> right
+            matrix[i][last] = top
     return matrix
 
 
