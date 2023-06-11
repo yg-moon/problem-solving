@@ -8,8 +8,8 @@ def reverse_list(head):
     prev = None
     cur = head
     while cur:
-        next_node = cur.next
-        cur.next = prev
-        prev = cur
-        cur = next_node
+        next_node = cur.next  # save next node
+        cur.next = prev  # add current node to the left of prev
+        prev = cur  # change the prev pointer
+        cur = next_node  # move on to next node
     return prev
