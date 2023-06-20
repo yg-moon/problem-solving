@@ -1,4 +1,4 @@
-from chapter_02.linked_list import LinkedList
+from chapter_02.linked_list import LinkedList, LinkedListNode
 
 
 def partition(ll, x):
@@ -41,8 +41,29 @@ def lr_partition(_ll: LinkedList, p: int) -> LinkedList:
     return left
 
 
+def my_sol(ll, x):
+    cur = ll.head
+    small = small_head = LinkedListNode(0)
+    big = big_head = LinkedListNode(0)
+
+    while cur:
+        if cur.value < x:
+            small.next = cur
+            small = small.next
+        else:
+            big.next = cur
+            big = big.next
+        cur = cur.next
+
+    small.next = big_head.next
+    big.next = None  # 사이클 방지
+    ll.head = small_head.next
+
+    return ll
+
+
 def test_lr_partition():
-    partitioners = [partition, lr_partition]
+    partitioners = [partition, lr_partition, my_sol]
     for partition_func in partitioners:
         # book example
         ll = LinkedList([3, 5, 8, 5, 10, 2, 1])

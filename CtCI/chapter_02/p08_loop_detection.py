@@ -2,23 +2,25 @@ from chapter_02.linked_list import LinkedList
 
 
 def loop_detection(ll):
-    fast = slow = ll.head
+    slow = fast = ll.head
 
+    # collision spot 찾기
     while fast and fast.next:
-        fast = fast.next.next
         slow = slow.next
-        if fast is slow:
+        fast = fast.next.next
+        if slow == fast:
             break
 
-    if fast is None or fast.next is None:
+    # 예외처리: 루프가 없는 경우
+    if not fast or not fast.next:
         return None
 
+    # 루프의 시작점 찾기
     slow = ll.head
-    while fast is not slow:
-        fast = fast.next
+    while slow != fast:
         slow = slow.next
-
-    return fast
+        fast = fast.next
+    return slow
 
 
 def test_loop_detection():
@@ -33,3 +35,7 @@ def test_loop_detection():
 
     for ll, expected in tests:
         assert loop_detection(ll) == expected
+
+
+if __name__ == "__main__":
+    test_loop_detection()

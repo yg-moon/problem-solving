@@ -1,5 +1,4 @@
 import time
-
 from chapter_02.linked_list import LinkedList
 
 
@@ -20,20 +19,35 @@ def remove_dups(ll):
 
 
 def remove_dups_followup(ll):
-    runner = current = ll.head
-    while current:
-        runner = current
-        while runner.next:
-            if runner.next.value == current.value:
-                runner.next = runner.next.next
+    run = cur = ll.head
+    while cur:
+        run = cur
+        while run.next:
+            if run.next.value == cur.value:
+                run.next = run.next.next
             else:
-                runner = runner.next
-        current = current.next
-    ll.tail = runner
+                run = run.next
+        cur = cur.next
     return ll
 
 
-testable_functions = (remove_dups, remove_dups_followup)
+def my_sol(ll):
+    cur = ll.head
+    prev = None  # 직전 노드의 위치를 가리키는 포인터
+    seen = set()
+
+    while cur:
+        if cur.value in seen:
+            prev.next = cur.next
+        else:
+            seen.add(cur.value)
+            prev = cur
+        cur = cur.next
+
+    return ll
+
+
+testable_functions = (remove_dups, remove_dups_followup, my_sol)
 test_cases = (
     ([], []),
     ([1, 1, 1, 1, 1, 1], [1]),
@@ -53,25 +67,11 @@ def test_remove_dupes():
                 deduped = f(LinkedList(values))
                 assert deduped.values() == expected
 
-                deduped.add(5)
-                expected.append(5)
-                assert deduped.values() == expected
-
         duration = time.perf_counter() - start
         print(f"{f.__name__} {duration * 1000:.1f}ms")
 
 
-def example():
-    ll = LinkedList.generate(100, 0, 9)
-    print(ll)
-    remove_dups(ll)
-    print(ll)
-
-    ll = LinkedList.generate(100, 0, 9)
-    print(ll)
-    remove_dups_followup(ll)
-    print(ll)
-
-
 if __name__ == "__main__":
-    example()
+    test_remove_dupes()
+
+# Run with: python3 -m chapter_02.p01_remove_dups

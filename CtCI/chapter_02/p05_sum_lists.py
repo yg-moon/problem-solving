@@ -1,4 +1,4 @@
-from chapter_02.linked_list import LinkedList
+from chapter_02.linked_list import LinkedList, LinkedListNode
 
 
 def sum_lists(ll_a, ll_b):
@@ -59,20 +59,72 @@ class NumericLinkedList(LinkedList):
         return number
 
 
+def my_sol(l1, l2):
+    new_ll = NumericLinkedList()
+    root = head = LinkedListNode(0)
+    h1 = l1.head
+    h2 = l2.head
+    carry = 0
+
+    while h1 or h2:
+        res = carry
+        if h1:
+            res += h1.value
+            h1 = h1.next
+        if h2:
+            res += h2.value
+            h2 = h2.next
+        head.next = LinkedListNode(res % 10)
+        head = head.next
+        carry = res // 10
+
+    if carry:
+        head.next = LinkedListNode(carry)
+
+    new_ll.head = root.next
+    return new_ll
+
+
+def recur_sol(l1, l2):
+    def recur_sol_helper(h1, h2, carry):
+        # Base case
+        if not h1 and not h2 and carry == 0:
+            return None
+
+        res = carry
+        if h1:
+            res += h1.value
+            h1 = h1.next
+        if h2:
+            res += h2.value
+            h2 = h2.next
+        node = LinkedListNode(res % 10)
+
+        # Recursion
+        node.next = recur_sol_helper(h1, h2, res // 10)
+        return node
+
+    new_ll = NumericLinkedList()
+    new_ll.head = recur_sol_helper(l1.head, l2.head, 0)
+    return new_ll
+
+
 test_cases = (
     # all values can either be list of integer or integers
     # a, b, expected_sum
     ([7, 1, 6], [5, 9, 2], [2, 1, 9]),
-    (0, 0, 0),
+    ([0], [0], [0]),
     ([], [], 0),
     ([3, 2, 1], [3, 2, 1], [6, 4, 2]),
-    (123, 123, 246),
-    (123, 1, 124),
-    (1, 123, 124),
+    ([1, 2, 3], [1, 2, 3], [2, 4, 6]),
+    ([1, 2, 3], [1], [2, 2, 3]),
+    ([1], [1, 2, 3], [2, 2, 3]),
 )
 
 testable_functions = (
     sum_lists,
+    my_sol,
+    recur_sol
     # sum_lists_followup
 )
 
@@ -99,7 +151,7 @@ def test_linked_list_addition():
             if isinstance(expected, int):
                 assert result.numeric_value() == expected
             else:
-                assert result.values() == expected
+                assert result.values() == expected, (result.values(), expected)
 
 
 def example():
@@ -112,4 +164,6 @@ def example():
 
 
 if __name__ == "__main__":
-    example()
+    # example()
+    test_numeric_linked_list()
+    test_linked_list_addition()

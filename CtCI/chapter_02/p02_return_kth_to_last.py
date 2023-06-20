@@ -16,19 +16,35 @@ def kth_to_last(ll, k):
 # O(N) space
 def kth_last_recursive(ll, k):
     head = ll.head
-    counter = 0
+    cnt = 0
 
-    def helper(head, k):
-        nonlocal counter
-        if not head:
+    def helper(node, k):
+        nonlocal cnt
+        # 1.base case
+        if not node:
             return None
-        helper_node = helper(head.next, k)
-        counter = counter + 1
-        if counter == k:
-            return head
-        return helper_node
+        # 2.DFS
+        res = helper(node.next, k)
+        # 3.return
+        cnt = cnt + 1
+        if cnt == k:
+            return node
+        return res
 
     return helper(head, k)
+
+
+def my_sol(ll, k):
+    slow = fast = ll.head
+
+    for _ in range(k - 1):
+        fast = fast.next
+
+    while fast.next:
+        slow = slow.next
+        fast = fast.next
+
+    return slow
 
 
 test_cases = (
@@ -43,6 +59,7 @@ def test_kth_to_last():
         ll = LinkedList(linked_list_values)
         assert kth_to_last(ll, k).value == expected
         assert kth_last_recursive(ll, k).value == expected
+        assert my_sol(ll, k).value == expected
 
 
 if __name__ == "__main__":

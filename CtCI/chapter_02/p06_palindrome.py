@@ -81,29 +81,58 @@ def reverse(node):
 
 
 def is_palindrome_recursive(ll):
+    # 오...
     def get_len(node):
         if not node:
             return 0
         else:
-            return 1 + get_len(node.next)
+            return get_len(node.next) + 1
 
-    def recursive_transverse(node, length):
-        if not node or length == 0:  # even list
-            return True, node
+    def helper(node, length):
+        # base case
+        if length == 0:  # even list
+            return (True, node)
         elif length == 1:  # odd list
-            return True, node.next
+            return (True, node.next)
 
-        _is_palindrome, fwd_node = recursive_transverse(node.next, length - 2)
+        is_pal, fwd_node = helper(node.next, length - 2)
 
-        if not _is_palindrome or not fwd_node:
-            return False, None
+        if not is_pal or not fwd_node:
+            return (False, None)
 
         if node.value == fwd_node.value:
-            return True, fwd_node.next
+            return (True, fwd_node.next)
         else:
-            return False, None
+            return (False, None)
 
-    return recursive_transverse(ll.head, get_len(ll.head))[0]
+    return helper(ll.head, get_len(ll.head))[0]
+
+
+def my_sol(ll):
+    head = ll.head
+
+    # 예외처리
+    if not head or not head.next:
+        return True
+
+    slow = fast = head
+    lst = []
+
+    # slow를 중간까지 이동
+    while fast and fast.next:
+        lst.append(slow.value)
+        slow = slow.next
+        fast = fast.next.next
+
+    lst.reverse()
+    if fast:  # 연결리스트 길이가 홀수라면 한칸 더 이동
+        slow = slow.next
+
+    for val in lst:
+        if not slow or slow.value != val:
+            return False
+        slow = slow.next
+    return True
 
 
 test_cases = [
@@ -120,6 +149,7 @@ testable_functions = [
     is_palindrome,
     is_palindrome_constant_space,
     is_palindrome_recursive,
+    my_sol,
 ]
 
 

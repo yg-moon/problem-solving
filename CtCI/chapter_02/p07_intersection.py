@@ -1,4 +1,4 @@
-from chapter_02.linked_list import LinkedList
+from chapter_02.linked_list import LinkedList, LinkedListNode
 
 
 def intersection(list1, list2):
@@ -22,6 +22,31 @@ def intersection(list1, list2):
     return longer_node
 
 
+def my_sol(l1, l2):
+    def get_len(node):
+        if not node:
+            return 0
+        else:
+            return get_len(node.next) + 1
+
+    h1 = l1.head
+    h2 = l2.head
+    len1 = get_len(h1)
+    len2 = get_len(h2)
+
+    if len1 < len2:
+        h1, h2 = h2, h1  # 항상 h1이 더 길도록 설정
+
+    for _ in range(abs(len1 - len2)):
+        h1 = h1.next
+
+    while h1 and h2:
+        if h1 == h2:
+            return h1
+        h1 = h1.next
+        h2 = h2.next
+
+
 def test_linked_list_intersection():
     shared = LinkedList()
     shared.add_multiple([1, 2, 3, 4])
@@ -36,3 +61,8 @@ def test_linked_list_intersection():
 
     # should be 1
     assert intersection(a, b).value == 1
+    assert my_sol(a, b).value == 1
+
+
+if __name__ == "__main__":
+    test_linked_list_intersection()
