@@ -4,7 +4,7 @@ import unittest
 from chapter_03.stack import Stack
 
 
-class SortedStack(Stack):
+class SortedStack2(Stack):
     def __init__(self):
         super().__init__()
         self.temp_stack = Stack()
@@ -18,6 +18,55 @@ class SortedStack(Stack):
             super().push(item)
             while not self.temp_stack.is_empty():
                 super().push(self.temp_stack.pop())
+
+
+# Sol1. 입력이 고정된 경우
+def my_sol(stack1):
+    if not stack1:
+        return
+
+    stack2 = []
+
+    while stack1:
+        cur = stack1.pop()
+        cnt = 0
+
+        while stack2 and stack2[-1] < cur:
+            stack1.append(stack2.pop())
+            cnt += 1
+
+        stack2.append(cur)
+
+        for _ in range(cnt):
+            stack2.append(stack1.pop())
+
+    return stack2
+
+
+# print(my_sol([1, 7, 4, 2, 3, 5, 6]))
+
+
+# Sol2. 입력이 변하는 경우
+class SortedStack:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def push(self, val):
+        if not self.stack1:
+            self.stack1.append(val)
+        else:
+            while self.stack1 and self.stack1[-1] < val:
+                self.stack2.append(self.stack1.pop())
+            self.stack1.append(val)
+            while self.stack2:
+                self.stack1.append(self.stack2.pop())
+
+    def pop(self):
+        return self.stack1.pop()
+
+    def __len__(self):
+        return len(self.stack1)
 
 
 class Tests(unittest.TestCase):
@@ -70,3 +119,7 @@ class Tests(unittest.TestCase):
         assert queue.pop() == 2
         assert queue.pop() == 3
         assert queue.pop() == 4
+
+
+if __name__ == "__main__":
+    unittest.main()

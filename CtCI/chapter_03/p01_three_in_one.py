@@ -2,17 +2,17 @@ import pytest
 
 
 class MultiStack:
-    def __init__(self, stack_size, number_of_stacks):
+    def __init__(self, capacity, number_of_stacks):
         self.number_of_stacks = number_of_stacks
-        self.array = [0] * (stack_size * self.number_of_stacks)
-        self.sizes = [0] * self.number_of_stacks
-        self.stack_size = stack_size
+        self.array = [0] * (capacity * self.number_of_stacks)
+        self.cur_sizes = [0] * self.number_of_stacks
+        self.capacity = capacity
 
     def push(self, value, stack_num):
         self._assert_valid_stack_num(stack_num)
         if self.is_full(stack_num):
             raise StackFullError(f"Push failed: stack #{stack_num} is full")
-        self.sizes[stack_num] += 1
+        self.cur_sizes[stack_num] += 1
         self.array[self.index_of_top(stack_num)] = value
 
     def pop(self, stack_num):
@@ -21,7 +21,7 @@ class MultiStack:
             raise StackEmptyError(f"Cannot pop from empty stack #{stack_num}")
         value = self.array[self.index_of_top(stack_num)]
         self.array[self.index_of_top(stack_num)] = 0
-        self.sizes[stack_num] -= 1
+        self.cur_sizes[stack_num] -= 1
         return value
 
     def peek(self, stack_num):
@@ -32,16 +32,16 @@ class MultiStack:
 
     def is_empty(self, stack_num):
         self._assert_valid_stack_num(stack_num)
-        return self.sizes[stack_num] == 0
+        return self.cur_sizes[stack_num] == 0
 
     def is_full(self, stack_num):
         self._assert_valid_stack_num(stack_num)
-        return self.sizes[stack_num] == self.stack_size
+        return self.cur_sizes[stack_num] == self.capacity
 
     def index_of_top(self, stack_num):
         self._assert_valid_stack_num(stack_num)
-        offset = stack_num * self.stack_size
-        return offset + self.sizes[stack_num] - 1
+        offset = stack_num * self.capacity
+        return offset + self.cur_sizes[stack_num] - 1
 
     def _assert_valid_stack_num(self, stack_num):
         if stack_num >= self.number_of_stacks:
@@ -67,7 +67,7 @@ class StackDoesNotExistError(ValueError):
 def test_multistack():
     num_stacks = 3
     stack_size = 6
-    s = MultiStack(stack_size=stack_size, number_of_stacks=num_stacks)
+    s = MultiStack(capacity=stack_size, number_of_stacks=num_stacks)
 
     for stack_num in range(num_stacks):
         assert s.is_empty(stack_num)
@@ -111,7 +111,7 @@ def test_multistack():
 
 
 def test_stack_does_not_exist():
-    s = MultiStack(stack_size=3, number_of_stacks=1)
+    s = MultiStack(capacity=3, number_of_stacks=1)
     with pytest.raises(StackDoesNotExistError):
         s.push(1, 1)
 

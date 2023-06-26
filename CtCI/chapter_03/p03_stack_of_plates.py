@@ -101,9 +101,35 @@ class SetOfStacks:
         return removed_item
 
 
+class MySol:
+    def __init__(self, capacity):
+        self.stacks = []
+        self.total_size = 0
+        self.capacity = capacity
+
+    def push(self, val):
+        stack_num = self.total_size // self.capacity
+        if len(self.stacks) <= stack_num:
+            self.stacks.append([])
+        self.stacks[stack_num].append(val)  # 주의: else에 넣으면 안 됨
+        self.total_size += 1
+
+    def pop(self):
+        stack_num = (self.total_size - 1) // self.capacity  # 주의: -1 해줘야 함
+        if len(self.stacks[stack_num]) == 0:
+            raise Exception("Cannot pop from empty stack")
+        else:
+            val = self.stacks[stack_num].pop()
+            self.total_size -= 1
+        if len(self.stacks[stack_num]) == 0:  # Remove unused stack
+            self.stacks.pop()
+        return val
+
+
 class Tests(unittest.TestCase):
     def test_stacks(self):
-        stacks = SetOfStacks(5)
+        # stacks = SetOfStacks(5)
+        stacks = MySol(5)
         for i in range(35):
             stacks.push(i)
         lst = []
