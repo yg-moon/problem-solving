@@ -15,7 +15,7 @@ def rotate_gears(gear_num, dir):
     for i in reversed(range(1, gear_num)):
         if gears[i][2] != cur_left:
             cur_left = gears[i][6]
-            gears[i].rotate(cur_dir * -1)
+            gears[i].rotate(cur_dir * -1)  # deque 내장 함수
             cur_dir *= -1
         else:
             break
@@ -47,4 +47,8 @@ print(answer)
     - 현재 톱니바퀴에서 출발하여
         - 왼쪽으로 쭉 진행하며 톱니를 돌리며, 왼쪽 이빨과 회전 방향을 갱신한다.
         - 오른쪽으로 쭉 진행하며 톱니를 돌리며, 오른쪽 이빨과 회전 방향을 갱신한다.
+
+- 핵심
+    - 난 톱니바퀴가 연결되어 있기 때문에 한번에 모든 톱니를 돌려야 한다고 생각했다.
+    - 하지만 실제로는 왼쪽 톱니, 오른쪽 톱니 정보만 저장하면 차례대로 돌릴 수 있다.
 """

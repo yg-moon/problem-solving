@@ -11,7 +11,7 @@ psum = [[0] * (N + 1) for _ in range(N + 1)]
 # 누적합 배열 만들기
 for i in range(1, N + 1):
     for j in range(1, N + 1):
-        # csum[i][j]: (0,0) ~ (i,j) 사각형의 누적합
+        # psum[i][j]: (0,0) ~ (i,j) 사각형의 누적합
         psum[i][j] = (
             # (가로 구간) + (세로 구간) - (겹쳐서 더한 구간) + (원래 데이터의 값)
             psum[i - 1][j]

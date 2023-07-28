@@ -1,9 +1,9 @@
 # 톱니바퀴 (2)
 T = int(input())
-gears = [list(map(int, list(input()))) for _ in range(T)]
-gears = [0] + gears  # 1-index
+gears = [0] + [list(map(int, list(input()))) for _ in range(T)]  # 1-index
 K = int(input())
 cmds = [list(map(int, input().split())) for _ in range(K)]
+
 
 # 톱니바퀴 하나를 회전
 def rotate(gear, dir):
