@@ -34,7 +34,7 @@ def solution(n, path, order):
         old_graph[a].append(b)
         old_graph[b].append(a)
 
-    # 핵심1: 단방향 그래프로 변환 (먼저 방문해야 하는 노드를 가리키도록)
+    # 핵심1: 단방향 그래프로 변환 (위상정렬과 반대 방향으로 했는데, 같은 방향이라도 무방)
     q = deque([0])
     seen = set()
     while q:

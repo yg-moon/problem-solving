@@ -1,9 +1,7 @@
 from collections import defaultdict, deque
 
 
-def topo_sort(n):
-    global graph
-
+def topo_sort(n, graph):
     indegree = [0] * n
     for cur in graph:
         for nxt in graph[cur]:
@@ -24,15 +22,10 @@ def topo_sort(n):
                 q.append(nxt)
 
     # 핵심2: 위상정렬 이후에도 노드가 남아있다면 사이클이 존재한다는 의미
-    if cnt == n:
-        return True
-    else:
-        return False
+    return cnt == n
 
 
 def solution(n, path, order):
-    global graph
-
     # 양방향 그래프 입력
     graph = defaultdict(list)
     for a, b in path:
@@ -51,7 +44,7 @@ def solution(n, path, order):
     for a, b in order:
         graph[a].append(b)
 
-    return topo_sort(n)
+    return topo_sort(n, graph)
 
 
 """
