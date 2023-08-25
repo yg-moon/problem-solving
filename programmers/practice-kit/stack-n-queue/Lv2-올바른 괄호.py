@@ -10,8 +10,7 @@ def solution(s):
             # 이때 스택이 비어있으면 짝이 틀린것
             if not stack:
                 return False
-            else:
-                stack.pop()
+            stack.pop()
 
     # 모든 작업 이후에도 스택에 내용물이 남아있다면 짝이 틀린것
     if stack:
