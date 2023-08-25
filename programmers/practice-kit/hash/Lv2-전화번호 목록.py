@@ -1,8 +1,8 @@
 def solution(phone_book):
-    # 모든 숫자를 딕셔너리에 저장
-    dic = {}
+    # 모든 숫자를 set에 저장
+    num_set = set()
     for num in phone_book:
-        dic[num] = 1
+        num_set.add(num)
 
     for num in phone_book:
         temp = ""
@@ -10,6 +10,6 @@ def solution(phone_book):
         for n in num:
             temp += n
             # temp가 dic에 있는데, temp가 num이 아니라면 접두어인 경우인 것
-            if temp in dic and temp != num:
+            if temp in num_set and temp != num:
                 return False
     return True

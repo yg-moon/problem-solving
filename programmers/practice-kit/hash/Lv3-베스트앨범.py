@@ -20,9 +20,7 @@ def solution(genres, plays):
     # 장르별 최대 2개의 곡까지만 수록
     answer = []
     for genre, _ in list_gtp:
-        cnt = 2
-        if len(genre_to_info[genre]) == 1:
-            cnt = 1
+        cnt = min(2, len(genre_to_info[genre]))
         for i in range(cnt):
             answer.append(genre_to_info[genre][i][0])
     return answer
