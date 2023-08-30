@@ -15,6 +15,17 @@ def permute_1(arr, path, visited):
             visited[i] = False
 
 
+# 참고: combinations
+def combine_1(arr, path, start):
+    if len(path) == len(arr):
+        result.append(path[:])
+        return
+    for i in range(start, len(arr)):
+        path.append(arr[i])
+        combine_1(arr, path)
+        path.pop()
+
+
 # 효율적인 스왑 방식
 def permute_2(arr):
     def backtrack(start):
