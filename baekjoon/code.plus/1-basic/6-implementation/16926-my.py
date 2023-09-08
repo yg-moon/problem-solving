@@ -20,16 +20,16 @@ def rotate(arr):
     # 매번 왼쪽 위를 시작점으로 잡고, 바깥쪽부터 한줄씩 회전시키기
     for start in starts:
         x, y = start
-        cur_dir = 0
+        dir = 0
         while True:
-            nx, ny = x + dirs[cur_dir][0], y + dirs[cur_dir][1]
+            nx, ny = x + dirs[dir][0], y + dirs[dir][1]
             if 0 <= nx < r and 0 <= ny < c and not visited[nx][ny]:
                 ret[nx][ny] = arr[x][y]
                 visited[nx][ny] = True
                 x, y = nx, ny
             else:
-                cur_dir += 1
-                if cur_dir == 4:
+                dir += 1
+                if dir == 4:
                     break
 
     return ret
