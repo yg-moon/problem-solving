@@ -16,15 +16,17 @@ def get_stats(team):
 
 def solve(start, team):
     global min_diff
+
     if len(team) == N // 2:
         other_team = [i for i in range(N) if i not in team]
         min_diff = min(min_diff, abs(get_stats(team) - get_stats(other_team)))
-    else:
-        for i in range(start, N):
-            if i not in team:
-                team.append(i)
-                solve(i + 1, team)
-                team.pop()
+        return
+
+    for i in range(start, N):
+        if i not in team:
+            team.append(i)
+            solve(i + 1, team)
+            team.pop()
 
 
 solve(0, [])

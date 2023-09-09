@@ -30,15 +30,15 @@ def solve(cnt):
     if cnt == len(zeros):
         for a in arr:
             print(*a)
-        exit(0)
-    else:
-        cur_x = zeros[cnt][0]
-        cur_y = zeros[cnt][1]
-        for num in range(1, 10):
-            if is_ok(cur_x, cur_y, num):
-                arr[cur_x][cur_y] = num
-                solve(cnt + 1)
-                arr[cur_x][cur_y] = 0
+        exit()
+
+    cur_x = zeros[cnt][0]
+    cur_y = zeros[cnt][1]
+    for num in range(1, 10):
+        if is_ok(cur_x, cur_y, num):
+            arr[cur_x][cur_y] = num
+            solve(cnt + 1)
+            arr[cur_x][cur_y] = 0
 
 
 solve(0)
