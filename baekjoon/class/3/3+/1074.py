@@ -8,7 +8,7 @@ def solve(x, y, n):
     global answer
     if x == r and y == c:
         print(answer)
-        exit(0)  # 주의: return 으로는 나머지 함수가 멈추지 않는다.
+        exit()  # 주의: return 으로는 나머지 함수가 멈추지 않는다.
     if n == 1:
         answer += 1
         return
