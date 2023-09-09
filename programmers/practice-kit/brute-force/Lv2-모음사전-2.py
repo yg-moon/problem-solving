@@ -15,5 +15,5 @@ def solution(word):
 
 
 """
-- DFS 완전탐색
+- 백트래킹 (정해)
 """

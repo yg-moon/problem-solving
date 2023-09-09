@@ -19,5 +19,5 @@ def solution(k, dungeons):
 
 
 """
-- DFS 완전탐색
+- 백트래킹
 """

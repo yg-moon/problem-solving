@@ -35,5 +35,5 @@ def solution(begin, target, words):
 
 
 """
-- DFS 완전탐색
+- 백트래킹
 """
