@@ -3,7 +3,7 @@
 N = int(input())
 dp = [list(map(int, input().split())) for _ in range(N)]
 
-for i in range(1, len(dp)):
+for i in range(1, N):
     # dp[i][0]: i번째 집을 빨강(R)으로 칠했을 때의 최솟값
     # dp[i][1]: i번째 집을 초록(G)으로 칠했을 때의 최솟값
     # dp[i][2]: i번째 집을 파랑(B)으로 칠했을 때의 최솟값

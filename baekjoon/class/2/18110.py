@@ -5,7 +5,7 @@ input = sys.stdin.readline
 
 
 def round_off(num):
-    return int(num) + (1 if num - int(num) >= 0.5 else 0)
+    return int(num + 0.5)
 
 
 n = int(input())
