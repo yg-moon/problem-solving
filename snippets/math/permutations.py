@@ -22,7 +22,7 @@ def combine_1(arr, path, start):
         return
     for i in range(start, len(arr)):
         path.append(arr[i])
-        combine_1(arr, path)
+        combine_1(arr, path, i + 1)
         path.pop()
 
 
@@ -53,6 +53,10 @@ def permute_3(arr, path):
 arr = [1, 2, 3]
 
 permute_1(arr, [], [False] * len(arr))
+print(result)
+result.clear()
+
+combine_1(arr, [], 0)
 print(result)
 result.clear()
 
