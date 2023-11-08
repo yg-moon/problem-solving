@@ -1,7 +1,6 @@
 # 가장 긴 증가하는 부분 수열 5
 # 출처: https://my-coding-notes.tistory.com/270
-from bisect import bisect_left
-import sys
+import sys, bisect
 
 INF = sys.maxsize  # 주의: -10억이 100만개 들어올 수 있으므로, 아주 큰 수가 필요
 
@@ -16,7 +15,7 @@ for i in range(1, N + 1):
         LIS.append(arr[i])
         dp[i] = len(LIS) - 1
     else:
-        dp[i] = bisect_left(LIS, arr[i])
+        dp[i] = bisect.bisect_left(LIS, arr[i])
         LIS[dp[i]] = arr[i]
 print(len(LIS) - 1)
 

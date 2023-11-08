@@ -7,37 +7,44 @@ input = sys.stdin.readline
 T = int(input())
 
 for _ in range(T):
-    # 입력 받기
     N, K = map(int, input().split())
     time = [0] + list(map(int, input().split()))  # 1-idx
     graph = defaultdict(list)
-    indegree = [0] * (N + 1)
+    idg = [0] * (N + 1)
     for _ in range(K):
         X, Y = map(int, input().split())
         graph[X].append(Y)
-        indegree[Y] += 1
+        idg[Y] += 1
     W = int(input())
 
     def topo_sort():
-        result = time[:]
+        dp = time[:]  # 복사본
         q = deque()
         for i in range(1, N + 1):
-            if indegree[i] == 0:
+            if idg[i] == 0:
                 q.append(i)
         while q:
             cur = q.popleft()
             for nxt in graph[cur]:
-                result[nxt] = max(result[nxt], result[cur] + time[nxt])  # 핵심
-                indegree[nxt] -= 1
-                if indegree[nxt] == 0:
+                # 핵심: 해당 노드까지의 최댓값을 기록
+                dp[nxt] = max(dp[nxt], dp[cur] + time[nxt])
+                idg[nxt] -= 1
+                if idg[nxt] == 0:
                     q.append(nxt)
-        return result[W]
+        return dp[W]
 
     print(topo_sort())
 
 """
 - 난이도: 골드3
-- 분류: 위상정렬
+- 분류: 위상정렬, DP
 
-- 대표 유형: 해당 노드까지의 최댓값을 dp로 기록하는 위상정렬
+요약
+- 해당 노드까지의 최댓값을 기록하는 대표적인 위상정렬 + DP 유형
+
+메모
+- 질문: 구하는건 '건물 W를 건설완료 하는데 드는 최소 시간'인데 왜 최댓값을 계산하는지?
+- 답: 문제를 잘 살펴보자.
+    W를 완성하려면 이전 건설순서를 갖는 모든 건물이 완성되어야 하고,
+    그중에서도 가장 오래 걸린 건물이 기준이 되기 때문.
 """

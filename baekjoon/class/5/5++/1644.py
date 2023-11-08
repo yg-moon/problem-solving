@@ -12,27 +12,28 @@ def prime_list(n):
 
 
 N = int(input())
-arr = [0] + prime_list(N)
 
-psum = [0] * len(arr)
-for i in range(1, len(psum)):
-    psum[i] = psum[i - 1] + arr[i]
+# 예외처리
+if N == 1:
+    print(0)
+    exit(0)
 
-l, r = 1, 1
-answer = 0
+arr = prime_list(N)
+l, r, answer = 0, 0, 0
+cur_sum = arr[0]
 
-while l <= r and r < len(psum):
-    cur_sum = psum[r] - psum[l - 1]
-
-    # 답을 찾았으면 정답+1
+while l <= r and r < len(arr):
+    # 답을 찾았으면
     if cur_sum == N:
         answer += 1
-
-    # 구간합이 N 이하면 r을 올림
+    # 현재 합이 N 이하면
     if cur_sum <= N:
         r += 1
-    # 구간합이 N 초과면 l을 올림
+        if r < len(arr):
+            cur_sum += arr[r]
+    # 현재 합이 N 초과면
     else:
+        cur_sum -= arr[l]
         l += 1
 
 print(answer)
@@ -40,4 +41,6 @@ print(answer)
 """
 - 난이도: 골드3
 - 분류: 투포인터
+
+- 누적합은 사용하지 않아도 됨
 """
