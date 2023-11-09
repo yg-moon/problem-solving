@@ -18,14 +18,14 @@ def dijkstra(start):
     dist[start] = 0
     pq = [(0, start)]
     while pq:
-        cur_wei, cur_node = heapq.heappop(pq)
-        if dist[cur_node] < cur_wei:
+        cur_w, cur_node = heapq.heappop(pq)
+        if dist[cur_node] < cur_w:
             continue
-        for nxt_node, nxt_wei in graph[cur_node]:
-            new_wei = cur_wei + nxt_wei
-            if dist[nxt_node] > new_wei:
-                dist[nxt_node] = new_wei
-                heapq.heappush(pq, (new_wei, nxt_node))
+        for nxt_node, nxt_w in graph[cur_node]:
+            new_w = cur_w + nxt_w
+            if dist[nxt_node] > new_w:
+                dist[nxt_node] = new_w
+                heapq.heappush(pq, (new_w, nxt_node))
     return dist
 
 

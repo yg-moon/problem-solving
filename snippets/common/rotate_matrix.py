@@ -21,6 +21,11 @@ def rotate_ver2(mat):
     return list(map(list, zip(*mat[::-1])))
 
 
+# Ver3. Another Pythonic way
+def rotate_ver3(mat):
+    return [list(row) for row in zip(*mat[::-1])]
+
+
 # Result
 # Ver1
 for row in rotate_ver1(sample_mat):
@@ -28,5 +33,9 @@ for row in rotate_ver1(sample_mat):
 print()
 # Ver2
 for row in rotate_ver2(sample_mat):
+    print(row)
+print()
+# Ver3
+for row in rotate_ver3(sample_mat):
     print(row)
 print()
