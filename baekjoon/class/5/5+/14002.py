@@ -13,11 +13,11 @@ print(max(dp))
 
 # 역추적
 answer = []
-max_idx = max(dp)
+order = max(dp)
 for i in range(N - 1, -1, -1):
-    if dp[i] == max_idx:
+    if dp[i] == order:
         answer.append(arr[i])
-        max_idx -= 1
+        order -= 1
 answer.reverse()
 print(*answer)
 
