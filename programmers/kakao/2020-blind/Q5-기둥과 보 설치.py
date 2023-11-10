@@ -16,17 +16,19 @@ def is_ok(board, result):
         # 기둥
         if a == 0:
             # 1.바닥 위에 있거나, 2.보의 한쪽 끝 부분 위에 있거나, 3.다른 기둥 위에 있어야 함
-            if y != 0 and not pillar_cond_2(x, y) and not pillar_cond_3(x, y):
+            if not (y == 0 or pillar_cond_2(x, y) or pillar_cond_3(x, y)):
                 return False
         # 보
         elif a == 1:
             # 1.한쪽 끝 부분이 기둥 위에 있거나, 2.양쪽 끝 부분이 다른 보와 연결 되어야 함
-            if not beam_cond_1(x, y) and not beam_cond_2(x, y):
+            if not (beam_cond_1(x, y) or beam_cond_2(x, y)):
                 return False
     return True
 
 
 def solution(n, build_frame):
+    # board[0][x][y] == True: (x,y)에 기둥이 설치되어 있음
+    # board[1][x][y] == True: (x,y)에 보가 설치되어 있음
     board = [[[False] * (n + 1) for _ in range(n + 1)] for _ in range(2)]
     result = []
 

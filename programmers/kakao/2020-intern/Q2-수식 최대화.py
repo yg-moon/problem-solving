@@ -1,7 +1,7 @@
 from itertools import permutations
 
 
-def calc_one(l, r, op):
+def calc_one(l, op, r):
     if op == "+":
         return l + r
     elif op == "-":
@@ -15,7 +15,7 @@ def calc_all(tokens, op):
     i = 0
     while i < len(tokens):
         if tokens[i] == op:
-            result = calc_one(int(tokens[i - 1]), int(tokens[i + 1]), tokens[i])
+            result = calc_one(int(tokens[i - 1]), tokens[i], int(tokens[i + 1]))
             tokens[i - 1 : i + 2] = [str(result)]
         else:
             i += 1
