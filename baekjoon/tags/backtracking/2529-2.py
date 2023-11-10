@@ -8,17 +8,17 @@ max_str = ""
 visited = [0] * 10
 
 
-def check(num1, num2, sign):
+def check(num1, sign, num2):
     if sign == "<":
         return num1 < num2
     else:
         return num1 > num2
 
 
-def solve(depth, cur_str):
+def solve(cur_str):
     global max_str, min_str
 
-    if depth == k + 1:
+    if len(cur_str) == k + 1:
         # 처음 생성되었으면 최소값이 들어감
         if len(min_str) == 0:
             min_str = cur_str
@@ -27,23 +27,23 @@ def solve(depth, cur_str):
             max_str = cur_str
         return
 
-    # 조건을 만족하는 결과만 재귀적으로 생성
+    # 조건을 만족하는 순열만 재귀적으로 생성
     for i in range(10):
         if not visited[i]:
-            if depth == 0 or check(cur_str[-1], str(i), signs[depth - 1]):
+            if not cur_str or check(cur_str[-1], signs[len(cur_str) - 1], str(i)):
                 visited[i] = True
-                solve(depth + 1, cur_str + str(i))
+                solve(cur_str + str(i))
                 visited[i] = False
 
 
-solve(0, "")
+solve("")
 
 print(max_str)
 print(min_str)
 
 """
 - 난이도: 실버1
-- 분류: 브루트포스, 백트래킹
+- 분류: 백트래킹
 
-- 순열 직접 구현
+- 백트래킹으로 조건을 만족하는 순열만 생성한다.
 """
