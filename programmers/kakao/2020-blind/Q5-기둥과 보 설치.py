@@ -27,8 +27,8 @@ def is_ok(board, result):
 
 
 def solution(n, build_frame):
-    # board[0][x][y] == True: (x,y)에 기둥이 설치되어 있음
-    # board[1][x][y] == True: (x,y)에 보가 설치되어 있음
+    # board[0][x][y]: (x,y)에 기둥이 설치되었는지 여부
+    # board[1][x][y]: (x,y)에 보가 설치되었는지 여부
     board = [[[False] * (n + 1) for _ in range(n + 1)] for _ in range(2)]
     result = []
 
@@ -53,6 +53,6 @@ def solution(n, build_frame):
 
 
 """
-- 분류: 구현, 시뮬레이션, 완전탐색
+- 분류: 시뮬레이션, 완전탐색
 - 시간: 2:00-3:00 (60분)
 """
