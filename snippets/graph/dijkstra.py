@@ -13,23 +13,23 @@ for _ in range(E):
     graph[u].append((v, w))
 
 
-def dijkstra(start):
+def dijk(start):
     dist = [INF] * (V + 1)
     dist[start] = 0
     pq = [(0, start)]
     while pq:
-        cur_w, cur_node = heapq.heappop(pq)
-        if dist[cur_node] < cur_w:
+        cur_w, cur = heapq.heappop(pq)
+        if dist[cur] < cur_w:
             continue
-        for nxt_node, nxt_w in graph[cur_node]:
+        for nxt, nxt_w in graph[cur]:
             new_w = cur_w + nxt_w
-            if dist[nxt_node] > new_w:
-                dist[nxt_node] = new_w
-                heapq.heappush(pq, (new_w, nxt_node))
+            if dist[nxt] > new_w:
+                dist[nxt] = new_w
+                heapq.heappush(pq, (new_w, nxt))
     return dist
 
 
-result = dijkstra(K)
+result = dijk(K)
 
 for i in range(1, V + 1):
     print(result[i] if result[i] != INF else "INF")
