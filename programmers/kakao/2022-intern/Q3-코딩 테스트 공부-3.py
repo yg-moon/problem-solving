@@ -26,7 +26,7 @@ def solution(alp, cop, problems):
             # Case3: 문제 풀기
             for alp_req, cop_req, alp_rwd, cop_rwd, cost in problems:
                 if i >= alp_req and j >= cop_req:
-                    # 목표를 넘어가지 않게 처리
+                    # 주의: 목표를 넘어가지 않게 처리
                     ni = min(i + alp_rwd, target_alp)
                     nj = min(j + cop_rwd, target_cop)
                     dp[ni][nj] = min(dp[ni][nj], dp[i][j] + cost)
