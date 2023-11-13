@@ -31,3 +31,8 @@ def solution(gems):
             l += 1
 
     return [l_res + 1, r_res]
+
+
+"""
+- 분류: 투포인터 (슬라이딩 윈도우)
+"""

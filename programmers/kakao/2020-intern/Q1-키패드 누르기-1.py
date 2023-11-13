@@ -68,3 +68,8 @@ def solution(numbers, hand):
                     move_r(num)
 
     return result
+
+
+"""
+- BFS 풀이
+"""

@@ -57,3 +57,8 @@ def solution(n, path, order):
             if has_cycle(node):
                 return False
     return True
+
+
+"""
+- DFS 풀이 (정해)
+"""

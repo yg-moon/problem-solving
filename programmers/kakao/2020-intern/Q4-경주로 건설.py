@@ -35,3 +35,8 @@ def solution(board):
     for i in range(4):
         result = min(result, visited[i][n - 1][n - 1])
     return result
+
+
+"""
+- 분류: BFS (3차원)
+"""

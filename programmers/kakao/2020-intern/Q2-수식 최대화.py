@@ -45,3 +45,8 @@ def solution(expression):
             tmp_tokens = calc_all(tmp_tokens, op)
         answer = max(answer, abs(int(tmp_tokens[0])))
     return answer
+
+
+"""
+- 분류: 구현, 문자열, 완전탐색
+"""

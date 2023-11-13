@@ -48,5 +48,6 @@ def solution(n, path, order):
 
 
 """
+- 위상정렬 풀이
 - 참고: https://2jinishappy.tistory.com/200
 """

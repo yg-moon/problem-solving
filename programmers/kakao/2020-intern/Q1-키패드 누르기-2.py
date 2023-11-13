@@ -52,3 +52,8 @@ def solution(numbers, hand):
                 else:
                     move_r(num)
     return result
+
+
+"""
+- 점 사이 거리 풀이 (정해)
+"""
