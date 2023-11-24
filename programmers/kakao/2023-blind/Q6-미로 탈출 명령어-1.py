@@ -22,7 +22,7 @@ def solution(n, m, x, y, r, c, k):
         if not found:
             dist = get_dist(cur_x, cur_y, r, c)
             # 시간초과 핵심: 가지치기
-            if k - cnt - dist < 0:
+            if k - cnt < dist:
                 return
             if (k - cnt - dist) % 2 == 1:
                 return
