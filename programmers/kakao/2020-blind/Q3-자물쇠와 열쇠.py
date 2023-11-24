@@ -1,5 +1,5 @@
 def rotate(mat):
-    return list(map(list, zip(*mat[::-1])))
+    return [list(row) for row in zip(*mat[::-1])]
 
 
 def solution(key, lock):
@@ -46,6 +46,6 @@ def solution(key, lock):
 
 
 """
-- 분류: 구현, 그래프, 완전탐색
-- 시간: 3:50-5:20 (90분) (구현40분 + 디버깅50분)
+- 분류: 완전탐색, 구현
+- 시간: 3:50-5:20 (90분) (구현40분, 디버깅50분)
 """

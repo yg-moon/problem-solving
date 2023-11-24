@@ -20,5 +20,5 @@ def solution(s: str) -> int:
 
 
 """
-- replace() 를 사용한 깔끔한 풀이
+- replace()를 사용한 깔끔한 풀이
 """

@@ -12,12 +12,12 @@ def shift_row(mat):
 
 
 def rotate(mat):
-    dir = 0
+    n = len(mat)
+    m = len(mat[0])
     x = 0
     y = 0
     val = mat[x][y]
-    n = len(mat)
-    m = len(mat[0])
+    dir = 0
 
     while dir < 4:
         nx = x + dx[dir]

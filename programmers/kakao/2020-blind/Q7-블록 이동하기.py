@@ -6,28 +6,29 @@ def get_rotations(new_board, pos1, pos2):
     results = []
 
     def append_results(x1, y1, x2, y2):
+        # 두 칸이 모두 비어있는 경우에만 회전 가능
         if new_board[x1][y1] == 0 and new_board[x2][y2] == 0:
             results.append((pos1, (x1, y1)))
             results.append((pos2, (x2, y2)))
 
     # 가로로 놓인 경우
     if pos1[0] == pos2[0]:
-        # 위에가 비었다면
+        # 위를 확인
         x1, y1 = pos1[0] - 1, pos1[1]
         x2, y2 = pos2[0] - 1, pos2[1]
         append_results(x1, y1, x2, y2)
-        # 아래가 비었다면
+        # 아래를 확인
         x1, y1 = pos1[0] + 1, pos1[1]
         x2, y2 = pos2[0] + 1, pos2[1]
         append_results(x1, y1, x2, y2)
 
     # 세로로 놓인 경우
     elif pos1[1] == pos2[1]:
-        # 왼쪽이 비었다면
+        # 왼쪽을 확인
         x1, y1 = pos1[0], pos1[1] - 1
         x2, y2 = pos2[0], pos2[1] - 1
         append_results(x1, y1, x2, y2)
-        # 오른쪽이 비었다면
+        # 오른쪽을 확인
         x1, y1 = pos1[0], pos1[1] + 1
         x2, y2 = pos2[0], pos2[1] + 1
         append_results(x1, y1, x2, y2)

@@ -39,4 +39,5 @@ def solution(board):
 
 """
 - 분류: BFS (3차원)
+- 소요 시간: 70분
 """

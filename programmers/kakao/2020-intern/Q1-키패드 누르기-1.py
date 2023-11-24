@@ -71,5 +71,8 @@ def solution(numbers, hand):
 
 
 """
+- 분류: 구현
+- 소요 시간: 40분
+
 - BFS 풀이
 """

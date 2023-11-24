@@ -21,7 +21,7 @@ def solution(n, paths, gates, summits):
     # 다익스트라
     while pq:
         cur_w, cur = heapq.heappop(pq)
-        # 조건 추가: 산봉우리에 도달했으면 종료
+        # 추가 조건: 산봉우리에 도달했으면 종료
         if dist[cur] < cur_w or cur in summits_set:
             continue
         for nxt, nxt_w in graph[cur]:
@@ -41,5 +41,5 @@ def solution(n, paths, gates, summits):
 
 
 """
-- 다익스트라 풀이 (정해)
+- 분류: 다익스트라
 """

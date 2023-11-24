@@ -48,6 +48,7 @@ def solution(n, path, order):
 
 
 """
+- 분류: 그래프 (사이클 판별)
 - 위상정렬 풀이
 - 참고: https://2jinishappy.tistory.com/200
 """
