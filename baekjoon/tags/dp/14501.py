@@ -26,6 +26,6 @@ print(dp[N])
 - 난이도: 실버3
 - 분류: dp
 
-- 요약: 앞에서부터 채우는 바텀업 dp
+- 요약: 약간 응용된 바텀업 dp
 - 참고: https://codejin.tistory.com/173
 """

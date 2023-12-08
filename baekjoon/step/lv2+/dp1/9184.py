@@ -37,6 +37,6 @@ while True:
 - 난이도: 실버2
 - 분류: dp
 
-- Top-Down DP의 기본을 배우는 예제
+- 요약: Top-Down DP의 기본을 배우는 예제
 - 출처: https://jainn.tistory.com/82
 """
