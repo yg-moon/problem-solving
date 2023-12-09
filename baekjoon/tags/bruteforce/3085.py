@@ -3,20 +3,21 @@ N = int(input())
 board = [list(input()) for _ in range(N)]
 dx = [-1, 0]
 dy = [0, 1]
-answer = 0
+max_cnt = 0
 
 
-def check():
-    global answer
+# 보드 전체에 대해 최장연속부분을 찾기
+def calc_cnt():
+    global max_cnt
     # 가로
     for i in range(N):
-        cnt = 1  # 주의: 행마다 초기화 해야함
+        cnt = 1
         for j in range(1, N):
             if board[i][j] == board[i][j - 1]:
                 cnt += 1
             else:
                 cnt = 1
-            answer = max(answer, cnt)
+            max_cnt = max(max_cnt, cnt)
     # 세로
     for j in range(N):
         cnt = 1
@@ -25,9 +26,10 @@ def check():
                 cnt += 1
             else:
                 cnt = 1
-            answer = max(answer, cnt)
+            max_cnt = max(max_cnt, cnt)
 
 
+# 모든 좌표를 보면서, 둘이 다르면 교체해보고, 최장연속부분을 찾기
 for x in range(N):
     for y in range(N):
         for i in range(2):
@@ -35,14 +37,14 @@ for x in range(N):
             ny = y + dy[i]
             if 0 <= nx < N and 0 <= ny < N and board[x][y] != board[nx][ny]:
                 board[x][y], board[nx][ny] = board[nx][ny], board[x][y]  # swap
-                check()
-                board[x][y], board[nx][ny] = board[nx][ny], board[x][y]  # 원상복구
+                calc_cnt()
+                board[x][y], board[nx][ny] = board[nx][ny], board[x][y]  # restore
 
-print(answer)
+print(max_cnt)
 
 """
 - 난이도: 실버2
-- 분류: 완전탐색
+- 분류: 브루트포스
 
 - 요약: 모든 좌표를 보면서, 둘이 다르면 교체해보고, 최장연속부분을 찾기
 - 주의

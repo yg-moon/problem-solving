@@ -3,10 +3,10 @@ from itertools import combinations
 from collections import deque
 from copy import deepcopy
 
+INF = int(1e9)
+
 N, M, D = map(int, input().split())
 grid = deque(list(map(int, input().split())) for _ in range(N))
-
-INF = int(1e9)
 max_kills = 0
 
 
@@ -49,7 +49,7 @@ def simulate(grid, col1, col2, col3):
             kills += 1
         killed.clear()
 
-        # 다음 턴으로 진행 (데크로 처리)
+        # 다음 턴으로 진행 (덱으로 처리)
         grid.pop()
         grid.appendleft([0] * M)
 
@@ -75,7 +75,7 @@ print(max_kills)
     - 1. grid[i][j] == 1 조건을 빼먹었음
     - 2. 더 왼쪽에 있는거니까 j < min_j 로 해야 되는데 i < min_i로 했음
 
-교훈
+느낀점
 - 시키는대로 정확히 구현하자
     - ex. 궁수는 반드시 가장 가까운 맨 왼쪽을 쏴야 함, 죽인 적의 개수만 세야 됨
 - 계획을 빠르게 검증하자

@@ -1,5 +1,4 @@
 # 괄호 추가하기
-# 출처: https://velog.io/@weenybeenymini/백준-16637번-괄호-추가하기
 N = int(input())
 s = input()
 max_res = -1 * (2**31)
@@ -48,9 +47,11 @@ print(max_res)
 
 """
 - 난이도: 골드3
-- 분류: 구현, 브루트포스, 재귀
+- 분류: 브루트포스, 재귀
 
 핵심
-- 가능한 경우의 수를 한정하고 재귀적으로 풀기 (Case1, Case2)
-- 매 단계마다 어떤 값을 들고 진행할지 정하기 (idx, val)
+- 가능한 경우의 수를 나열하고 재귀적으로 풀기 (Case1, Case2)
+- 매번 어떤 값을 들고 진행할지 정하기 (idx, val)
+
+- 참고: https://velog.io/@weenybeenymini/백준-16637번-괄호-추가하기
 """

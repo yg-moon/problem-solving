@@ -1,11 +1,13 @@
 # 게리맨더링
 from collections import defaultdict, deque
 
+INF = int(1e9)
+
 N = int(input())
 peoples = [0] + list(map(int, input().split()))  # 1-idx
 
 graph = defaultdict(list)
-min_diff = int(1e9)
+min_diff = INF
 
 for i in range(1, N + 1):
     for num in list(map(int, input().split()))[1:]:
@@ -61,14 +63,14 @@ for i in range(1, (N // 2) + 1):
     visited = [False] * (N + 1)
     dfs(0, 1, i)
 
-if min_diff != int(1e9):
+if min_diff != INF:
     print(min_diff)
 else:
     print(-1)
 
 """
 - 난이도: 골드4
-- 분류: 브루트포스, BFS, 조합
+- 분류: 브루트포스, 조합, BFS
 
 요약
 - 목표: 두 선거구로 나누었을때 인구차의 최솟값

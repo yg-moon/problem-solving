@@ -3,6 +3,8 @@ from itertools import combinations
 from collections import deque
 from copy import deepcopy
 
+INF = int(1e9)
+
 N, M = map(int, input().split())
 graph = [list(map(int, input().split())) for _ in range(N)]
 
@@ -11,7 +13,7 @@ dy = [0, -1, 0, 1]
 
 virus_pos = []
 empty_cnt = 0
-min_time = int(1e9)
+min_time = INF
 
 # 그래프 표기 변경, 바이러스 후보위치 수집
 for i in range(N):
@@ -53,7 +55,6 @@ def simulate(graph):
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
-            # 범위 안에 있고, 벽이 아니고, 방문하지 않았을 때
             if (
                 0 <= nx < N
                 and 0 <= ny < N
@@ -63,7 +64,7 @@ def simulate(graph):
                 # 다음 위치가 빈칸일 때
                 if graph[nx][ny] != "*":
                     cnt += 1
-                # 현재 위치가 출발점일 때 / 아닐 때
+                # 현재 위치가 출발점일 때
                 if graph[x][y] == "#":
                     graph[nx][ny] = 1
                 else:
@@ -73,7 +74,7 @@ def simulate(graph):
 
     # 바이러스가 다 퍼졌는지 확인
     if empty_cnt != cnt:
-        return int(1e9)
+        return INF
 
     # 현재 그래프에서 최댓값 찾기
     max_val = 0
@@ -91,7 +92,7 @@ for comb in combinations(virus_pos, M):
         new_graph[i][j] = "#"  # 활성화된 바이러스
     min_time = min(min_time, simulate(new_graph))
 
-if min_time != int(1e9):
+if min_time != INF:
     print(min_time)
 else:
     print(-1)
