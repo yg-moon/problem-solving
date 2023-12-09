@@ -12,7 +12,7 @@ mid_set = set()
 max_cnt = 0
 
 for char in "antic":
-    alps[ord(char) - 97] = True
+    alps[ord(char) - 97] = True  # 팁: 알파벳을 숫자에 대응하는 방법
 
 for word in words:
     mid = word[4:-4]  # 앞 anta, 뒤 tica 제외한 단어
@@ -24,6 +24,7 @@ for word in words:
 mid_list = list(mid_set)
 
 
+# 핵심: 가운데 글자들의 조합중에서 만족하는게 최대일때 개수를 구하기
 def dfs(depth, start):
     global max_cnt
 
@@ -54,10 +55,9 @@ print(max_cnt)
 - 난이도: 골드4
 - 분류: 백트래킹
 
-요약
-- 가운데서 필요한 단어들의 조합중에서 만족하는게 최대인 개수를 구하기
-- 최적화: 백트래킹은 많은 반복이 이루어지므로 최대한 가벼운 연산이 좋음
-    - list assignment < list append, pop < set add, remove
+최적화
+- 백트래킹은 많은 반복이 이루어지므로 최대한 가벼운 연산이 좋음
+    - assignment < list append, pop < set add, remove
     - (백준에서 실행시간 3배 차이)
 
 디버깅

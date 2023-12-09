@@ -10,15 +10,17 @@ min_str = str(sys.maxsize)
 max_str = str(-sys.maxsize)
 
 for perm in permutations(nums, k + 1):
-    correct = True
+    is_ok = True
+
     for i in range(k):
         if signs[i] == "<" and perm[i] >= perm[i + 1]:
-            correct = False
+            is_ok = False
             break
         elif signs[i] == ">" and perm[i] <= perm[i + 1]:
-            correct = False
+            is_ok = False
             break
-    if correct:
+
+    if is_ok:
         perm_str = "".join([str(x) for x in perm])
         if int(min_str) > int(perm_str):
             min_str = perm_str
@@ -32,5 +34,5 @@ print(min_str)
 - 난이도: 실버1
 - 분류: 브루트포스
 
-- 모든 순열을 생성하고 그중에서 찾는다.
+- 모든 순열을 생성하고 그중에서 찾기
 """

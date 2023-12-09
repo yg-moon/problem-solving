@@ -1,6 +1,14 @@
 # 도영이가 만든 맛있는 음식
 import sys
 
+N = int(input())
+min_diff = sys.maxsize
+pairs = []
+
+for _ in range(N):
+    S, B = map(int, input().split())
+    pairs.append((S, B))
+
 
 def dfs(comb, start):
     global min_diff
@@ -21,14 +29,6 @@ def dfs(comb, start):
         dfs(comb, i + 1)
         comb.pop()
 
-
-N = int(input())
-pairs = []
-min_diff = sys.maxsize
-
-for _ in range(N):
-    S, B = map(int, input().split())
-    pairs.append((S, B))
 
 dfs([], 0)
 

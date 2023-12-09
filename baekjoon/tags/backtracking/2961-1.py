@@ -1,11 +1,11 @@
 # 도영이가 만든 맛있는 음식
-from itertools import combinations
 import sys
+from itertools import combinations
 
 N = int(input())
 min_diff = sys.maxsize
-
 pairs = []
+
 for _ in range(N):
     S, B = map(int, input().split())
     pairs.append((S, B))

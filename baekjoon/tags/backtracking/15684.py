@@ -1,7 +1,7 @@
 # 사다리 조작
 N, M, H = map(int, input().split())
 board = [[False] * (N + 1) for _ in range(H + 1)]
-answer = int(1e9)
+min_cnt = int(1e9)
 
 # 핵심1: 표현방식을 결정
 for _ in range(M):
@@ -28,7 +28,7 @@ def check_result():
 
 
 # 현재 가로선을 추가할 수 있는지 확인
-def is_possible(row, col):
+def is_ok(row, col):
     # 자신이 중복인지 확인
     if board[row][col]:
         return False
@@ -40,21 +40,21 @@ def is_possible(row, col):
 
 # 가능한 모든 가로선의 조합을 최대 3개까지 추가
 def dfs(depth, cur_row, cur_col):
-    global answer
+    global min_cnt
 
     if check_result():
-        answer = min(answer, depth)
+        min_cnt = min(min_cnt, depth)
         return
 
-    # 핵심2: 조기종료 조건 및 위치
-    if depth >= answer or depth == 3:
+    # 핵심2: 조기종료 조건
+    if depth >= min_cnt or depth == 3:
         return
 
     # 핵심3: 중복탐색 방지를 위해 시작지점을 잘 설정 (2차원 백트래킹)
     for row in range(cur_row, H + 1):
         col_start = cur_col if row == cur_row else 1
         for col in range(col_start, N):
-            if is_possible(row, col):
+            if is_ok(row, col):
                 board[row][col] = True
                 dfs(depth + 1, row, col)
                 board[row][col] = False
@@ -62,8 +62,8 @@ def dfs(depth, cur_row, cur_col):
 
 dfs(0, 1, 1)
 
-if answer <= 3:
-    print(answer)
+if min_cnt <= 3:
+    print(min_cnt)
 else:
     print(-1)
 
@@ -73,11 +73,8 @@ else:
 
 디버깅
 - 문제: 시간초과
-- 이유
-    기본적인 것
-    - 1. 조합을 찾을때 시작점을 제대로 지정하지 않아서 중복탐색을 했음
-    - 2. 조기종료를 하지 않았음
-    유의할 점
-    - 3. 자료구조가 너무 무거웠음 (최대한 배열로 풀 것... 실행시간이 3배 차이남)
-    - 4. 조기종료의 조건이 안 좋았음 (조합 탐색을 한단계 더하게 되어, 실행시간이 2배 이상 차이났음)
+- 해결법
+    - 1. 조기종료를 제대로 할 것 (탐색을 한단계만 더해도 실행시간이 2배 이상 차이남)
+    - 2. 시작지점을 잘 설정하여 중복탐색을 줄일 것 (이번 문제는 2차원으로 해야함)
+    - 3. 자료구조를 가벼운 것으로 사용할 것 (실행시간이 3배까지도 차이남)
 """
