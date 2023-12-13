@@ -17,7 +17,7 @@ for i in range(N + 1):
     dp[i] = max_val
     # 상담을 완료하는 날이 퇴사일을 넘기지 않는다면
     if i < N and i + T[i] <= N:
-        # 해당 날짜에 대해, (그냥 놔두기 vs 상담하기) 중에서 수익이 큰쪽을 선택
+        # 해당 날짜에 대해 (그냥 놔두기 vs 상담하기) 중에서 수익이 큰쪽을 선택
         dp[i + T[i]] = max(dp[i + T[i]], dp[i] + P[i])
 
 print(dp[N])
@@ -26,6 +26,6 @@ print(dp[N])
 - 난이도: 실버3
 - 분류: dp
 
-- 요약: 약간 응용된 바텀업 dp
+- 요약: 가능한 경우를 갱신하는 1차원 dp 유형
 - 참고: https://codejin.tistory.com/173
 """
