@@ -1,4 +1,4 @@
-# 출처: https://merry555.tistory.com/13
+# 1
 while True:
     try:
         n = int(input())
@@ -17,9 +17,11 @@ while True:
 
 """
 - 난이도: 실버3
-- 분류: 수학
+- 분류: 수학, 브루트포스
 
 - 설명
 계속 1, 11, 111을 만들어가며
 나누어 떨어지면 그것이 배수
+
+- 참고: https://merry555.tistory.com/13
 """

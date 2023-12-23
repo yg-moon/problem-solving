@@ -3,7 +3,7 @@ from collections import defaultdict
 
 name = input()
 
-# 각 문자에 대한 개수를 셈
+# 각 문자에 대한 개수를 세기 
 dic = defaultdict(int)
 for char in name:
     dic[char] += 1
@@ -32,13 +32,12 @@ while l <= r:
     l += 1
     r -= 1
 
-# 주의: 팰린드롬이 안되는 조건을 정확히 설정 (이것 때문에 삽질함)
+# 주의: 팰린드롬이 안되는 조건을 정확히 설정
 if "" in result:
     print("I'm Sorry Hansoo")
 else:
     print("".join(result))
 
 """
-- 난이도: 실버3
-- 분류: 문자열, 그리디, 투포인터
+- 투포인터 풀이
 """

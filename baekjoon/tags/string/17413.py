@@ -1,5 +1,4 @@
 # 단어 뒤집기 2
-# 출처: https://star7sss.tistory.com/391
 S = input()
 
 stack = []
@@ -33,7 +32,7 @@ for s in S:
     else:
         stack.append(s)
 
-# 남은거 처리
+# 스택에 남은거 처리
 while stack:
     answer += stack.pop()
 
@@ -43,5 +42,6 @@ print(answer)
 - 난이도: 실버3
 - 분류: 문자열, 스택
 
-- 스택 하나만 사용한 간단한 풀이.
+- 스택 하나만 사용한 간단한 풀이
+- 참고: https://star7sss.tistory.com/391
 """

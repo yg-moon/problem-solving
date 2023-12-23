@@ -1,4 +1,4 @@
-# 출처: https://ggarden.tistory.com/entry/백준-1057-토너먼트-Python
+# 토너먼트
 N, A, B = map(int, input().split())
 rounds = 0
 
@@ -11,7 +11,7 @@ print(rounds)
 
 """
 - 난이도: 실버4
-- 분류: 수학
+- 분류: 수학, 브루트포스
 
 - 설명
 N = 8 일 때
@@ -25,4 +25,6 @@ N = 8 일 때
 1 1 1 1 2 2 2 2 2차 가공
 1 1 1 1 1 1 1 1 3차 가공
 3차 가공하면 토너먼트 종료
+
+- 참고: https://ggarden.tistory.com/entry/백준-1057-토너먼트-Python
 """

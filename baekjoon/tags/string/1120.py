@@ -1,7 +1,5 @@
 # 문자열
-# 출처: https://yoonsang-it.tistory.com/55
 A, B = input().split()
-
 min_diff = int(1e9)
 
 # i: 시작점, j: 상대적 위치
@@ -18,14 +16,12 @@ print(min_diff)
 - 난이도: 실버4
 - 분류: 문자열, 브루트포스
 
-- 예시:
+- 풀이:
 a = abcd
 b = abcdef 이면
-
 (abcd)ef -> cnt = 0
 a(bcde)f -> cnt = 4
 ab(cdef) -> cnt = 4
 
-- 주의: 브루트포스라고 해서 진짜 너무 무식하게 풀면 안 된다.
-- 팁: 이렇게 슬라이딩 윈도우처럼 푸는 방식 기억하기.
+- 참고: https://yoonsang-it.tistory.com/55
 """

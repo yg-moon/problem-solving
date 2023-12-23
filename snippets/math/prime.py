@@ -16,7 +16,7 @@ def prime_list(n):
     arr[1] = False
 
     for i in range(2, int(n**0.5) + 1):
-        if arr[i] == True:
+        if arr[i]:
             # 핵심: i*2부터 n까지, i씩 증가하며 처리
             for j in range(i * 2, n + 1, i):
                 arr[j] = False
