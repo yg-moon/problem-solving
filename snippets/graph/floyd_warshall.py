@@ -17,11 +17,15 @@ for _ in range(M):
     a, b, c = map(int, input().split())
     graph[a][b] = c
 
-# 플로이드 워셜
-for k in range(1, N + 1):
-    for i in range(1, N + 1):
-        for j in range(1, N + 1):
-            graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+
+def floyd():
+    for k in range(1, N + 1):
+        for i in range(1, N + 1):
+            for j in range(1, N + 1):
+                graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
+
+
+floyd()
 
 # 출력
 for i in range(1, N + 1):
