@@ -15,23 +15,19 @@ max_cnt = 1
 answer = []
 
 
-# 핵심: DFS가 아니라 BFS
 def bfs(start):
     q = deque()
     q.append(start)
     visited = [False] * (N + 1)
     visited[start] = True
     cnt = 1
-
     while q:
         cur = q.popleft()
-
         for nxt in graph[cur]:
             if not visited[nxt]:
                 visited[nxt] = True
                 q.append(nxt)
                 cnt += 1
-
     return cnt
 
 
@@ -49,7 +45,7 @@ print(*answer)
 
 """
 - 난이도: 실버1
-- 분류: BFS
+- 분류: DFS/BFS
 
-- 디버깅: DFS로 하니까 시간초과 -> 입력이 큰 문제에서는 BFS를 사용하자.
+- 디버깅: DFS는 시간초과 되므로, 입력이 큰 문제에서는 BFS를 사용하자
 """
