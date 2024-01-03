@@ -1,5 +1,6 @@
 # 물통
 A, B, C = map(int, input().split())
+
 result = []
 seen = set()
 

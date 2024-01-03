@@ -1,6 +1,7 @@
 # 숫자고르기
 N = int(input())
 arr = [0] + [int(input()) for _ in range(N)]  # 1-idx
+
 result = set()
 
 
@@ -8,7 +9,6 @@ def dfs(idx):
     visited.add(idx)
     start.add(idx)
     end.add(arr[idx])
-
     if arr[idx] not in visited:
         dfs(arr[idx])
 
@@ -19,7 +19,6 @@ for i in range(1, N + 1):
         start = set()
         end = set()
         dfs(i)
-
     if start == end:
         result.update(start)  # 주의: set.union()은 새 리턴값을 생성
 

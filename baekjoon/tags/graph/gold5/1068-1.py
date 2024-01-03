@@ -9,12 +9,12 @@ seen = set()
 erase_cnt = 0
 
 
+# 핵심1: 노드를 지우면 자손노드도 전부 제외
 def bfs():
     global erase_cnt
-
-    # 핵심1: 노드를 지우면 자손노드도 전부 제외
     q = deque()
     q.append(erase)
+
     while q:
         idx = q.popleft()
         erase_cnt += 1

@@ -1,6 +1,14 @@
 # 물통
 from collections import deque
 
+A, B, C = map(int, input().split())
+
+q = deque()
+q.append((0, 0))
+visited = [[False] * (B + 1) for _ in range(A + 1)]
+visited[0][0] = True
+result = []
+
 
 # cup1 -> cup2 으로 물을 붓고 기록을 저장
 def pour(cup1, cup2):
@@ -36,14 +44,6 @@ def bfs():
         water = min(c, B - b)
         pour(a, b + water)
 
-
-A, B, C = map(int, input().split())
-
-q = deque()
-q.append((0, 0))
-visited = [[False] * (B + 1) for _ in range(A + 1)]
-visited[0][0] = True
-result = []
 
 bfs()
 
