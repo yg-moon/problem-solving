@@ -4,24 +4,32 @@ from collections import deque
 N = int(input())
 parent = list(map(int, input().split()))
 erase = int(input())
-erase_cnt = 0
-
-# 핵심1: 노드를 지우면 자손노드도 전부 제외
-q = deque()
-q.append(erase)
-while q:
-    idx = q.popleft()
-    erase_cnt += 1
-    parent[idx] = -2  # 주의: 자기 자신도 제외
-    for i in range(N):
-        if parent[i] == idx:
-            parent[i] = -2
-            q.append(i)
 
 seen = set()
-for i in range(N):
-    if parent[i] != -2:
-        seen.add(parent[i])
+erase_cnt = 0
+
+
+def bfs():
+    global erase_cnt
+
+    # 핵심1: 노드를 지우면 자손노드도 전부 제외
+    q = deque()
+    q.append(erase)
+    while q:
+        idx = q.popleft()
+        erase_cnt += 1
+        parent[idx] = -2  # 주의: 자기 자신도 제외
+        for i in range(N):
+            if parent[i] == idx:
+                parent[i] = -2
+                q.append(i)
+
+    for i in range(N):
+        if parent[i] != -2:
+            seen.add(parent[i])
+
+
+bfs()
 
 # 예외처리: 남은 노드가 하나도 없을때
 if erase_cnt == N:
