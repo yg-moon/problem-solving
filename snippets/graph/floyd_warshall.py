@@ -8,9 +8,7 @@ graph = [[INF] * (N + 1) for _ in range(N + 1)]
 
 # 자기 자신은 0
 for i in range(1, N + 1):
-    for j in range(1, N + 1):
-        if i == j:
-            graph[i][j] = 0
+    graph[i][i] = 0
 
 # 간선 정보 입력
 for _ in range(M):
@@ -19,7 +17,7 @@ for _ in range(M):
 
 
 def floyd():
-    for k in range(1, N + 1):
+    for k in range(1, N + 1):  # 주의: k가 가장 위에 있어야 함
         for i in range(1, N + 1):
             for j in range(1, N + 1):
                 graph[i][j] = min(graph[i][j], graph[i][k] + graph[k][j])
