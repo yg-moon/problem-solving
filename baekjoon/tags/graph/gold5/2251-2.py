@@ -51,6 +51,5 @@ print(*sorted(result))
 
 """
 - BFS 풀이
-
 - 출처: https://cijbest.tistory.com/14
 """
