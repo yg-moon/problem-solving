@@ -1,6 +1,6 @@
 # 줄 세우기
-from collections import defaultdict, deque
 import sys
+from collections import defaultdict, deque
 
 input = sys.stdin.readline
 
@@ -16,18 +16,22 @@ for _ in range(M):
 
 
 def topo_sort():
-    result = []
     q = deque()
+    result = []
+
     for i in range(1, N + 1):
         if indegree[i] == 0:
             q.append(i)
+
     while q:
         cur = q.popleft()
         result.append(cur)
+
         for nxt in graph[cur]:
             indegree[nxt] -= 1
             if indegree[nxt] == 0:
                 q.append(nxt)
+
     return result
 
 
