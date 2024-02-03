@@ -27,6 +27,7 @@ for _ in range(T):
             cur = q.popleft()
             for nxt in graph[cur]:
                 # 핵심: 해당 노드까지의 최댓값을 기록
+                # 주의: dp/time, cur/nxt 차이를 이해하기
                 dp[nxt] = max(dp[nxt], dp[cur] + time[nxt])
                 idg[nxt] -= 1
                 if idg[nxt] == 0:
@@ -37,7 +38,7 @@ for _ in range(T):
 
 """
 - 난이도: 골드3
-- 분류: 위상정렬, DP
+- 분류: 위상정렬 + DP
 
 요약
 - 해당 노드까지의 최댓값을 기록하는 대표적인 위상정렬 + DP 유형
