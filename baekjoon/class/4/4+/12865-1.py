@@ -1,12 +1,11 @@
 # 평범한 배낭
-# 출처: https://hongcoding.tistory.com/50
 N, K = map(int, input().split())
 bags = [[0, 0]]
 for _ in range(N):
     W, V = map(int, input().split())
     bags.append((W, V))
 
-# dp[i][j]: i번째 물건까지 살펴봤을때, 허용무게가 j인 배낭의 최대가치
+# dp[i][j]: i번째 물건까지 살펴봤을때, 허용무게가 j인 배낭의 최대가치 (1-idx)
 dp = [[0] * (K + 1) for _ in range(N + 1)]
 
 for i in range(1, N + 1):
@@ -17,7 +16,7 @@ for i in range(1, N + 1):
         # - 이전 배낭을 그대로 가지고 감
         if j < w:
             dp[i][j] = dp[i - 1][j]
-        # 2. 현재 물건을 넣을 수 있다면, 다음 중 더 높은 가치를 선택:
+        # 2. 현재 물건을 넣을 수 있다면, 둘중 가치가 더 높은 쪽을 선택:
         # - 이전 배낭을 그대로 가지고 가는 경우
         # - 현재 물건을 배낭에 넣는 경우
         else:
@@ -29,5 +28,6 @@ print(dp[N][K])
 - 난이도: 골드5
 - 분류: dp
 
-- 가장 일반적인 bottom-up 2차원 냅색
+- 가장 일반적인 바텀업 2차원 냅색 (360ms)
+- 참고: https://hongcoding.tistory.com/50
 """

@@ -1,30 +1,33 @@
 N, K = map(int, input().split())
-bags = []
-for _ in range(N):
-    W, V = map(int, input().split())
-    bags.append((W, V))
-max_val = 0
+bags = [list(map(int, input().split())) for _ in range(N)]
+
+answer = 0
 
 
-def dfs(n, w, val):
-    global max_val
-    # 모든 물건을 살폈다면 종료
-    if n == N:
-        max_val = max(max_val, val)
+def dfs(i, cum_w, cum_v):  # 현재까지의 (깊이, 무게, 가치)
+    global answer
+
+    # 모든 물건을 봤으면 종료
+    if i == N:
+        answer = max(answer, cum_v)
         return
 
-    # 새로운 물건을 넣는 경우
-    if w + bags[n][0] <= K:
-        dfs(n + 1, w + bags[n][0], val + bags[n][1])
+    w = bags[i][0]
+    v = bags[i][1]
 
-    # 이전 배낭을 들고가는 경우
-    if w <= K:
-        dfs(n + 1, w, val)
+    # 1. 새로운 물건을 넣지 않는 경우
+    if cum_w <= K:
+        dfs(i + 1, cum_w, cum_v)
+
+    # 2. 새로운 물건을 넣는 경우
+    if cum_w + w <= K:
+        dfs(i + 1, cum_w + w, cum_v + v)
 
 
 dfs(0, 0, 0)
-print(max_val)
+
+print(answer)
 
 """
-- 참고: 백트래킹 풀이
+- 백트래킹 풀이 (시간초과)
 """
