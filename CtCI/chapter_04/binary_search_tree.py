@@ -11,36 +11,37 @@ class BinarySearchTree:
         self.root = None
 
     def insert(self, key):
-        new = Node(key)
-        if self.root is None:
-            self.root = new
+        new_node = Node(key)
+
+        if not self.root:
+            self.root = new_node
             return
 
-        current = self.root
-        while current:
-            if current.key > key:
-                if current.left is None:
-                    current.left = new
-                    new.parent = current
+        cur = self.root
+
+        while cur:
+            if cur.key > key:
+                if not cur.left:
+                    cur.left = new_node
+                    new_node.parent = cur
                     return
-                current = current.left
+                cur = cur.left
             else:
-                if current.right is None:
-                    current.right = new
-                    new.parent = current
+                if not cur.right:
+                    cur.right = new_node
+                    new_node.parent = cur
                     return
-                current = current.right
+                cur = cur.right
 
     def get_node(self, key):
-        current = self.root
-        while current:
-            if current.key == key:
-                return current
-
-            if current.key > key:
-                current = current.left
-            else:
-                current = current.right
+        cur = self.root
+        while cur:
+            if cur.key == key:
+                return cur
+            if cur.key > key:
+                cur = cur.left
+            elif cur.key < key:
+                cur = cur.right
         raise Exception("No such value in the tree")
 
 
