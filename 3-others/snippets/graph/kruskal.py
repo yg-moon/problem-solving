@@ -1,3 +1,4 @@
+# BOJ 1197
 V, E = map(int, input().split())
 parent = list(range(V + 1))
 edges = []

@@ -1,5 +1,4 @@
-# BOJ 11657: 타임머신
-# 출처: https://deep-learning-study.tistory.com/588
+# BOJ 11657
 INF = int(1e9)
 
 N, M = map(int, input().split())
@@ -8,8 +7,8 @@ dist = [INF] * (N + 1)
 
 for _ in range(M):
     u, v, w = map(int, input().split())
-    # 팁: 인접리스트 방식의 graph 대신 이렇게 edge만 다룰수도 있음
     edges.append((u, v, w))
+    # 팁: 인접리스트 방식의 graph 대신 이렇게 edge만 다룰수도 있음
 
 
 def bellman_ford(start):
