@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     # 방법1. 모든 0의 좌표를 저장
-    # 공간복잡도: O(MN)
+    # O(MN) space
     def setZeroes(self, matrix: List[List[int]]) -> None:
         M = len(matrix)
         N = len(matrix[0])
@@ -22,7 +22,7 @@ class Solution:
                 matrix[x][j] = 0
 
     # 방법2. 0이 될 행과 열을 저장
-    # 공간복잡도: O(M+N)
+    # O(M+N) space
     def setZeroes(self, matrix: List[List[int]]) -> None:
         M = len(matrix)
         N = len(matrix[0])
@@ -45,7 +45,7 @@ class Solution:
                 matrix[i][j] = 0
 
     # Sol. 첫 행과 열을 마커로 사용
-    # 공간복잡도: O(1)
+    # O(1) space
     def setZeroes(self, matrix: List[List[int]]) -> None:
         M = len(matrix)
         N = len(matrix[0])
@@ -78,5 +78,5 @@ class Solution:
 
 """
 - 난이도: Medium
-- 분류: 구현, 해시
+- 분류: 구현
 """

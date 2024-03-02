@@ -4,7 +4,7 @@ from collections import defaultdict
 
 class Solution:
     # 방법1. 나이브
-    # 시간복잡도: O((N-M)*M) -> 1102ms
+    # O((N-M)*M) time -> 1102ms
     def checkInclusion(self, s1: str, s2: str) -> bool:
         counter_s1 = Counter(s1)
 
@@ -15,7 +15,7 @@ class Solution:
         return False
 
     # Sol. 슬라이딩 윈도우
-    # 시간복잡도: O(N+M) -> 58ms
+    # O(N+M) time -> 58ms
     def checkInclusion(self, s1: str, s2: str) -> bool:
         s1_dic = defaultdict(int)
         s2_dic = defaultdict(int)
@@ -29,15 +29,15 @@ class Solution:
         while r < len(s2):
             s2_dic[s2[r]] += 1
 
-            if r - l + 1 == len(s1):
+            if r - l + 1 == len(s1):  # 해시맵의 길이(키의 개수)를 기준으로 확인
                 if s1_dic == s2_dic:
                     return True
                 s2_dic[s2[l]] -= 1
-                if s2_dic[s2[l]] == 0:
+                if s2_dic[s2[l]] == 0:  # 0일 경우 아예 삭제
                     del s2_dic[s2[l]]
-                l += 1
+                l += 1  # 왼쪽 윈도우 축소
 
-            r += 1
+            r += 1  # 오른쪽 윈도우 확장
 
         return False
 

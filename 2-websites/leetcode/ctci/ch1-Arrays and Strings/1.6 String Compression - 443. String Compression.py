@@ -3,7 +3,7 @@ from typing import List
 
 class Solution:
     # 방법1. 구현
-    # 공간복잡도 O(N)
+    # O(N) space
     def compress(self, chars: List[str]) -> int:
         if len(chars) == 1:
             return 1
@@ -43,7 +43,7 @@ class Solution:
         return len(lst)
 
     # Sol. 투포인터
-    # 공간복잡도 O(1)
+    # O(1) space
     def compress(self, chars: List[str]) -> int:
         i = 0  # 문자열을 훑을 포인터1
         answer = 0  # 정답을 작성할 포인터2
