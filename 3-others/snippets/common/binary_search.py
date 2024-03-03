@@ -1,11 +1,11 @@
 def search(arr, target):
-    left, right = 0, len(arr) - 1
-    while left <= right:
-        mid = left + (right - left) // 2
-        if arr[mid] < target:
-            left = mid + 1
-        elif arr[mid] > target:
-            right = mid - 1
+    l, r = 0, len(arr) - 1
+    while l <= r:
+        m = (l + r) // 2
+        if arr[m] < target:
+            l = m + 1
+        elif arr[m] > target:
+            r = m - 1
         else:
-            return mid
+            return m
     return -1

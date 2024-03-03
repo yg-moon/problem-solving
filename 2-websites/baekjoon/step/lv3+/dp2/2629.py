@@ -1,6 +1,4 @@
 # 양팔저울
-# 출처: https://my-coding-notes.tistory.com/157
-# 설명: https://nbalance97.tistory.com/110
 N = int(input())
 weights = list(map(int, input().split()))
 K = int(input())
@@ -45,4 +43,7 @@ print(*res)
 - 분류: dp
 
 - 유형: Top-down 냅색
+
+- 출처: https://my-coding-notes.tistory.com/157
+- 설명: https://nbalance97.tistory.com/110
 """
