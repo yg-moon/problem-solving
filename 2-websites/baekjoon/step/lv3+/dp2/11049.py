@@ -3,12 +3,16 @@ N = int(input())
 arr = [list(map(int, input().split())) for _ in range(N)]
 
 # dp[i][j]: i번째 행렬부터 j번째 행렬까지 곱하는 최소비용
-dp = [[0] * N for _ in range(N)]
+INF = int(3e9)
+dp = [[INF] * N for _ in range(N)]
+
+# 초기화
+for i in range(N):
+    dp[i][i] = 0
 
 for gap in range(1, N):
     for i in range(N - gap):
         j = i + gap
-        dp[i][j] = int(1e9)  # 주의: 여기서 초기화 해야함
         # 핵심: dp[i][j] = min[(i<=k<j){dp[i][k] + dp[k+1][j] + 행렬곱 비용}]
         for k in range(i, j):
             dp[i][j] = min(
