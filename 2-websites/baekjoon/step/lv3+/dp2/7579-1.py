@@ -1,13 +1,13 @@
 # 앱
 N, M = map(int, input().split())
-memory = [0] + list(map(int, input().split()))
+memory = [0] + list(map(int, input().split()))  # 1-idx
 cost = [0] + list(map(int, input().split()))
 
 # 초기화: 모든 앱을 비활성화 할때 드는 비용
 sum_cost = sum(cost)
 answer = sum_cost
 
-# dp[i][j]: i번째 앱까지 고려했을때 j의 비용으로 얻을 수 있는 최대 메모리 (1-idx)
+# dp[i][j]: i번째 앱까지 고려했을때 j의 비용으로 얻을 수 있는 최대 메모리
 dp = [[0] * (sum_cost + 1) for _ in range(N + 1)]
 
 for i in range(1, N + 1):
@@ -27,7 +27,8 @@ print(answer)
 
 """
 - 난이도: 골드3
-- 분류: dp (냅색)
+- 분류: dp
+- 유형: 냅색 변형 (축 변경)
 
 문제 설명에 나온 '발상의 전환'이란?
 - M <= 1000만 이므로, dp의 j축을 '메모리'로 잡으면 테이블이 너무 커진다.

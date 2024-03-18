@@ -4,8 +4,7 @@ weights = list(map(int, input().split()))
 K = int(input())
 marbles = list(map(int, input().split()))
 
-# dp[i][j]: i번째까지의 추를 사용했을때, 무게 j를 만들 수 있는지에 대한 여부
-# 참고: 현재 상황이 어떤 추의 조합으로 이루어졌는지는 중요하지 않음
+# dp[i][j]: i번째 추까지 사용했을때, j의 무게를 만들 수 있는지 여부
 dp = [[-1] * 15001 for _ in range(31)]
 
 
@@ -41,9 +40,9 @@ print(*res)
 """
 - 난이도: 골드3
 - 분류: dp
+- 유형: Top-down 냅색 + dp배열 의미설정
 
-- 유형: Top-down 냅색
-
+참고
 - 출처: https://my-coding-notes.tistory.com/157
 - 설명: https://nbalance97.tistory.com/110
 """
