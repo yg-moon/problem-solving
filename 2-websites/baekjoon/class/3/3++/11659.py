@@ -4,9 +4,9 @@ import sys
 input = sys.stdin.readline
 
 N, M = map(int, input().split())
-arr = [0] + list(map(int, input().split()))  # 1-idx 맞춰주기
+arr = [0] + list(map(int, input().split()))  # 1-idx
 
-psum = [0] * (N + 1)  # psum[i]: i번째 수 ‘이전’까지 모든 수들의 합
+psum = [0] * (N + 1)  # psum[i]: i번째 수까지 모든 수들의 합
 for i in range(1, N + 1):
     psum[i] = psum[i - 1] + arr[i]
 

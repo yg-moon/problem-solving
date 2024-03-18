@@ -1,7 +1,7 @@
 # 텀 프로젝트
 import sys
 
-sys.setrecursionlimit(10**6)  # 기본값은 10**3
+sys.setrecursionlimit(10**5)
 
 
 def dfs(cur):
@@ -11,12 +11,10 @@ def dfs(cur):
     cur_list.append(cur)
     nxt = arr[cur]
 
-    if not visited[nxt]:
+    if not visited[nxt]:  # 주의: 여기서 불필요한 O(N) 조건검사 추가시 시간초과
         dfs(nxt)
-    else:
-        if nxt in cur_list:
-            # 핵심: 사이클이 되는 구간부터만 팀을 이룸
-            cnt += len(cur_list) - cur_list.index(nxt)
+    elif nxt in cur_list:
+        cnt += len(cur_list) - cur_list.index(nxt)
 
 
 T = int(input())
@@ -43,8 +41,8 @@ for _ in range(T):
 - index()를 통해 사이클의 시작위치를 파악하여 팀의 크기를 계산
 
 디버깅: 시간초과
-- 한번 방문한 학생은 다시 방문할 필요가 없었음
-- 왜냐하면 문제구조상 팀에 소속될 사람은 첫 방문에서 반드시 결성되기 때문
+- 핵심: 한번 방문한 학생은 다시 방문할 필요가 없음
+- 이유: 팀에 소속될 사람은 첫 방문에서 반드시 결성되기 때문
 
 참고
 - https://claude-u.tistory.com/435
