@@ -18,24 +18,25 @@ def rotate_anti(mat):
     return result
 
 
-def rotate_map(mat):
+def rotate2(mat):
     return list(map(list, zip(*mat[::-1])))
 
 
-def rotate_list(mat):
+def rotate3(mat):
     return [list(row) for row in zip(*mat[::-1])]
 
 
-def rotate_list_anti(mat):
+def rotate3_anti(mat):
     return [list(row) for row in zip(*mat)][::-1]
 
 
+# Test
 sample_mat = [[1, 2, 3, 4], [5, 6, 7, 8], [9, 10, 11, 12]]
 
 for row in sample_mat:
     print(row)
 print()
 
-for row in rotate_list(sample_mat):
+for row in rotate3_anti(sample_mat):
     print(row)
 print()

@@ -13,7 +13,7 @@ for _ in range(E):
     graph[u].append((v, w))
 
 
-def dijkstra(start):
+def dijk(start):
     dist = [INF] * (V + 1)
     dist[start] = 0
     pq = [(0, start)]
@@ -29,7 +29,7 @@ def dijkstra(start):
     return dist
 
 
-result = dijkstra(K)
+result = dijk(K)
 
 for i in range(1, V + 1):
     print(result[i] if result[i] != INF else "INF")

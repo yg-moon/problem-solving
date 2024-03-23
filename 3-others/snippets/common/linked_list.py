@@ -17,6 +17,7 @@ def reverseList(head):
     return prev
 
 
+# 재귀적으로 길이 구하기
 def get_len(node):
     if not node:
         return 0

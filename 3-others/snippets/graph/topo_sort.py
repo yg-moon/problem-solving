@@ -1,3 +1,4 @@
+# BOJ 2252
 from collections import deque, defaultdict
 
 V, E = map(int, input().split())
@@ -34,19 +35,3 @@ def topo_sort():
 topo_sort()
 
 print(*result)
-
-"""
-예시 입력
-7 8
-1 2
-1 5
-2 3
-2 6
-3 4
-4 7
-5 6
-6 4
-
-예시 출력
-1 2 5 3 6 4 7
-"""
