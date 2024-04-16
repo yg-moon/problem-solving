@@ -5,7 +5,7 @@ sys.setrecursionlimit(10**5)
 
 
 def dfs(cur):
-    global cnt
+    global members_in_team
 
     visited[cur] = True
     cur_list.append(cur)
@@ -14,7 +14,7 @@ def dfs(cur):
     if not visited[nxt]:  # 주의: 여기서 불필요한 O(N) 조건검사 추가시 시간초과
         dfs(nxt)
     elif nxt in cur_list:
-        cnt += len(cur_list) - cur_list.index(nxt)
+        members_in_team += len(cur_list) - cur_list.index(nxt)
 
 
 T = int(input())
@@ -23,14 +23,14 @@ for _ in range(T):
     N = int(input())
     arr = [0] + list(map(int, input().split()))
     visited = [False] * (N + 1)
-    cnt = 0
+    members_in_team = 0
 
     for i in range(1, N + 1):
         if not visited[i]:
             cur_list = []
             dfs(i)
 
-    print(N - cnt)
+    print(N - members_in_team)
 
 """
 - 난이도: 골드3
