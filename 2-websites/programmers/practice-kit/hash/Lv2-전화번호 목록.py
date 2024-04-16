@@ -1,8 +1,6 @@
 def solution(phone_book):
     # 모든 숫자를 set에 저장
-    num_set = set()
-    for num in phone_book:
-        num_set.add(num)
+    num_set = set(phone_book)
 
     for num in phone_book:
         temp = ""

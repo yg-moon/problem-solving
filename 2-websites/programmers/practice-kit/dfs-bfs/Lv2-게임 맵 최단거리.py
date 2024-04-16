@@ -2,9 +2,9 @@ from collections import deque
 
 
 def solution(maps):
-    n = len(maps)
-    m = len(maps[0])
-    min_dist = int(1e9)
+    N = len(maps)
+    M = len(maps[0])
+    answer = int(1e9)
 
     dx = [-1, 1, 0, 0]
     dy = [0, 0, -1, 1]
@@ -14,23 +14,26 @@ def solution(maps):
 
     while q:
         x, y, dist = q.popleft()
-        if (x, y) == (n - 1, m - 1):
-            min_dist = min(min_dist, dist)
+
+        if (x, y) == (N - 1, M - 1):
+            answer = min(answer, dist)
+            # 주의: 여기에 return 쓰면 틀림
+
         for i in range(4):
             nx = x + dx[i]
             ny = y + dy[i]
             if (
-                0 <= nx < n
-                and 0 <= ny < m
+                0 <= nx < N
+                and 0 <= ny < M
                 and maps[nx][ny] == 1
                 and (nx, ny) not in visited
             ):
                 visited.add((nx, ny))
                 q.append((nx, ny, dist + 1))
 
-    if min_dist == int(1e9):
+    if answer == int(1e9):
         return -1
-    return min_dist
+    return answer
 
 
 """

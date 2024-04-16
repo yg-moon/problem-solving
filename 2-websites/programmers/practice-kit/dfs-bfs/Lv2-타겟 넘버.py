@@ -1,19 +1,19 @@
 def solution(numbers, target):
     N = len(numbers)
-    cnt = 0
+    answer = 0
 
     def dfs(res, idx):
         if idx == N:
             if res == target:
-                nonlocal cnt
-                cnt += 1
+                nonlocal answer
+                answer += 1
             return
         dfs(res + numbers[idx], idx + 1)
         dfs(res - numbers[idx], idx + 1)
 
     dfs(0, 0)
 
-    return cnt
+    return answer
 
 
 """

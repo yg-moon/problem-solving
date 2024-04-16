@@ -1,5 +1,5 @@
 def solution(n, computers):
-    network_cnt = 0
+    answer = 0
     visited = set()
 
     def dfs(i):
@@ -11,9 +11,9 @@ def solution(n, computers):
     for node in range(n):
         if node not in visited:
             dfs(node)
-            network_cnt += 1
+            answer += 1
 
-    return network_cnt
+    return answer
 
 
 """

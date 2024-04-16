@@ -12,13 +12,13 @@ def solution(begin, target, words):
     if target not in words:
         return 0
 
-    min_step = int(1e9)
+    answer = int(1e9)
     visited = set()
 
     def dfs(cur, step):
         if cur == target:
-            nonlocal min_step
-            min_step = min(min_step, step)
+            nonlocal answer
+            answer = min(answer, step)
         for word in words:
             if word not in visited and is_changeable(cur, word):
                 visited.add(word)
@@ -27,11 +27,11 @@ def solution(begin, target, words):
 
     dfs(begin, 0)
 
-    # 어떠한 방법으로도 변환할 수 없는지 체크: min_step이 초깃값 그대로일 경우
-    if min_step == int(1e9):
+    # 어떠한 방법으로도 변환할 수 없는지 체크: 초기값 그대로일 경우
+    if answer == int(1e9):
         return 0
     else:
-        return min_step
+        return answer
 
 
 """
