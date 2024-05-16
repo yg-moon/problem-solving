@@ -17,15 +17,19 @@ def dijk(start):
     dist = [INF] * (V + 1)
     dist[start] = 0
     pq = [(0, start)]
+
     while pq:
         cur_w, cur = heapq.heappop(pq)
+
         if dist[cur] < cur_w:
             continue
+
         for nxt, nxt_w in graph[cur]:
             new_w = cur_w + nxt_w
             if dist[nxt] > new_w:
                 dist[nxt] = new_w
                 heapq.heappush(pq, (new_w, nxt))
+
     return dist
 
 
