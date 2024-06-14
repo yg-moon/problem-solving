@@ -16,7 +16,8 @@ for _ in range(E):
 def dijk(start):
     dist = [INF] * (V + 1)
     dist[start] = 0
-    pq = [(0, start)]
+    pq = []
+    heapq.heappush(pq, (0, start))
 
     while pq:
         cur_w, cur = heapq.heappop(pq)
@@ -36,4 +37,7 @@ def dijk(start):
 result = dijk(K)
 
 for i in range(1, V + 1):
-    print(result[i] if result[i] != INF else "INF")
+    if result[i] != INF:
+        print(result[i])
+    else:
+        print("INF")
