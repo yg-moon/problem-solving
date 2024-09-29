@@ -1,3 +1,4 @@
+# 정석 버전
 def mergeSort(A, l, r):
     if l < r:
         mid = l + (r - l) // 2
@@ -20,7 +21,7 @@ def merge(A, l, m, r):
     j = 0
     k = l
 
-    while i < len(L) and j < len(R):  # 주의: 포함 여부 조심!
+    while i < len(L) and j < len(R):
         if L[i] <= R[j]:
             A[k] = L[i]
             i += 1
@@ -53,15 +54,3 @@ if __name__ == "__main__":
     mergeSort(arr, 0, len(arr) - 1)
     print("Sorted array: ")
     printlist(arr)
-
-
-# - Python:
-#   - Error: list assignment index out of range: list에 append로 안 붙여서 그렇다.
-#   - 배열처럼 쓰려면 미리 초기화 해야 함:  L = [0] * n1
-#
-# - 구현
-#   - 의미가 있거나, 자주 쓰는건 변수로 설정.
-#   - 오버플로우 방지를 위해 mid = start + (end - start) // 2 로 구한다. (오버플로우 방지)
-#
-# - 디버깅
-#   - 멍청했다. R[j] 이어야 하는 부분을 코드 고치다가 L[j] 로 써놨다.
