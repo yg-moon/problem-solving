@@ -1,26 +1,35 @@
-def dfs_recursive(graph, v, visited):
-    visited[v] = True
-    print(v, end=" ")
+from collections import defaultdict
 
-    for neighbor in graph[v]:
-        if not visited[neighbor]:
-            dfs_recursive(graph, neighbor, visited)
+N = 10
+graph = defaultdict(list)
+visited = [False] * N
+result = []
 
 
-def dfs_stack(graph, start):
-    visited = [False] * (len(graph))
-    stack = [start]  # 시작 노드를 스택에 넣음
+def dfs(cur):
+    visited[cur] = True
+    result.append(cur)
+
+    for nxt in graph[cur]:
+        if not visited[nxt]:
+            dfs(nxt)
+
+
+def dfs_stack(start):
+    stack = [start]
 
     while stack:
-        v = stack.pop()  # 스택에서 노드를 하나 꺼냄
-        if not visited[v]:
-            visited[v] = True
-            print(v, end=" ")
+        cur = stack.pop()
 
-            # 현재 노드와 연결된 미방문 노드들을 스택에 추가
-            for neighbor in reversed(graph[v]):
-                if not visited[neighbor]:
-                    stack.append(neighbor)
+        # 현재 노드를 방문처리
+        if not visited[cur]:
+            visited[cur] = True
+            result.append(cur)
+
+            # 연결된 미방문 노드를 스택에 추가
+            for nxt in graph[cur]:
+                if not visited[nxt]:
+                    stack.append(nxt)
 
 
 """

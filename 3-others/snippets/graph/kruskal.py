@@ -10,16 +10,18 @@ for _ in range(E):
 edges.sort()  # 핵심: 간선을 비용순으로 정렬
 
 
+# 루트를 찾는 함수
 def find(x):
     if x != parent[x]:
         parent[x] = find(parent[x])
     return parent[x]
 
 
+# 두 집합을 합치는 함수
 def union(a, b):
     a = find(a)
     b = find(b)
-    if a < b:
+    if a < b:  # 더 작은게 부모가 됨
         parent[b] = a
     else:
         parent[a] = b
