@@ -3,16 +3,16 @@
 from bisect import bisect_left
 
 N = int(input())
-A = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
 lis = []
 
-for a in A:
-    idx = bisect_left(lis, a)
+for num in arr:
+    idx = bisect_left(lis, num)
     if len(lis) == idx:
-        lis.append(a)
+        lis.append(num)
     else:
-        lis[idx] = a
+        lis[idx] = num
 
 print(len(lis))
 

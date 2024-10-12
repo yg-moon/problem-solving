@@ -4,20 +4,23 @@
 from bisect import bisect_left
 
 N = int(input())
-A = list(map(int, input().split()))
+arr = list(map(int, input().split()))
 
 lis = [0]
 
-for a in A:
-    # 마지막 값보다 크면 append
-    if lis[-1] < a:
-        lis.append(a)
-    # 아니라면 적절한 위치에 이분탐색으로 삽입
+for num in arr:
+    # lis 배열에서 num이 들어갈 위치를 이진 탐색으로 찾기
+    idx = bisect_left(lis, num)
+
+    # 적절한 위치에 삽입, 없으면 추가
+    if idx < len(lis):
+        lis[idx] = num
     else:
-        lis[bisect_left(lis, a)] = a
+        lis.append(num)
 
 print(len(lis) - 1)
 
 """
 - bisect 모듈로 더 간단하게 풀기
+- O(nlogn)
 """
