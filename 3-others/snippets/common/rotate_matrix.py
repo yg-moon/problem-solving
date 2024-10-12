@@ -22,6 +22,7 @@ def rotate2(mat):
     return list(map(list, zip(*mat[::-1])))
 
 
+# 제일 선호
 def rotate3(mat):
     return [list(row) for row in zip(*mat[::-1])]
 

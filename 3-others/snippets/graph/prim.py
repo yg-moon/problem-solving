@@ -23,12 +23,14 @@ def prim(start):  # 시작점은 어디로 해도 무방
     while pq:
         cur_w, cur = heapq.heappop(pq)
 
+        # 다익스트라와 차이점1
         if visited[cur]:
             continue
         visited[cur] = True
         total_cost += cur_w
 
         for nxt, nxt_w in graph[cur]:
+            # 다익스트라와 차이점2
             if not visited[nxt] and dist[nxt] > nxt_w:
                 dist[nxt] = nxt_w
                 heapq.heappush(pq, (nxt_w, nxt))
