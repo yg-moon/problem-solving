@@ -1,6 +1,13 @@
 #!/bin/zsh
-# 커밋된 문서를 iCloud로 복사해 모바일에서 읽는다. 단방향 — 모바일 편집분은 덮어써짐.
-# 해제: git config --unset core.hooksPath
+# 커밋된 문서를 iCloud로 복사해 모바일에서 읽는다.
+# 단방향 — 모바일에서 편집하면 다음 커밋 때 덮어써진다.
+#
+# 새 기기에서 클론했다면 아래를 한 번 실행해야 훅이 동작한다.
+# (core.hooksPath는 로컬 설정이라 클론으로 따라오지 않는다)
+#   git config core.hooksPath .githooks
+#
+# 해제:
+#   git config --unset core.hooksPath
 
 REPO=$(git rev-parse --show-toplevel)
 DST="$HOME/Library/Mobile Documents/com~apple~CloudDocs/iCloud Downloads/개발"
