@@ -1,0 +1,14 @@
+#!/bin/zsh
+# 커밋된 문서를 iCloud로 복사해 모바일에서 읽는다. 단방향 — 모바일 편집분은 덮어써짐.
+# 해제: git config --unset core.hooksPath
+
+REPO=$(git rev-parse --show-toplevel)
+DST="$HOME/Library/Mobile Documents/com~apple~CloudDocs/iCloud Downloads/개발"
+FILES=(
+  2-websites/leetcode/master.md
+  2-websites/leetcode/review-notes.md
+)
+
+for f in $FILES; do
+  /usr/bin/rsync -t "$REPO/$f" "$DST/" && echo "→ iCloud: ${f:t}"
+done
